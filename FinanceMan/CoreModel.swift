@@ -17,7 +17,10 @@ class CoreModel {
         categories.append(newCategory)
     }
     
-    func addTransaction(id: UInt, name: String, category: CategoryModel){
-        let newTransaction = TransactionModel(
+    func addTransaction(id: UInt, category: CategoryModel, bill: String){
+        let newTransaction = TransactionModel(category: <#T##CategoryModel#>, bill: <#T##String#>)
+        transactions.append(newTransaction)
     }
+    
+    
 }
