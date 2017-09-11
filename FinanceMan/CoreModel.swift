@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class CoreModel {
     
     var categories = [CategoryModel]()
@@ -21,6 +22,7 @@ class CoreModel {
         let newTransaction = TransactionModel(category: <#T##CategoryModel#>, bill: <#T##String#>)
         transactions.append(newTransaction)
     }
+    
     
     
 }

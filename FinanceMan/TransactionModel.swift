@@ -12,22 +12,20 @@ class TransactionModel: NSObject, NSCoding {
     
     private var _id: String = ""
     private var _category: CategoryModel?
-    private var _bill = 0
+    private var _bill: NSDecimalNumber?
+    private var description: String?
     
-    
+    //magic numbers :)
+    //Only two numbers after a point are taken into account
+    //two last digits in _bill for bit rate
+    private let bitRate = 100
     
     init(category: CategoryModel, bill: String) {
         self._id = UUID().uuidString
         self._category = category
         self.billStr = bill
     }
-    
-//    init(category: CategoryModel, bill: Double) {
-//        self._id = UUID().uuidString
-//        self._category = category
-//        self.bill = bill
-//    }
-    
+  
     required init(coder decoder: NSCoder) {
         if let idDecode = decoder.decodeObject(forKey: "id") as? String {
             _id = idDecode
@@ -46,7 +44,7 @@ class TransactionModel: NSObject, NSCoding {
         aCoder.encode(bill, forKey: "bill")
     }
     
-    var id: String {
+    private var id: String {
         set {
             if _id == "" {
                _id = newValue
@@ -56,7 +54,7 @@ class TransactionModel: NSObject, NSCoding {
             return _id
         }
     }
-    var category: CategoryModel {
+    private var category: CategoryModel {
         get {
             return _category!
         }
@@ -66,33 +64,51 @@ class TransactionModel: NSObject, NSCoding {
     }
     
     
-    var billStr: String {
+    private var billStr: String {
         get {
-            if _bill%100 > 1 {
-                let billInt = _bill / 100
-                let billFloat = _bill - billInt
-                return "\(billInt).\(billFloat)"
-            }
-            return "\(_bill / 100)"
+            return int2str(_bill)
         }
         set {
-            if let _ = Double(newValue) {
-                let billPars = newValue.components(separatedBy: ".")
-                _bill = (Int(billPars[0])!) * 100 + Int(billPars[1])!
-            }
+            str2int(newValue)
         }
     }
     
-    
-    //Only two numbers after a point are taken into account
-    var bill: Double {
+    private var bill: Double {
         get{
-            return Double(_bill / 100) + (Double(Double(_bill % 100) / 100.0))
+            return int2double(_bill)
         }
         set {
-            _bill = Int(newValue * 100)
+            _bill = double2int(newValue)
         }
     }
     
+    //convert from Internal Integer format to Double
+    func int2double(int: Int) -> Double{
+        return Double(int / bitRate) + (Double(Double(int % bitRate) / Double(bitRate)))
+    }
     
+    //convert from Double to Internal Integer format
+    //Only two numbers after a point are taken into account
+    func double2int(double: Double) -> Int{
+        return Int(double * bitRate)
+    }
+    
+    //convert from String to the Internal Integer format
+    func str2int(str: String) -> Int{
+        
+        if let _ = Double(str) {
+            let billPars = str.components(separatedBy: ".")
+            return (Int(billPars[0])!) * bitRate + Int(billPars[1])!
+        }
+    }
+    //convert from internal Integer to String
+    func int2str(int: Int) -> String{
+        
+        if (int % bitRate) > 1 {
+            let integerPart = int / bitRate
+            let floatPart = int - integerPart
+            return "\(integerPart).\(floatPart)"
+        }
+        return "\(int / bitRate)"
+    }
 }
