@@ -45,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F387D2A1F696892005FFA13 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2B5291F62FE8200487ECA /* Assets.xcassets */,
+			);
+			name = SupportFiles;
+			sourceTree = "<group>";
+		};
 		8D8F90DE1F654D76004D81B0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +85,9 @@
 				8D8F90DE1F654D76004D81B0 /* Models */,
 				8DC2B5341F62FF1700487ECA /* Views */,
 				8DC2B51F1F62FE8200487ECA /* AppDelegate.swift */,
-				8DC2B5211F62FE8200487ECA /* ViewController.swift */,
-				8DC2B5231F62FE8200487ECA /* Main.storyboard */,
-				8DC2B5291F62FE8200487ECA /* Assets.xcassets */,
-				8DC2B52B1F62FE8200487ECA /* LaunchScreen.storyboard */,
 				8DC2B52E1F62FE8200487ECA /* Info.plist */,
 				8DC2B5261F62FE8200487ECA /* FinanceMan.xcdatamodeld */,
+				3F387D2A1F696892005FFA13 /* SupportFiles */,
 			);
 			path = FinanceMan;
 			sourceTree = "<group>";
@@ -90,6 +95,9 @@
 		8DC2B5341F62FF1700487ECA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8DC2B5211F62FE8200487ECA /* ViewController.swift */,
+				8DC2B5231F62FE8200487ECA /* Main.storyboard */,
+				8DC2B52B1F62FE8200487ECA /* LaunchScreen.storyboard */,
 				8DC2B5351F62FF7C00487ECA /* RCButton.swift */,
 			);
 			name = Views;

@@ -101,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+            <point key="canvasLocation" x="-377" y="141"/>
         </scene>
         <!--Title-->
         <scene sceneID="xoB-Ee-f0O">
@@ -188,8 +188,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="67O-70-Ivj">
-                                <rect key="frame" x="2" y="144" width="371" height="519"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="67O-70-Ivj">
+                                <rect key="frame" x="2" y="222" width="371" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Qv-Rg-dMu">
@@ -249,10 +249,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zBB-qD-Usp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="486"/>
+            <point key="canvasLocation" x="973.60000000000002" y="485.30734632683664"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SMY-nL-Ejt"/>
+        <segue reference="CEf-hj-X9I"/>
     </inferredMetricsTieBreakers>
 </document>
