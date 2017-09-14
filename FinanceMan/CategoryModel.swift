@@ -10,6 +10,7 @@ import Foundation
 
 class CategoryModel:NSObject, NSCoding {
     
+    static private var lastId:UInt = 0
     private var id: UInt = 0
     private var name: String = ""
     var descriptionContext: String = ""
@@ -19,8 +20,9 @@ class CategoryModel:NSObject, NSCoding {
     }
     
     init(name: String) {
+        CategoryModel.lastId += 1
         self.name = name
-        self.id = 0
+        self.id = CategoryModel.lastId
         
     }
     

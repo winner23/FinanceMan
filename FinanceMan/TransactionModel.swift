@@ -10,22 +10,16 @@ import Foundation
 
 class TransactionModel: NSObject, NSCoding {
     
-    private var _id: String = ""
-    private var _category: CategoryModel?
+    private var _categoryId: String = ""
     private var _bill: NSDecimalNumber?
     private var descriptionTransaction: String?
     private var _date: Date?
     
-    
-    //magic numbers :)
-    //Only two numbers after a point are taken into account
-    //two last digits in _bill for bit rate
-    private let bitRate = 100
     private let dateFormatter = DateFormatter()
     
-    init(category: CategoryModel, bill: String, date: String) {
-        self._id = UUID().uuidString
-        self._category = category
+    init(categoryId: String, bill: String, date: String) {
+        
+        self._categoryId = categoryId
         self._bill = NSDecimalNumber(string: bill)
         dateFormatter.dateFormat = "yyyy-MM-dd"
         self._date = dateFormatter.date(from: date)
@@ -33,11 +27,9 @@ class TransactionModel: NSObject, NSCoding {
     
     //NSCoder import
     required init(coder decoder: NSCoder) {
-        if let idDecode = decoder.decodeObject(forKey: "id") as? String {
-            _id = idDecode
-        }
-        if let categoryDecode = decoder.decodeObject(forKey: "category") as? CategoryModel {
-            _category = categoryDecode
+
+        if let categoryDecode = decoder.decodeObject(forKey: "category_id") as? String {
+            _categoryId = categoryDecode
         }
         if let billDecode = decoder.decodeObject(forKey: "bill") as? NSDecimalNumber {
             _bill = billDecode
@@ -50,38 +42,18 @@ class TransactionModel: NSObject, NSCoding {
     
     //NSCoder export
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(_id, forKey: "id")
-        aCoder.encode(_category, forKey: "category")
+        aCoder.encode(_categoryId, forKey: "category_id")
         aCoder.encode(_bill, forKey: "bill")
         aCoder.encode(_date, forKey: "date")
     }
     
     //Getters and Setters
-    //id:String
-    private var id: String {
-        get {
-            return _id
-        }
-        set {
-            if _id == "" {
-                _id = newValue
-            } else {
-                _id = UUID().uuidString
-            }
-        }
-    }
-    
     //category:Category
-    private var category: CategoryModel {
-        get {
-            return _category!
-        }
-        set {
-            _category = newValue
-        }
+    func getCategoryId() -> String {
+        return _categoryId
     }
     
-    private var bill: Double {
+    var bill: Double {
         get{
             return (_bill?.doubleValue)!
         }
@@ -90,7 +62,7 @@ class TransactionModel: NSObject, NSCoding {
         }
     }
     
-    private var billStr: String {
+    var billStr: String {
         get{
             return (_bill?.stringValue)!
         }
@@ -98,7 +70,7 @@ class TransactionModel: NSObject, NSCoding {
             _bill = NSDecimalNumber(string: newValue)
         }
     }
-    private var date: String {
+    var date: String {
         get{
             return dateFormatter.string(from:_date!)
 
