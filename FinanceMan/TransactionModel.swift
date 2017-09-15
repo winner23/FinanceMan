@@ -10,75 +10,46 @@ import Foundation
 
 class TransactionModel: NSObject, NSCoding {
     
-    private var _categoryId: String = ""
-    private var _bill: NSDecimalNumber?
+    private var categoryId: String = ""
+    private var volume: NSDecimalNumber?
     private var descriptionTransaction: String?
-    private var _date: Date?
+    private var date: Date?
     
     private let dateFormatter = DateFormatter()
     
-    init(categoryId: String, bill: String, date: String) {
-        
-        self._categoryId = categoryId
-        self._bill = NSDecimalNumber(string: bill)
+    init(categoryID: String, volume: String, date: String) {
+        self.categoryId = categoryID
+        self.volume = NSDecimalNumber(string: volume)
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        self._date = dateFormatter.date(from: date)
+        self.date = dateFormatter.date(from: date)
     }
     
     //NSCoder import
     required init(coder decoder: NSCoder) {
 
         if let categoryDecode = decoder.decodeObject(forKey: "category_id") as? String {
-            _categoryId = categoryDecode
+            categoryId = categoryDecode
         }
-        if let billDecode = decoder.decodeObject(forKey: "bill") as? NSDecimalNumber {
-            _bill = billDecode
+        if let volumeDecode = decoder.decodeObject(forKey: "bill") as? NSDecimalNumber {
+            volume = volumeDecode
         }
         dateFormatter.dateFormat = "yyyy-MM-dd"
         if let dateDecode = decoder.decodeObject(forKey: "date") as? Date {
-            _date = dateDecode
+            date = dateDecode
         }
     }
     
     //NSCoder export
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(_categoryId, forKey: "category_id")
-        aCoder.encode(_bill, forKey: "bill")
-        aCoder.encode(_date, forKey: "date")
+        aCoder.encode(categoryId, forKey: "category_id")
+        aCoder.encode(volume, forKey: "bill")
+        aCoder.encode(date, forKey: "date")
     }
     
-    //Getters and Setters
-    //category:Category
     func getCategoryId() -> String {
-        return _categoryId
+        return categoryId
     }
     
-    var bill: Double {
-        get{
-            return (_bill?.doubleValue)!
-        }
-        set {
-            _bill = NSDecimalNumber(value: newValue)
-        }
-    }
     
-    var billStr: String {
-        get{
-            return (_bill?.stringValue)!
-        }
-        set{
-            _bill = NSDecimalNumber(string: newValue)
-        }
-    }
-    var date: String {
-        get{
-            return dateFormatter.string(from:_date!)
-
-        }
-        set{
-            _date = dateFormatter.date(from:newValue)
-            
-        }
-    }
     
 }

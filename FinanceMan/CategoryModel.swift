@@ -10,30 +10,26 @@ import Foundation
 
 class CategoryModel:NSObject, NSCoding {
     
-    static private var lastId:UInt = 0
-    private var id: UInt = 0
+    private var id: String = ""
     private var name: String = ""
-    var descriptionContext: String = ""
+    private var descriptionContext: String = ""
     
-    func getName() -> String {
-        return self.name
-    }
     
     init(name: String) {
-        CategoryModel.lastId += 1
         self.name = name
-        self.id = CategoryModel.lastId
+        self.id = UUID().uuidString
         
     }
     
-    init(ID id:UInt, CategoryName name:String) {
+    init(categoryName name:String, descriptionCategory descript:String) {
         self.name = name
-        self.id = id
+        self.id = UUID().uuidString
+        self.descriptionContext = descript
     }
     
     required init(coder decoder: NSCoder) {
         
-        if let idDecode = decoder.decodeObject(forKey: "id") as? UInt {
+        if let idDecode = decoder.decodeObject(forKey: "id") as? String {
             id = idDecode
             name = decoder.decodeObject(forKey: "name") as? String ?? "noname"
             descriptionContext = decoder.decodeObject(forKey: "descriptionContext") as? String ?? ""
@@ -49,6 +45,13 @@ class CategoryModel:NSObject, NSCoding {
         }
     }
     
+    func getName() -> String {
+        return name
+    }
+    
+    func getId() -> String{
+        return id
+    }
     
     
 }

@@ -10,9 +10,9 @@ import Foundation
 
 class CoreModel {
     
-    private var categories: [String:String] = [:]
+    //private var categories: [String:String] = [:]
     
-    //private var categories = [CategoryModel]()
+    private var categories = [CategoryModel]()
     private var transactions = [TransactionModel]()
     
 //    func addCategory(id: UInt, name: String){
@@ -20,39 +20,75 @@ class CoreModel {
 //        categories.append(newCategory)
 //    }
 
-    func addCategory(name str:String){
-        let id = UUID().uuidString
-        categories[id] = str
+    // ----========== Categories operations ==========----
+    func addCategory(name: String, descrip: String){
+        let newCategory = CategoryModel(categoryName: name, descriptionCategory: descrip)
+        categories.append(newCategory)
     }
     
-//    func getCategory(name:String) -> CategoryModel?{
-//        for category:CategoryModel in categories{
-//            if category.getName() == name {
-//                return category
-//            }
-//        }
-//        return nil
-//    }
+    
+    func getCategoryInstance(byName name:String) -> CategoryModel?{
+        for category:CategoryModel in categories{
+            if category.getName() == name {
+                return category
+            }
+        }
+        return nil
+    }
 
-    func getCategoryName(byId id: String) -> String {
-        return categories[id]!
-    }
-    
-    
-    func getCategoryId(byName name: String) -> String? {
-        for (key, value) in categories{
-            if value == name {
-                return key
+    func getCategoryName(byId id: String) -> String? {
+        
+        for categoryItem in categories {
+            if categoryItem.getId() == id {
+                return categoryItem.getName()
             }
         }
         return nil
     }
     
-    func addTransaction(categoryId: String, bill: String, date: String){
-        let newTransaction = TransactionModel(categoryId: categoryId, bill: bill, date: date)
+    
+    func getCategoryId(byName name: String) -> String? {
+        for categoryItem in categories{
+            if categoryItem.getName() == name {
+                return categoryItem.getId()
+            }
+        }
+        return nil
+    }
+    
+    //NSCoding for Category List
+    func saveCategories(){
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: categories)
+        UserDefaults.standard.set(encodedData, forKey: "categories")
+        
+    }
+    
+    func retrievCategories(){
+        if let data = UserDefaults.standard.data(forKey: "categories"),
+            let categireList = NSKeyedUnarchiver.unarchiveObject(with: data) as? [CategoryModel] {
+            categories = categireList
+        }
+    }
+
+    // ----========== Transactions operations ==========----
+    
+    func addTransaction(categoryId: String, volume: String, date: String){
+        let newTransaction = TransactionModel(categoryID: categoryId, volume: volume, date: date)
         transactions.append(newTransaction)
     }
     
+    
+    func getTransactions(categoryName: String) -> [TransactionModel] {
+        var res: [TransactionModel] = []
+        for transactionInstance:TransactionModel in transactions {
+            if getCategoryName(byId: transactionInstance.getCategoryId()) == categoryName {
+                res.append(transactionInstance)
+            }
+        }
+        return res
+    }
+    
+    //NSCoding for Transaction List
     func saveTransactions(){
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: transactions)
         UserDefaults.standard.set(encodedData, forKey: "transactions")
@@ -66,28 +102,7 @@ class CoreModel {
         }
     }
     
-    func saveCategories(){
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: categories)
-        UserDefaults.standard.set(encodedData, forKey: "categories")
-        
-    }
-
-    func retrievCategories(){
-        if let data = UserDefaults.standard.data(forKey: "categories"),
-        let categireList = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String:String] {
-            categories = categireList
-        }
-    }
-    
-    func getTransactionsBy(categoryName: String) -> [TransactionModel] {
-        var res: [TransactionModel] = []
-        for transactionInstance:TransactionModel in transactions {
-            if getCategoryName(byId: transactionInstance.getCategoryId()) == categoryName {
-                res.append(transactionInstance)
-            }
-        }
-        return res
-    }
+ 
     
     
     
