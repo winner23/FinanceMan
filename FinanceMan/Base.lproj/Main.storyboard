@@ -12,7 +12,8 @@
         <!--Transactions-->
         <scene sceneID="SDq-x5-kRH">
             <objects>
-                <tableViewController id="dhW-Fd-pXX" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eqY-Rm-DME" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="dhW-Fd-pXX" customClass="TransactionTableViewController" customModule="FinanceMan" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Ls-rc-iSp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,6 +33,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="O2Z-LV-tPz" kind="show" identifier="editTransaction" id="3lL-ji-3eg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -41,7 +45,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Transactions" id="2pt-8p-avI"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eqY-Rm-DME" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-247" y="-737"/>
         </scene>
@@ -117,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkp-Fy-i3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="624.79999999999995" y="-735.38230884557731"/>
+            <point key="canvasLocation" x="625" y="-737"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6yv-Yl-vkw">
@@ -126,6 +129,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mp5-9y-nSb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="LU9-xq-yNE" id="qmz-9o-D0z"/>
+                        </connections>
                     </navigationBar>
                     <connections>
                         <segue destination="dhW-Fd-pXX" kind="relationship" relationship="rootViewController" id="vVP-t6-Xe8"/>
