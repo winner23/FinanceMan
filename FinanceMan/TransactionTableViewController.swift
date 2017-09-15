@@ -16,15 +16,18 @@ class TransactionTableViewController: UITableViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-    
-        let navigationBar = self.navigationController?.navigationBar
+        
+        //let navigationBar = self.navigationController?.navigationBar
         let navigationItem = self.navigationItem
-        navigationItem.title = "Transaction"
+        navigationItem.title = "Transactions"
         let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.openNewView));
         
     
         navigationItem.rightBarButtonItem = doneItem;
-        navigationBar?.setItems([navigationItem], animated: false);
+        
+        //navigationBar?.setItems([navigationItem], animated: true);
+        //navigationItem.setRightBarButtonItem(addButtonItem, animated: true)
+        
         super.viewWillAppear(animated)
     }
 

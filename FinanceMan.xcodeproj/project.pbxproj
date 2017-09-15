@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3FF521171F6BAAC700658402 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF521161F6BAAC700658402 /* CategoryController.swift */; };
-		3FF521191F6BAADC00658402 /* TransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF521181F6BAADC00658402 /* TransactionController.swift */; };
 		3FF5211C1F6BE11E00658402 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF5211B1F6BE11E00658402 /* TransactionTableViewController.swift */; };
 		8D8F90E01F658722004D81B0 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8F90DF1F658722004D81B0 /* TransactionModel.swift */; };
 		8D8F90E21F65875D004D81B0 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8F90E11F65875D004D81B0 /* CategoryModel.swift */; };
 		8DC2B5201F62FE8200487ECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2B51F1F62FE8200487ECA /* AppDelegate.swift */; };
-		8DC2B5221F62FE8200487ECA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2B5211F62FE8200487ECA /* ViewController.swift */; };
 		8DC2B5251F62FE8200487ECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC2B5231F62FE8200487ECA /* Main.storyboard */; };
 		8DC2B5281F62FE8200487ECA /* FinanceMan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2B5261F62FE8200487ECA /* FinanceMan.xcdatamodeld */; };
 		8DC2B52A1F62FE8200487ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DC2B5291F62FE8200487ECA /* Assets.xcassets */; };
@@ -24,13 +22,11 @@
 
 /* Begin PBXFileReference section */
 		3FF521161F6BAAC700658402 /* CategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
-		3FF521181F6BAADC00658402 /* TransactionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionController.swift; sourceTree = "<group>"; };
 		3FF5211B1F6BE11E00658402 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		8D8F90DF1F658722004D81B0 /* TransactionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		8D8F90E11F65875D004D81B0 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		8DC2B51C1F62FE8200487ECA /* FinanceMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC2B51F1F62FE8200487ECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8DC2B5211F62FE8200487ECA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8DC2B5241F62FE8200487ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8DC2B5271F62FE8200487ECA /* FinanceMan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinanceMan.xcdatamodel; sourceTree = "<group>"; };
 		8DC2B5291F62FE8200487ECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,9 +58,7 @@
 		3FF5211A1F6BAC2200658402 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8DC2B5211F62FE8200487ECA /* ViewController.swift */,
 				3FF521161F6BAAC700658402 /* CategoryController.swift */,
-				3FF521181F6BAADC00658402 /* TransactionController.swift */,
 				3FF5211B1F6BE11E00658402 /* TransactionTableViewController.swift */,
 			);
 			name = Controllers;
@@ -195,11 +189,9 @@
 			files = (
 				8D8F90E01F658722004D81B0 /* TransactionModel.swift in Sources */,
 				8D8F90E21F65875D004D81B0 /* CategoryModel.swift in Sources */,
-				8DC2B5221F62FE8200487ECA /* ViewController.swift in Sources */,
 				8DEFB32C1F665E1D0060FDD4 /* CoreModel.swift in Sources */,
 				3FF5211C1F6BE11E00658402 /* TransactionTableViewController.swift in Sources */,
 				8DC2B5281F62FE8200487ECA /* FinanceMan.xcdatamodeld in Sources */,
-				3FF521191F6BAADC00658402 /* TransactionController.swift in Sources */,
 				3FF521171F6BAAC700658402 /* CategoryController.swift in Sources */,
 				8DC2B5361F62FF7C00487ECA /* RCButton.swift in Sources */,
 				8DC2B5201F62FE8200487ECA /* AppDelegate.swift in Sources */,
