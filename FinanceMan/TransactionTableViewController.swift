@@ -17,16 +17,22 @@ class TransactionTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
     
-        
         let navigationBar = self.navigationController?.navigationBar
         let navigationItem = self.navigationItem
         navigationItem.title = "Transaction"
-        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: nil, action: #selector(getter: UIAccessibilityCustomAction.selector));
+        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.openNewView));
+        
+    
         navigationItem.rightBarButtonItem = doneItem;
         navigationBar?.setItems([navigationItem], animated: false);
-
+        super.viewWillAppear(animated)
     }
 
+    func openNewView(){
+        self.performSegue(withIdentifier: "editTransaction", sender: self)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
