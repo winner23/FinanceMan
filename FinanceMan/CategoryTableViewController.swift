@@ -1,41 +1,34 @@
 //
-//  TransactionTableViewController.swift
+//  CategoryTableViewController.swift
 //  FinanceMan
 //
-//  Created by ITA student on 9/15/17.
+//  Created by Володимир on 9/16/17.
 //  Copyright © 2017 Володимир. All rights reserved.
 //
 
 import UIKit
 
-class TransactionTableViewController: UITableViewController {
+class CategoryTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
-        //let navigationBar = self.navigationController?.navigationBar
+        
         let navigationItem = self.navigationItem
-        navigationItem.title = "Transactions"
+        navigationItem.title = "Categories"
         let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.openNewView));
         
-    
+        
         navigationItem.rightBarButtonItem = doneItem;
         
-        //navigationBar?.setItems([navigationItem], animated: true);
-        //navigationItem.setRightBarButtonItem(addButtonItem, animated: true)
         
         super.viewWillAppear(animated)
     }
-
+    
     func openNewView(){
-        self.performSegue(withIdentifier: "newTransaction", sender: self)
+        self.performSegue(withIdentifier: "newCategory", sender: self)
     }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -15,11 +15,14 @@ class CoreModel {
     private var categories = [CategoryModel]()
     private var transactions = [TransactionModel]()
     
-//    func addCategory(id: UInt, name: String){
-//        let newCategory = CategoryModel(ID: id, CategoryName: name)
-//        categories.append(newCategory)
-//    }
-
+    //Core Model is Singleton
+    private init(){
+        
+    }
+    
+    static let coreModel = CoreModel()
+    
+    //MARK: Categories
     // ----========== Categories operations ==========----
     func addCategory(name: String, descrip: String){
         let newCategory = CategoryModel(categoryName: name, descriptionCategory: descrip)
@@ -69,7 +72,8 @@ class CoreModel {
             categories = categireList
         }
     }
-
+    
+    //MARK:Transaction
     // ----========== Transactions operations ==========----
     
     func addTransaction(categoryId: String, volume: String, date: String){

@@ -26,7 +26,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dt2-Kr-h6G">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="transactionCell" id="dt2-Kr-h6G">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dt2-Kr-h6G" id="ISR-rp-0rX">
@@ -44,56 +44,52 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Transactions" id="2pt-8p-avI"/>
+                    <connections>
+                        <segue destination="O2Z-LV-tPz" kind="show" identifier="newTransaction" id="OBm-ez-DNd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqY-Rm-DME" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-247" y="-737"/>
         </scene>
-        <!--Category Controller-->
-        <scene sceneID="aco-ae-0UC">
+        <!--Category Table View Controller-->
+        <scene sceneID="Md3-NT-M1Z">
             <objects>
-                <viewController id="5aU-2R-8JY" customClass="CategoryController" customModule="FinanceMan" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Eyg-JQ-HcC"/>
-                        <viewControllerLayoutGuide type="bottom" id="0MG-Aw-zOY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hsm-uZ-Q5h">
+                <tableViewController id="Z0T-0Y-dDd" customClass="CategoryTableViewController" customModule="FinanceMan" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="JWl-Jj-sJV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nR7-T5-M4G">
-                                <rect key="frame" x="0.0" y="129" width="375" height="530"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lIx-Ha-ktR">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lIx-Ha-ktR" id="Fzd-R5-fDK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="bZ1-rh-QqL" kind="show" identifier="editCategory" id="mGx-3U-63I"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="1kA-Mx-r4s">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1kA-Mx-r4s" id="Ibm-ls-uw3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="bZ1-rh-QqL" kind="show" identifier="editCategory" id="vkm-nQ-7NE"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Z0T-0Y-dDd" id="gV8-N0-XxK"/>
+                            <outlet property="delegate" destination="Z0T-0Y-dDd" id="DJa-sZ-s3v"/>
+                        </connections>
+                    </tableView>
                     <connections>
-                        <segue destination="bZ1-rh-QqL" kind="show" identifier="newCategory" id="MrJ-XG-if9"/>
+                        <segue destination="bZ1-rh-QqL" kind="show" identifier="newCategory" id="eHI-dP-SwD"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dZn-9s-4jC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sS3-0v-HHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="624.79999999999995" y="-1445.1274362818592"/>
+            <point key="canvasLocation" x="534" y="-1451"/>
         </scene>
-        <!--View Controller-->
+        <!--Category View Controller-->
         <scene sceneID="VL8-bO-9oC">
             <objects>
-                <viewController id="bZ1-rh-QqL" sceneMemberID="viewController">
+                <viewController id="bZ1-rh-QqL" customClass="CategoryViewController" customModule="FinanceMan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xmi-8f-zzF"/>
                         <viewControllerLayoutGuide type="bottom" id="Ez5-4w-rST"/>
@@ -102,23 +98,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mEH-h0-XiQ">
-                                <rect key="frame" x="16" y="101" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mEH-h0-XiQ">
+                                <rect key="frame" x="20" y="101" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="upP-TU-mZ2"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Short description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0YI-GJ-ggw">
-                                <rect key="frame" x="16" y="160" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Short description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0YI-GJ-ggw">
+                                <rect key="frame" x="20" y="160" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="lY8-qm-Wfe"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gmu-0k-U4H">
-                                <rect key="frame" x="16" y="214" width="343" height="433"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gmu-0k-U4H">
+                                <rect key="frame" x="16" y="214" width="343" height="388"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NTZ-hB-Yxu">
                                     <size key="itemSize" width="64" height="64"/>
@@ -138,9 +137,39 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9f-RX-xRj" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
+                                <rect key="frame" x="24" y="625" width="114" height="30"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="3uM-So-0bQ"/>
+                                    <constraint firstAttribute="height" constant="30" id="7uM-ER-GzV"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveCategoryChanges:" destination="bZ1-rh-QqL" eventType="touchUpInside" id="hgS-VF-PJD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gmu-0k-U4H" firstAttribute="centerX" secondItem="0YI-GJ-ggw" secondAttribute="centerX" constant="-4" id="0qQ-EZ-qVY"/>
+                            <constraint firstItem="mEH-h0-XiQ" firstAttribute="leading" secondItem="QwC-lf-VlL" secondAttribute="leadingMargin" constant="4" id="HOj-9Q-iCo"/>
+                            <constraint firstItem="gmu-0k-U4H" firstAttribute="leading" secondItem="QwC-lf-VlL" secondAttribute="leadingMargin" id="JW1-WX-2BD"/>
+                            <constraint firstItem="O9f-RX-xRj" firstAttribute="leading" secondItem="QwC-lf-VlL" secondAttribute="leadingMargin" constant="8" id="M0Z-aa-5bl"/>
+                            <constraint firstItem="gmu-0k-U4H" firstAttribute="top" secondItem="0YI-GJ-ggw" secondAttribute="bottom" constant="24" id="VjP-w5-hR1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0YI-GJ-ggw" secondAttribute="trailing" constant="-4" id="Z6i-2Z-9kG"/>
+                            <constraint firstItem="0YI-GJ-ggw" firstAttribute="top" secondItem="mEH-h0-XiQ" secondAttribute="bottom" constant="29" id="ev7-MZ-4f8"/>
+                            <constraint firstItem="0YI-GJ-ggw" firstAttribute="leading" secondItem="QwC-lf-VlL" secondAttribute="leadingMargin" constant="4" id="fNF-Bq-YWY"/>
+                            <constraint firstAttribute="bottom" secondItem="gmu-0k-U4H" secondAttribute="bottom" constant="65" id="tG3-UN-6uj"/>
+                            <constraint firstItem="Ez5-4w-rST" firstAttribute="top" secondItem="O9f-RX-xRj" secondAttribute="bottom" constant="12" id="xlj-Yg-i7z"/>
+                            <constraint firstItem="mEH-h0-XiQ" firstAttribute="trailing" secondItem="QwC-lf-VlL" secondAttribute="trailingMargin" constant="4" id="yCW-NI-Vqm"/>
+                            <constraint firstItem="0YI-GJ-ggw" firstAttribute="top" secondItem="QwC-lf-VlL" secondAttribute="top" constant="160" id="zi0-M2-KXt"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionCategory" destination="0YI-GJ-ggw" id="gw4-eO-LXE"/>
+                        <outlet property="nameCategory" destination="mEH-h0-XiQ" id="lFB-Hs-R53"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rp3-Kc-wFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -149,7 +178,7 @@
         <!--New Transaction-->
         <scene sceneID="Ou1-mS-6mE">
             <objects>
-                <viewController id="O2Z-LV-tPz" sceneMemberID="viewController">
+                <viewController id="O2Z-LV-tPz" customClass="TransactionViewController" customModule="FinanceMan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="256-bu-mIa"/>
                         <viewControllerLayoutGuide type="bottom" id="Eo3-aB-Xmi"/>
@@ -164,7 +193,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Select Category"/>
                                 <connections>
-                                    <segue destination="5aU-2R-8JY" kind="show" id="3v0-R3-a88"/>
+                                    <segue destination="Z0T-0Y-dDd" kind="show" identifier="selectCategory" id="GYf-Pv-mZl"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ySd-Wx-T4H">
@@ -218,6 +247,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Transaction" id="hyQ-c1-jzZ"/>
+                    <connections>
+                        <outlet property="dateTransaction" destination="5XB-eh-YM4" id="7Jb-vJ-8wE"/>
+                        <outlet property="descriptionTransaction" destination="6Ad-RO-jaZ" id="KTA-gB-Rvv"/>
+                        <outlet property="nameTransaction" destination="ySd-Wx-T4H" id="HAb-EM-9tp"/>
+                        <outlet property="valueTransaction" destination="env-9Y-oOM" id="iwA-m1-zl9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkp-Fy-i3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -244,6 +279,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mGx-3U-63I"/>
+        <segue reference="vkm-nQ-7NE"/>
+        <segue reference="OBm-ez-DNd"/>
     </inferredMetricsTieBreakers>
 </document>
