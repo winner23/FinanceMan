@@ -13,11 +13,12 @@ class TransactionTableViewController: UITableViewController {
     private let model = CoreModel.coreModel
     private var transactions:[TransactionModel] = []
     
+    @IBOutlet var transactionTable: UITableView!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -33,7 +34,7 @@ class TransactionTableViewController: UITableViewController {
         
         //navigationBar?.setItems([navigationItem], animated: true);
         //navigationItem.setRightBarButtonItem(addButtonItem, animated: true)
-        
+        transactionTable.reloadData()
         super.viewWillAppear(animated)
     }
 
@@ -60,10 +61,14 @@ class TransactionTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath)
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! TransactionTableViewCell
         
-        let transactionName = transactions[indexPath.row]
-        cell.
+        let transactionCategoryId = transactions[indexPath.row].getCategoryId()
+        let transactionCategory = model.getCategoryName(byId: transactionCategoryId)
+            
+        cell.name.text = transactionCategory ?? "No category"
+        cell.descript.text = transactions[indexPath.row].getDescription()
         // Configure the cell...
 
         return cell

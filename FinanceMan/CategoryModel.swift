@@ -57,5 +57,8 @@ class CategoryModel:NSObject, NSCoding {
         return id
     }
     
+    func getDescription() -> String {
+        return descriptionContext
+    }
     
 }

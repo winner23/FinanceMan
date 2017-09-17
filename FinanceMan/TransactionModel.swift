@@ -31,6 +31,7 @@ class TransactionModel: NSObject, NSCoding {
     //NSCoder import
     required init(coder decoder: NSCoder) {
 
+    
         if let categoryDecode = decoder.decodeObject(forKey: "category_id") as? String {
             categoryId = categoryDecode
         }
@@ -58,4 +59,11 @@ class TransactionModel: NSObject, NSCoding {
         categoryId = id
     }
     
+    func getDescription() -> String {
+        return descriptionTransaction ?? ""
+    }
+    
+    func getDate() -> Date? {
+        return date
+    }
 }

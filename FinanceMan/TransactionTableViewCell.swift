@@ -10,9 +10,11 @@ import UIKit
 
 class TransactionTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var descript: UILabel!
+    
     
     @IBOutlet weak var name: UILabel!
+    
+    @IBOutlet weak var descript: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

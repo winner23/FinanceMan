@@ -12,8 +12,8 @@ class CoreModel {
     
     //private var categories: [String:String] = [:]
     
-    private var categories = [CategoryModel]()
-    private var transactions = [TransactionModel]()
+    private var categories: [CategoryModel] = []
+    private var transactions: [TransactionModel] = []
     
     //Core Model is Singleton
     private init(){
@@ -61,6 +61,31 @@ class CoreModel {
     
     func getListCategories() -> [CategoryModel]{
         return categories
+    }
+    
+    
+    func deleteCategory(byId id: String) {
+        if let index = getIndexCategory(byId: id) {
+            categories.remove(at: Int(index))
+        }
+    }
+    
+    private func getIndexCategory(byName name: String) -> UInt? {
+        for (index, category) in categories.enumerated() {
+            if category.getName() == name {
+                return UInt(index)
+            }
+        }
+        return nil
+    }
+    
+    private func getIndexCategory(byId id: String) -> UInt? {
+        for (index, category) in categories.enumerated() {
+            if category.getId() == id {
+                return UInt(index)
+            }
+        }
+        return nil
     }
     
     //NSCoding for Category List

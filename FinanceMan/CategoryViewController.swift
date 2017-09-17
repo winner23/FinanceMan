@@ -10,8 +10,15 @@ import UIKit
 
 class CategoryViewController: UIViewController {
 
-    @IBAction func saveCategoryChanges(_ sender: UIButton) {
+    @IBAction func saveCategoryChanges(_ sender: RCButton) {
+        let name = nameCategory.text ?? "NoName"
+        let descr = descriptionCategory.text ?? "No Description"
         
+        let model = CoreModel.coreModel
+        
+        model.addCategory(name: name, descrip: descr)
+        
+        self.navigationController?.popViewController(animated: true)
     }
   
     @IBOutlet weak var nameCategory: UITextField!
