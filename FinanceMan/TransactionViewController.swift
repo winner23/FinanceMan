@@ -10,9 +10,15 @@ import UIKit
 
 class TransactionViewController: UIViewController {
 
+    
+    private let model = CoreModel.coreModel
+    private let transaction = TransactionModel()
+    
     @IBOutlet weak var nameTransaction: UITextField!
     
     @IBOutlet weak var valueTransaction: UITextField!
+    
+    @IBOutlet weak var categoryButton: RCButton!
     
     @IBOutlet weak var descriptionTransaction: UITextView!
     
@@ -30,6 +36,15 @@ class TransactionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "selectCategory",
+        let viewController = segue.destination as? CategoryTableViewController {
+            viewController.saveAction = { selectedCategory in
+                self.transaction.setCategory(id: selectedCategory.getId())
+                self.categoryButton.setTitle(selectedCategory.getName(), for: .normal)
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation

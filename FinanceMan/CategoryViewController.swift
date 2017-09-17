@@ -11,12 +11,15 @@ import UIKit
 class CategoryViewController: UIViewController {
 
     @IBAction func saveCategoryChanges(_ sender: UIButton) {
+        
     }
   
     @IBOutlet weak var nameCategory: UITextField!
     
     @IBOutlet weak var descriptionCategory: UITextField!
     
+    private let model = CoreModel.coreModel
+    private let category = CategoryModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

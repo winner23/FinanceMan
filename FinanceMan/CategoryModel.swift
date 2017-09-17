@@ -27,6 +27,10 @@ class CategoryModel:NSObject, NSCoding {
         self.descriptionContext = descript
     }
     
+    override init() {
+        super.init()
+    }
+    
     required init(coder decoder: NSCoder) {
         
         if let idDecode = decoder.decodeObject(forKey: "id") as? String {

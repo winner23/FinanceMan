@@ -10,10 +10,16 @@ import UIKit
 
 class CategoryTableViewController: UITableViewController {
 
+    private let model = CoreModel.coreModel
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    var saveAction:((CategoryModel) -> ())?
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        
         let navigationItem = self.navigationItem
         navigationItem.title = "Categories"
         let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.openNewView));
@@ -41,6 +47,13 @@ class CategoryTableViewController: UITableViewController {
         return 0
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let categories = model.getListCategories()
+        let selectedCategory = categories[indexPath.row]
+        self.saveAction!(selectedCategory)
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0

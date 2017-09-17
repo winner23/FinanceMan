@@ -24,6 +24,10 @@ class TransactionModel: NSObject, NSCoding {
         self.date = dateFormatter.date(from: date)
     }
     
+    override init(){
+        super.init()
+    }
+    
     //NSCoder import
     required init(coder decoder: NSCoder) {
 
@@ -50,6 +54,8 @@ class TransactionModel: NSObject, NSCoding {
         return categoryId
     }
     
-    
+    func setCategory(id: String) {
+        categoryId = id
+    }
     
 }

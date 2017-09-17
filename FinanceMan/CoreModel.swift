@@ -59,6 +59,10 @@ class CoreModel {
         return nil
     }
     
+    func getListCategories() -> [CategoryModel]{
+        return categories
+    }
+    
     //NSCoding for Category List
     func saveCategories(){
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: categories)
@@ -81,6 +85,9 @@ class CoreModel {
         transactions.append(newTransaction)
     }
     
+    func getTransactions() -> [TransactionModel] {
+        return transactions
+    }
     
     func getTransactions(categoryName: String) -> [TransactionModel] {
         var res: [TransactionModel] = []
