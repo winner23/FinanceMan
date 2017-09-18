@@ -41,46 +41,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
-//    {
-//        let allowedCharacters = CharacterSet.decimalDigits
-//        let characterSet = CharacterSet(charactersIn: string)
-//        return allowedCharacters.isSuperset(of: characterSet)
-//    }
-    
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let inverseSet = NSCharacterSet(charactersIn:"0123456789").inverted
-//        
-//        let components = string.components(separatedBy: inverseSet)
-//        
-//        let filtered = components.joined(separator: "")
-//        
-//     
-//        
-//        if filtered == string {
-//            
-//            return true
-//        } else {
-//            if string == "." {
-//                
-//                let countdots = textField.text!.components(separatedBy:".").count - 1
-//                
-//                if countdots == 0 {
-//                    
-//                    
-//                    return true
-//                }else{
-//                    if countdots > 0 && string == "." {
-//                        return false
-//                    } else {
-//                        return true
-//                    }
-//                }
-//            }else{
-//                return false
-//            }
-//        }
-//    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,15 +51,15 @@ class TransactionViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
+       override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     func myTextFieldDidChange(_ textField: UITextField) {
-        
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
         }
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -134,7 +95,7 @@ extension String {
         var number: NSNumber!
         let formatter = NumberFormatter()
         formatter.numberStyle = .currencyAccounting
-        formatter.currencySymbol = "₴"
+        formatter.currencySymbol = ""
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
         
