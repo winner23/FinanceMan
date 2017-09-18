@@ -153,6 +153,24 @@ class CoreModel {
         transactions.append(newTransaction)
     }
     
+    func getTransactionInstance(byIndex index: Int) -> TransactionModel? {
+        if index <= transactions.count {
+            return transactions[index]
+        } else {
+            print("out of bounds index:\(index) for table size:\(transactions.count)")
+            return nil
+        }
+    }
+
+    func modifyTransaction(byIndex index: Int, toInstance: TransactionModel) {
+        if index <= transactions.count {
+            transactions[index] = toInstance
+        } else {
+            print("out of bounds index:\(index) for table size:\(transactions.count)")
+        }
+        
+    }
+    
     func getTransactions() -> [TransactionModel] {
         return transactions
     }

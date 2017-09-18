@@ -30,7 +30,9 @@ class TransactionViewController: UIViewController, UITextFieldDelegate {
         let date = dateTransaction.date
         let category = categoryButton.currentTitle ?? "No category"
         if let categoryId = model.getCategoryId(byName: category){
+            
             model.addTransaction(categoryId: categoryId, volume: value, descriptionText: descripTran, date: date)
+            
             model.saveTransactions()
             self.navigationController?.popViewController(animated: true)
         } else {

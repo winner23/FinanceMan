@@ -18,7 +18,9 @@ class TransactionModel: NSObject, NSCoding {
     
     init(categoryID: String, volume: String, descriptionText: String, date: Date) {
         self.categoryId = categoryID
+        
         self.volume = NSDecimalNumber(string: volume)
+        
         self.date = date
         //dateFormatter.dateFormat = "yyyy-MM-dd"
         self.descriptionTransaction = descriptionText
@@ -74,4 +76,15 @@ class TransactionModel: NSObject, NSCoding {
     func getDate() -> Date? {
         return date
     }
+    
+    func getVolumeDouble() -> Double? {
+        let result = Double(volume!)
+        return result
+        
+    }
+    func getVolumeString() -> String {
+        let result = String(describing: volume!)
+        return result
+    }
+    
 }

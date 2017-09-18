@@ -33,8 +33,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRP-r9-ERh" userLabel="name">
-                                            <rect key="frame" x="8" y="3" width="359" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Category for transaction instance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRP-r9-ERh" userLabel="name">
+                                            <rect key="frame" x="8" y="3" width="259" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="ah3-cw-BKK"/>
                                             </constraints>
@@ -42,13 +42,27 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyd-3p-7Fl" userLabel="descr">
-                                            <rect key="frame" x="12" y="20.5" width="351" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Desciption for transaction instance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyd-3p-7Fl" userLabel="descr">
+                                            <rect key="frame" x="12" y="21" width="229" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="5Zx-ML-uKr"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.443603515625" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10.55" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="hAB-8P-TSX">
+                                            <rect key="frame" x="275" y="3" width="92" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="05.08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vox-xx-3Ry">
+                                            <rect key="frame" x="313" y="23" width="45" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -64,8 +78,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="date" destination="Vox-xx-3Ry" id="yl3-Uq-Uvi"/>
                                     <outlet property="descript" destination="Oyd-3p-7Fl" id="Wi4-bI-H4V"/>
                                     <outlet property="name" destination="sRP-r9-ERh" id="RH5-Eo-tSU"/>
+                                    <outlet property="value" destination="hAB-8P-TSX" id="9kW-ng-qtn"/>
                                     <segue destination="O2Z-LV-tPz" kind="show" identifier="editTransaction" id="3lL-ji-3eg"/>
                                 </connections>
                             </tableViewCell>
@@ -294,7 +310,7 @@
                                     <action selector="saveTransaction:" destination="O2Z-LV-tPz" eventType="touchUpInside" id="yy4-UM-Kcb"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5XB-eh-YM4">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5XB-eh-YM4">
                                 <rect key="frame" x="19" y="503" width="337" height="118"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="118" id="30y-Em-9Lh"/>

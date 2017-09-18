@@ -22,7 +22,7 @@ class TransactionTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.transactions = model.getTransactions()
+        
         
         //let navigationBar = self.navigationController?.navigationBar
         let navigationItem = self.navigationItem
@@ -34,10 +34,12 @@ class TransactionTableViewController: UITableViewController {
         
         //navigationBar?.setItems([navigationItem], animated: true);
         //navigationItem.setRightBarButtonItem(addButtonItem, animated: true)
-        transactionTable.reloadData()
+        
         super.viewWillAppear(animated)
         
         model.retrievTranactions()
+        self.transactions = model.getTransactions()
+        transactionTable.reloadData()
     }
 
     func openNewView(){
@@ -65,13 +67,25 @@ class TransactionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! TransactionTableViewCell
+        let transactionInstance = model.getTransactionInstance(byIndex: indexPath.row)
+        
+        if let dateTransaction = transactionInstance?.getDate(){
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM"
+            let dateStr = formatter.string(from: dateTransaction)
+            cell.date.text = dateStr
+        }
+        
+        let valueTransaction = transactionInstance?.getVolumeDouble()
         
         let transactionCategoryId = transactions[indexPath.row].getCategoryId()
+        
         let transactionCategory = model.getCategoryName(byId: transactionCategoryId)
+        
             
         cell.name.text = transactionCategory ?? "No category"
         cell.descript.text = transactions[indexPath.row].getDescription()
-        // Configure the cell...
+        cell.value.text = String(describing: valueTransaction)
 
         return cell
     }
