@@ -14,14 +14,14 @@ class TransactionModel: NSObject, NSCoding {
     private var volume: NSDecimalNumber?
     private var descriptionTransaction: String?
     private var date: Date?
-    
     private let dateFormatter = DateFormatter()
     
-    init(categoryID: String, volume: String, date: String) {
+    init(categoryID: String, volume: String, descriptionText: String, date: Date) {
         self.categoryId = categoryID
         self.volume = NSDecimalNumber(string: volume)
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        self.date = dateFormatter.date(from: date)
+        self.date = date
+        //dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.descriptionTransaction = descriptionText
     }
     
     override init(){
@@ -38,10 +38,14 @@ class TransactionModel: NSObject, NSCoding {
         if let volumeDecode = decoder.decodeObject(forKey: "bill") as? NSDecimalNumber {
             volume = volumeDecode
         }
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
         if let dateDecode = decoder.decodeObject(forKey: "date") as? Date {
             date = dateDecode
         }
+        if let descriptionDecode = decoder.decodeObject(forKey: "descripTransac") as? String {
+            descriptionTransaction = descriptionDecode
+        }
+        
     }
     
     //NSCoder export
@@ -61,6 +65,10 @@ class TransactionModel: NSObject, NSCoding {
     
     func getDescription() -> String {
         return descriptionTransaction ?? ""
+    }
+    
+    func setDescription(descriptionText: String) {
+        descriptionTransaction = descriptionText
     }
     
     func getDate() -> Date? {

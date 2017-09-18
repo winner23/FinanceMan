@@ -24,7 +24,7 @@ class CategoryTableViewController: UITableViewController{
         
         
         navigationItem.rightBarButtonItem = doneItem;
-        
+        model.retrievCategories()
         categoryTable.reloadData()
         super.viewWillAppear(animated)
     }
@@ -41,8 +41,8 @@ class CategoryTableViewController: UITableViewController{
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        
+        return 1
     }
     
     //Select category
@@ -79,15 +79,32 @@ class CategoryTableViewController: UITableViewController{
     
 
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        } else if editingStyle == .insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }    
+//    }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let category = model.getListCategories()[indexPath.row].getId()
+        
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
+            
+            self.performSegue(withIdentifier: "editCategory", sender: category)
+        }
+        let delete = UITableViewRowAction(style: .destructive, title: "Del") { action, index in
+            self.model.deleteCategory(byId: category)
+            self.categoryTable.beginUpdates()
+            self.categoryTable.deleteRows(at: [indexPath], with: .automatic)
+            self.categoryTable.endUpdates()
+            
+        }
+        return [edit, delete]
+    }
 
     /*
     // Override to support rearranging the table view.
@@ -104,14 +121,21 @@ class CategoryTableViewController: UITableViewController{
     }
     */
 
-    
-    // MARK: - Navigation
+       // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
+        if segue.identifier == "editCategory" {
+            let tempVC = (segue.destination as? CategoryViewController)!
+            let catId = sender as? String
+            let categoryInst = model.getCategoryInstance(byId: catId!)!
+            
+            tempVC.currentCategory = categoryInst
+            
+        }
         
     }
     

@@ -10,14 +10,20 @@ import UIKit
 
 class CategoryViewController: UIViewController {
 
+    var currentCategory: CategoryModel?
+    
     @IBAction func saveCategoryChanges(_ sender: RCButton) {
+        
         let name = nameCategory.text ?? "NoName"
         let descr = descriptionCategory.text ?? "No Description"
         
         let model = CoreModel.coreModel
-        
-        model.addCategory(name: name, descrip: descr)
-        
+        if currentCategory == nil {
+            model.addCategory(name: name, descrip: descr)
+        } else {
+            model.modifyCategory(byId: currentCategory!.getId(), name: name, descriptionText: descr)
+        }
+        model.saveCategories()
         self.navigationController?.popViewController(animated: true)
     }
   
@@ -29,6 +35,10 @@ class CategoryViewController: UIViewController {
     private let category = CategoryModel()
     
     override func viewDidLoad() {
+        if currentCategory != nil {
+            nameCategory.text = currentCategory?.getName()
+            descriptionCategory.text = currentCategory?.getDescription()
+        }
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

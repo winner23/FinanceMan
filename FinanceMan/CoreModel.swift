@@ -10,17 +10,34 @@ import Foundation
 
 class CoreModel {
     
-    //private var categories: [String:String] = [:]
+    
     
     private var categories: [CategoryModel] = []
     private var transactions: [TransactionModel] = []
+    private let fileManager = FileManager()
+    private let pathCategories: String?
+    private let pathTransactions: String?
+    
     
     //Core Model is Singleton
     private init(){
         
+        let documentDirectoryUrls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        if let documentDirectoryUrl = documentDirectoryUrls.first {
+
+            self.pathCategories = documentDirectoryUrl.appendingPathComponent("categories.archive").path
+            self.pathTransactions = documentDirectoryUrl.appendingPathComponent("transactions.archive").path
+        } else {
+            self.pathCategories = nil
+            self.pathTransactions = nil
+        }
+        
     }
     
     static let coreModel = CoreModel()
+    
+    
     
     //MARK: Categories
     // ----========== Categories operations ==========----
@@ -29,6 +46,15 @@ class CoreModel {
         categories.append(newCategory)
     }
     
+    func getCategoryInstance(byId id:String) -> CategoryModel?{
+        for category:CategoryModel in categories{
+            if category.getId() == id {
+                return category
+            }
+        }
+        return nil
+    }
+
     
     func getCategoryInstance(byName name:String) -> CategoryModel?{
         for category:CategoryModel in categories{
@@ -63,7 +89,12 @@ class CoreModel {
         return categories
     }
     
-    
+    func modifyCategory(byId id: String, name: String, descriptionText: String) {
+        let index = getIndexCategory(byId: id)
+        categories[Int(index!)].setName(name: name)
+        categories[Int(index!)].setDescription(text: descriptionText)
+        
+    }
     func deleteCategory(byId id: String) {
         if let index = getIndexCategory(byId: id) {
             categories.remove(at: Int(index))
@@ -90,23 +121,35 @@ class CoreModel {
     
     //NSCoding for Category List
     func saveCategories(){
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: categories)
-        UserDefaults.standard.set(encodedData, forKey: "categories")
+        
+        if pathCategories != nil {
+            let success = NSKeyedArchiver.archiveRootObject(categories, toFile: pathCategories!)
+            if !success {
+                print("Unable to save array to \(pathCategories!)")
+            } else {
+               print("File not found")
+            }
+        }
         
     }
     
     func retrievCategories(){
-        if let data = UserDefaults.standard.data(forKey: "categories"),
-            let categireList = NSKeyedUnarchiver.unarchiveObject(with: data) as? [CategoryModel] {
-            categories = categireList
+        
+        if pathCategories != nil,
+            let categoryList = NSKeyedUnarchiver.unarchiveObject(withFile: pathCategories!) as? [CategoryModel]
+        {
+            categories = categoryList
+        } else {
+            print("File not found")
         }
+        
     }
     
     //MARK:Transaction
     // ----========== Transactions operations ==========----
     
-    func addTransaction(categoryId: String, volume: String, date: String){
-        let newTransaction = TransactionModel(categoryID: categoryId, volume: volume, date: date)
+    func addTransaction(categoryId: String, volume: String, descriptionText: String, date: Date){
+        let newTransaction = TransactionModel(categoryID: categoryId, volume: volume, descriptionText: descriptionText, date: date)
         transactions.append(newTransaction)
     }
     
@@ -126,16 +169,27 @@ class CoreModel {
     
     //NSCoding for Transaction List
     func saveTransactions(){
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: transactions)
-        UserDefaults.standard.set(encodedData, forKey: "transactions")
         
+        if pathTransactions != nil {
+            let success = NSKeyedArchiver.archiveRootObject(transactions, toFile: pathTransactions!)
+            if !success {
+                print("Unable to save array to \(pathTransactions!)")
+            } else {
+                print("File not found")
+            }
+        }
     }
     
     func retrievTranactions(){
-        if let data = UserDefaults.standard.data(forKey: "transactions"),
-            let transactionList = NSKeyedUnarchiver.unarchiveObject(with: data) as? [TransactionModel] {
+        
+        if pathTransactions != nil,
+            let transactionList = NSKeyedUnarchiver.unarchiveObject(withFile: pathTransactions!) as? [TransactionModel]
+            {
             transactions = transactionList
+        } else {
+            print("File not found")
         }
+        
     }
     
  

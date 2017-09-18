@@ -61,4 +61,12 @@ class CategoryModel:NSObject, NSCoding {
         return descriptionContext
     }
     
+    func setName(name: String){
+        self.name = name
+    }
+    
+    func setDescription(text: String) {
+        descriptionContext = text
+    }
+    
 }
