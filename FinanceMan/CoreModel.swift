@@ -171,6 +171,12 @@ class CoreModel {
         
     }
     
+    func deleteTransactio(byIndex index: Int) {
+        if index <= transactions.count {
+            transactions.remove(at: index)
+        }
+    }
+    
     func getTransactions() -> [TransactionModel] {
         return transactions
     }

@@ -38,6 +38,7 @@ class TransactionTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         model.retrievTranactions()
+        model.retrievCategories()
         self.transactions = model.getTransactions()
         transactionTable.reloadData()
     }
@@ -67,29 +68,49 @@ class TransactionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! TransactionTableViewCell
-        let transactionInstance = model.getTransactionInstance(byIndex: indexPath.row)
         
-        if let dateTransaction = transactionInstance?.getDate(){
+        let transactionInstance = model.getTransactionInstance(byIndex: indexPath.row)!
+        
+        if let dateTransaction = transactionInstance.getDate(){
             let formatter = DateFormatter()
             formatter.dateFormat = "dd.MM"
             let dateStr = formatter.string(from: dateTransaction)
             cell.date.text = dateStr
         }
         
-        let valueTransaction = transactionInstance?.getVolumeDouble()
+        let valueTransaction = transactionInstance.getVolumeString()
         
-        let transactionCategoryId = transactions[indexPath.row].getCategoryId()
+        let transactionCategoryId = transactionInstance.getCategoryId()
         
         let transactionCategory = model.getCategoryName(byId: transactionCategoryId)
         
             
         cell.name.text = transactionCategory ?? "No category"
         cell.descript.text = transactions[indexPath.row].getDescription()
-        cell.value.text = String(describing: valueTransaction)
+        cell.value.text = valueTransaction
 
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .destructive, title: "Del") { action, index in
+            self.model.deleteTransactio(byIndex: indexPath.row)
+            self.transactionTable.beginUpdates()
+            self.transactionTable.deleteRows(at: [indexPath], with: .automatic)
+            self.transactionTable.endUpdates()
+            self.model.saveTransactions()
+            
+        }
+        return [delete]
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let transaction = model.getTransactionInstance(byIndex: indexPath.row)
+        self.performSegue(withIdentifier: "editTransaction", sender: transaction)
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -126,14 +147,19 @@ class TransactionTableViewController: UITableViewController {
     }
  
 
-    /*
+   
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "editTransaction" {
+            let editTransactionViewController = (segue.destination as? TransactionViewController)!
+            let transactionInstance = sender as? TransactionModel
+            editTransactionViewController.currentTransaction = transactionInstance
+        }
     }
-    */
+  
 
 }

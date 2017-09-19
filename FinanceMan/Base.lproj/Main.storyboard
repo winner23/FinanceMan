@@ -30,7 +30,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dt2-Kr-h6G" id="ISR-rp-0rX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category for transaction instance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="sRP-r9-ERh" userLabel="name">
@@ -92,7 +92,6 @@
                                     <outlet property="descript" destination="Oyd-3p-7Fl" id="Wi4-bI-H4V"/>
                                     <outlet property="name" destination="sRP-r9-ERh" id="RH5-Eo-tSU"/>
                                     <outlet property="value" destination="hAB-8P-TSX" id="9kW-ng-qtn"/>
-                                    <segue destination="O2Z-LV-tPz" kind="show" identifier="editTransaction" id="3lL-ji-3eg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -105,6 +104,7 @@
                     <connections>
                         <outlet property="transactionTable" destination="4Ls-rc-iSp" id="XMo-LC-P9s"/>
                         <segue destination="O2Z-LV-tPz" kind="show" identifier="newTransaction" id="OBm-ez-DNd"/>
+                        <segue destination="O2Z-LV-tPz" kind="show" identifier="editTransaction" id="X6V-f0-uUO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqY-Rm-DME" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -124,7 +124,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1kA-Mx-r4s" id="Ibm-ls-uw3">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIb-JY-f7Q">
@@ -328,6 +328,12 @@
                                 <date key="date" timeIntervalSinceReferenceDate="527159146.80056399">
                                     <!--2017-09-15 09:05:46 +0000-->
                                 </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-441810000">
+                                    <!--1987-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1136026800">
+                                    <!--2036-12-31 11:00:00 +0000-->
+                                </date>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="0.95849609375" alpha="1" colorSpace="calibratedWhite"/>
@@ -385,7 +391,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="X6V-f0-uUO"/>
         <segue reference="m2R-QF-hLE"/>
-        <segue reference="OBm-ez-DNd"/>
     </inferredMetricsTieBreakers>
 </document>

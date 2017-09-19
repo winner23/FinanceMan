@@ -13,7 +13,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate {
     
     private let model = CoreModel.coreModel
     private let transaction = TransactionModel()
-    
+    var currentTransaction: TransactionModel?
     
     @IBOutlet weak var valueTransaction: UITextField!
     
@@ -41,9 +41,15 @@ class TransactionViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-
-    
     override func viewDidLoad() {
+        //When edit transaction case
+        if currentTransaction != nil {
+            let categoryName = model.getCategoryName(byId: (currentTransaction?.getCategoryId())!)
+            categoryButton.setTitle(categoryName, for: .normal)
+            valueTransaction.text = currentTransaction?.getVolumeString()
+            descriptionTransaction.text = currentTransaction?.getDescription()
+            dateTransaction.setDate((currentTransaction?.getDate())!, animated: true)
+        }
         super.viewDidLoad()
         
         valueTransaction.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
