@@ -64,7 +64,7 @@ class TransactionTableViewController: UITableViewController {
         return model.getTransactions().count
     }
 
-    
+    //Fill rows of tabel
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! TransactionTableViewCell
@@ -91,7 +91,7 @@ class TransactionTableViewController: UITableViewController {
 
         return cell
     }
-    
+    //Define function(swipe) button
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let delete = UITableViewRowAction(style: .destructive, title: "Del") { action, index in
@@ -104,12 +104,10 @@ class TransactionTableViewController: UITableViewController {
         }
         return [delete]
     }
-    
+    //Edit transaction
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let transaction = model.getTransactionInstance(byIndex: indexPath.row)
-        self.performSegue(withIdentifier: "editTransaction", sender: transaction)
-        
+
+        self.performSegue(withIdentifier: "editTransaction", sender: indexPath.row)
     }
 
     /*
@@ -156,8 +154,9 @@ class TransactionTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "editTransaction" {
             let editTransactionViewController = (segue.destination as? TransactionViewController)!
-            let transactionInstance = sender as? TransactionModel
-            editTransactionViewController.currentTransaction = transactionInstance
+            let transactionIndex = sender as? Int
+            editTransactionViewController.currentTransactionIndex = transactionIndex
+            editTransactionViewController.currentTransaction = model.getTransactionInstance(byIndex: transactionIndex!)
         }
     }
   

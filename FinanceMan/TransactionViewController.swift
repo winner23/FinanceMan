@@ -14,6 +14,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate {
     private let model = CoreModel.coreModel
     private let transaction = TransactionModel()
     var currentTransaction: TransactionModel?
+    var currentTransactionIndex: Int?
     
     @IBOutlet weak var valueTransaction: UITextField!
     
@@ -31,7 +32,14 @@ class TransactionViewController: UIViewController, UITextFieldDelegate {
         let category = categoryButton.currentTitle ?? "No category"
         if let categoryId = model.getCategoryId(byName: category){
             
-            model.addTransaction(categoryId: categoryId, volume: value, descriptionText: descripTran, date: date)
+            if currentTransactionIndex != nil && currentTransaction != nil {
+                currentTransaction = TransactionModel(categoryID: categoryId, volume: value, descriptionText: descripTran, date: date)
+                model.modifyTransaction(byIndex: currentTransactionIndex!, toInstance: currentTransaction!)
+            //
+            } else {
+                model.addTransaction(categoryId: categoryId, volume: value, descriptionText: descripTran, date: date)
+            }
+            
             
             model.saveTransactions()
             self.navigationController?.popViewController(animated: true)
