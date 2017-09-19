@@ -38,7 +38,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="ah3-cw-BKK"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -58,7 +58,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="yhw-dy-R6J"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05.08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vox-xx-3Ry">
@@ -68,7 +68,7 @@
                                                 <constraint firstAttribute="width" constant="45" id="dDh-ME-Zn9"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -219,12 +219,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C8z-cG-X7F">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🥐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="i5y-y2-e6Z">
                                                     <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="i5y-y2-e6Z" firstAttribute="top" secondItem="jpb-5T-zZh" secondAttribute="top" id="4dp-VF-QC8"/>
+                                            <constraint firstAttribute="bottom" secondItem="i5y-y2-e6Z" secondAttribute="bottom" id="9h4-0l-AZg"/>
+                                            <constraint firstItem="i5y-y2-e6Z" firstAttribute="leading" secondItem="jpb-5T-zZh" secondAttribute="leading" id="YG1-Pj-dC4"/>
+                                            <constraint firstAttribute="trailing" secondItem="i5y-y2-e6Z" secondAttribute="trailing" id="vj6-J0-ahk"/>
+                                        </constraints>
                                         <size key="customSize" width="64" height="64"/>
                                     </collectionViewCell>
                                 </cells>
@@ -265,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rp3-Kc-wFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2463" y="-737"/>
+            <point key="canvasLocation" x="2461.875" y="-737.32394366197184"/>
         </scene>
         <!--New Transaction-->
         <scene sceneID="Ou1-mS-6mE">

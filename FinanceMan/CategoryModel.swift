@@ -13,42 +13,51 @@ class CategoryModel:NSObject, NSCoding {
     private var id: String = ""
     private var name: String = ""
     private var descriptionContext: String = ""
+    private var type = false //True - income / False - pay
+    private var icon: String = "💵"
     
     
-    init(name: String) {
-        self.name = name
-        self.id = UUID().uuidString
-        
-    }
+//    init(name: String) {
+//        self.name = name
+//        self.id = UUID().uuidString
+//        
+//    }
     
-    init(categoryName name:String, descriptionCategory descript:String) {
+    init(categoryName name:String, descriptionCategory descript:String, isIncome type: Bool, icon: String) {
         self.name = name
         self.id = UUID().uuidString
         self.descriptionContext = descript
+        self.type = type
+        self.icon = icon
     }
     
     override init() {
         super.init()
     }
-    
+    //Load properties from external file
     required init(coder decoder: NSCoder) {
         
         if let idDecode = decoder.decodeObject(forKey: "id") as? String {
             id = idDecode
             name = decoder.decodeObject(forKey: "name") as? String ?? "noname"
             descriptionContext = decoder.decodeObject(forKey: "descriptionContext") as? String ?? ""
+            type = decoder.decodeObject(forKey: "type") as? Bool ?? false
+            icon = decoder.decodeObject(forKey: "icon") as? String ?? "💵"
         }
         
     }
-    
+    //Save properties to external file
     func encode(with aCoder: NSCoder) {
         aCoder.encode(id, forKey: "id")
         aCoder.encode(name, forKey: "name")
         if descriptionContext != "" {
                 aCoder.encode(descriptionContext, forKey: "descriptionContext")
         }
+        aCoder.encode(type, forKey: "type")
+        aCoder.encode(icon, forKey: "icon")
     }
     
+    //Public Manage
     func getName() -> String {
         return name
     }
@@ -67,6 +76,10 @@ class CategoryModel:NSObject, NSCoding {
     
     func setDescription(text: String) {
         descriptionContext = text
+    }
+    
+    func isIncome() -> Bool{
+        return type
     }
     
 }

@@ -2,4 +2,54 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FinanceMan/TransactionViewController.swift"
+            timestampString = "527540459.96535"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "saveTransaction(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FinanceMan.TransactionViewController.saveTransaction (__ObjC.UIButton) -&gt; ()"
+                  moduleName = "FinanceMan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodimir/Develop/Learn01/FinanceMan/FinanceMan/TransactionViewController.swift"
+                  timestampString = "527539491.998085"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "757">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FinanceMan.TransactionViewController.(saveTransaction (__ObjC.UIButton) -&gt; ()).(implicit closure #2)"
+                  moduleName = "FinanceMan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/volodimir/Develop/Learn01/FinanceMan/FinanceMan/TransactionViewController.swift"
+                  timestampString = "527539492.006483"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

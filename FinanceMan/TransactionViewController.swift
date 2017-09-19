@@ -25,7 +25,8 @@ class TransactionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var dateTransaction: UIDatePicker!
     
     @IBAction func saveTransaction(_ sender: UIButton) {
-        let value = valueTransaction.text ?? "0"
+        let value = valueTransaction.text?.replacingOccurrences(of: ",", with: "") ?? "0"
+        
         
         let descripTran = descriptionTransaction.text ?? ""
         let date = dateTransaction.date
@@ -86,29 +87,24 @@ class TransactionViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     private func showWarningMsg(textMsg: String) {
         let alert = UIAlertController(title: "Warning!", message: textMsg, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }
+
+
 extension String {
     
     // formatting text for currency textField
     func currencyInputFormatting() -> String {
-        
         var number: NSNumber!
         let formatter = NumberFormatter()
-        formatter.numberStyle = .currencyAccounting
+        formatter.numberStyle = .decimal//.currencyAccounting
         formatter.currencySymbol = ""
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2

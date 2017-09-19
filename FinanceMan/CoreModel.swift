@@ -41,8 +41,8 @@ class CoreModel {
     
     //MARK: Categories
     // ----========== Categories operations ==========----
-    func addCategory(name: String, descrip: String){
-        let newCategory = CategoryModel(categoryName: name, descriptionCategory: descrip)
+    func addCategory(name: String, descrip: String, type){
+        let newCategory = CategoryModel(categoryName: name, descriptionCategory: descrip, isIncome: )
         categories.append(newCategory)
     }
     

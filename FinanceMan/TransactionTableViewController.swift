@@ -86,7 +86,7 @@ class TransactionTableViewController: UITableViewController {
         
             
         cell.name.text = transactionCategory ?? "No category"
-        cell.descript.text = transactions[indexPath.row].getDescription()
+        cell.descript.text = transactionInstance.getDescription()
         cell.value.text = valueTransaction
 
         return cell

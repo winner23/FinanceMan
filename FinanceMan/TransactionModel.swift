@@ -55,6 +55,7 @@ class TransactionModel: NSObject, NSCoding {
         aCoder.encode(categoryId, forKey: "category_id")
         aCoder.encode(volume, forKey: "bill")
         aCoder.encode(date, forKey: "date")
+        aCoder.encode(descriptionTransaction, forKey: "descripTransac")
     }
     
     func getCategoryId() -> String {
