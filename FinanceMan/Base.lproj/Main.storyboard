@@ -210,7 +210,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🥐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="i5y-y2-e6Z">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💵" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="i5y-y2-e6Z">
                                                     <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                                     <nil key="textColor"/>
