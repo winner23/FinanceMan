@@ -9,30 +9,35 @@
 import UIKit
 
 class CategoryViewController: UIViewController {
-
-    var currentCategory: CategoryModel?
+    let model = CoreModel.coreModel
     
+    var currentCategory: CategoryModel?
+    //private let category = CategoryModel()
+    
+    @IBOutlet weak var nameCategory: UITextField!
+    @IBOutlet weak var iconCollection: UICollectionView!
+    @IBOutlet weak var descriptionCategory: UITextField!
+    @IBOutlet weak var typeCategory: UISwitch!
     @IBAction func saveCategoryChanges(_ sender: RCButton) {
         
         let name = nameCategory.text ?? "NoName"
         let descr = descriptionCategory.text ?? "No Description"
-        
-        let model = CoreModel.coreModel
+        let type = typeCategory.isOn
+        let icon = 
         if currentCategory == nil {
-            model.addCategory(name: name, descrip: descr)
+            //FIXIT: replace @ for same icon text realization
+            model.addCategory(name: name, descrip: descr, type: type, icon: "@")
         } else {
-            model.modifyCategory(byId: currentCategory!.getId(), name: name, descriptionText: descr)
+            model.modifyCategory(byId: currentCategory!.getId(), name: name, descriptionText: descr,)
         }
         model.saveCategories()
         self.navigationController?.popViewController(animated: true)
     }
   
-    @IBOutlet weak var nameCategory: UITextField!
+
     
-    @IBOutlet weak var descriptionCategory: UITextField!
-    
-    private let model = CoreModel.coreModel
-    private let category = CategoryModel()
+
+
     
     override func viewDidLoad() {
         if currentCategory != nil {

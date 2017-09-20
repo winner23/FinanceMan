@@ -81,5 +81,16 @@ class CategoryModel:NSObject, NSCoding {
     func isIncome() -> Bool{
         return type
     }
+    func switchType() {
+        type = !type
+    }
+    
+    func getIcon() -> String {
+        return icon
+    }
+    
+    func setIcon(icon: String) {
+        self.icon = icon
+    }
     
 }
