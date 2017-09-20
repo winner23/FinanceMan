@@ -14,7 +14,7 @@ class CategoryModel:NSObject, NSCoding {
     private var name: String = ""
     private var descriptionContext: String = ""
     private var type = false //True - income / False - pay
-    private var icon: String = "💵"
+    private var icon: String?
     
     
 //    init(name: String) {
@@ -23,7 +23,7 @@ class CategoryModel:NSObject, NSCoding {
 //        
 //    }
     
-    init(categoryName name:String, descriptionCategory descript:String, isIncome type: Bool, icon: String) {
+    init(categoryName name:String, descriptionCategory descript:String, isIncome type: Bool, icon: String?) {
         self.name = name
         self.id = UUID().uuidString
         self.descriptionContext = descript
@@ -42,7 +42,7 @@ class CategoryModel:NSObject, NSCoding {
             name = decoder.decodeObject(forKey: "name") as? String ?? "noname"
             descriptionContext = decoder.decodeObject(forKey: "descriptionContext") as? String ?? ""
             type = decoder.decodeObject(forKey: "type") as? Bool ?? false
-            icon = decoder.decodeObject(forKey: "icon") as? String ?? "💵"
+            icon = decoder.decodeObject(forKey: "icon") as? String
         }
         
     }
@@ -85,7 +85,7 @@ class CategoryModel:NSObject, NSCoding {
         type = !type
     }
     
-    func getIcon() -> String {
+    func getIcon() -> String? {
         return icon
     }
     

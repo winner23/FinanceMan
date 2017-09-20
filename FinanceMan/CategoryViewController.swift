@@ -18,17 +18,18 @@ class CategoryViewController: UIViewController {
     @IBOutlet weak var iconCollection: UICollectionView!
     @IBOutlet weak var descriptionCategory: UITextField!
     @IBOutlet weak var typeCategory: UISwitch!
+    @IBOutlet weak var iconCategory: UILabel!
     @IBAction func saveCategoryChanges(_ sender: RCButton) {
         
         let name = nameCategory.text ?? "NoName"
         let descr = descriptionCategory.text ?? "No Description"
         let type = typeCategory.isOn
-        let icon = 
+        let icon = iconCategory.text
         if currentCategory == nil {
-            //FIXIT: replace @ for same icon text realization
-            model.addCategory(name: name, descrip: descr, type: type, icon: "@")
+        model.addCategory(name: name, descrip: descr, type: type, icon: icon)
+            
         } else {
-            model.modifyCategory(byId: currentCategory!.getId(), name: name, descriptionText: descr,)
+            model.modifyCategory(byId: currentCategory!.getId(), name: name, descriptionText: descr, type: type, icon: icon)
         }
         model.saveCategories()
         self.navigationController?.popViewController(animated: true)

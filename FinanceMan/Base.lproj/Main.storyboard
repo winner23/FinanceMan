@@ -251,6 +251,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Icon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ggi-bF-fdn">
+                                <rect key="frame" x="75" y="220" width="170" height="156"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -273,6 +280,7 @@
                     </view>
                     <connections>
                         <outlet property="descriptionCategory" destination="0YI-GJ-ggw" id="gw4-eO-LXE"/>
+                        <outlet property="iconCategory" destination="Ggi-bF-fdn" id="t6E-3e-HcP"/>
                         <outlet property="iconCollection" destination="gmu-0k-U4H" id="Hns-pE-pVo"/>
                         <outlet property="nameCategory" destination="mEH-h0-XiQ" id="lFB-Hs-R53"/>
                         <outlet property="typeCategory" destination="hDR-Jz-rmq" id="6gx-Au-sKG"/>
@@ -280,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rp3-Kc-wFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2461.875" y="-737.32394366197184"/>
+            <point key="canvasLocation" x="2461.875" y="-737.5"/>
         </scene>
         <!--New Transaction-->
         <scene sceneID="Ou1-mS-6mE">
