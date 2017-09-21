@@ -73,21 +73,28 @@ class TransactionTableViewController: UITableViewController {
         
         if let dateTransaction = transactionInstance.getDate(){
             let formatter = DateFormatter()
-            formatter.dateFormat = "dd.MM"
+            formatter.dateFormat = "dd.MM.yyyy"
             let dateStr = formatter.string(from: dateTransaction)
             cell.date.text = dateStr
         }
         
         let valueTransaction = transactionInstance.getVolumeString()
         
-        let transactionCategoryId = transactionInstance.getCategoryId()
+        let transactionCategoryInstance = model.getCategoryInstance(byId: transactionInstance.getCategoryId())
+    
         
-        let transactionCategory = model.getCategoryName(byId: transactionCategoryId)
-        
-            
-        cell.name.text = transactionCategory ?? "No category"
+        cell.icon.text = transactionCategoryInstance?.getIcon()
+        cell.name.text = transactionCategoryInstance?.getName()
         cell.descript.text = transactionInstance.getDescription()
         cell.value.text = valueTransaction
+        if (transactionCategoryInstance?.getType())! {
+            cell.type.text = "⬇︎"
+            cell.type.textColor = UIColor(red: 0, green: 255, blue: 0)
+        } else {
+            cell.type.text = "⬆︎"
+            cell.type.textColor = UIColor(red: 0, green: 0, blue: 255)
+        }
+        
 
         return cell
     }

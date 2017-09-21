@@ -41,7 +41,9 @@ class CategoryModel:NSObject, NSCoding {
             id = idDecode
             name = decoder.decodeObject(forKey: "name") as? String ?? "noname"
             descriptionContext = decoder.decodeObject(forKey: "descriptionContext") as? String ?? ""
-            type = decoder.decodeObject(forKey: "type") as? Bool ?? false
+            
+            let typeStr = decoder.decodeObject(forKey: "type") as? String
+            type = typeStr == "T"
             icon = decoder.decodeObject(forKey: "icon") as? String
         }
         
@@ -53,7 +55,8 @@ class CategoryModel:NSObject, NSCoding {
         if descriptionContext != "" {
                 aCoder.encode(descriptionContext, forKey: "descriptionContext")
         }
-        aCoder.encode(type, forKey: "type")
+        let typeStr = type ? "T" : "F"
+        aCoder.encode(typeStr, forKey: "type")
         aCoder.encode(icon, forKey: "icon")
     }
     

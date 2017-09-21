@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate {
     let model = CoreModel.coreModel
-    let icons: [String] = ["🍞","🍇","🍟","🍛","🍧","🍺","☕️","🍷","🍽","🏸","🎪","🎬","🎼","🎲","🚗","🚃","✈️","🛳","🏦","🏥","🏠","🏢","📱"]
+    let icons: [String] = ["💵","🍞","🍇","🛍","🍟","🍛","🍧","🍺","☕️","🍷","🍽","🎉","🏸","🎪","🎬","🎼","🎲","🚗","🚃","✈️","🛳","🏦","🏥","🏠","🏢","📱","💻","💊"]
     var currentCategory: CategoryModel?
     //private let category = CategoryModel()
     
@@ -36,16 +36,19 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     }
   
 
-    
-
-
-    
     override func viewDidLoad() {
         if currentCategory != nil {
             nameCategory.text = currentCategory?.getName()
             descriptionCategory.text = currentCategory?.getDescription()
+            typeCategory.isOn = (currentCategory?.getType())!
+            iconCategory.text = currentCategory?.getIcon()
         }
         super.viewDidLoad()
+        
+        nameCategory.delegate = self
+        descriptionCategory.delegate = self
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -64,6 +67,25 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.icon.text = icons[indexPath.row]
         return cell
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.iconCollection.alpha = 1
+        UIView.animate(withDuration: 1, animations: {
+            self.iconCollection.alpha = 0
+        })
+        iconCategory.text = icons[indexPath.row]
+        
+        self.iconCategory.alpha = 0
+        UIView.animate(withDuration: 1, animations: {
+            self.iconCategory.alpha = 1
+        })
+
+    }
+    //To hide keyboard outside of text fields
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nameCategory.resignFirstResponder()
+        descriptionCategory.resignFirstResponder()
     }
     /*
     // MARK: - Navigation

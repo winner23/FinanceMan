@@ -65,16 +65,16 @@ class CategoryTableViewController: UITableViewController{
         
         let categoryItem = model.getListCategories()[indexPath.row]
         
-        
         cell.categoryName.text = categoryItem.getName()
         cell.categoryDescription.text = categoryItem.getDescription()
+        cell.icon.text = categoryItem.getIcon()
         
         if categoryItem.getType() {
-            
-            cell.categoryCellView.backgroundColor = UIColor(rgb: 0xCBEEF1)
+            cell.categoryName.textColor = UIColor(rgb: 0x00ff00)
+            //cell.categoryCellView.backgroundColor = UIColor(rgb: 0xCBEEF1)
         } else {
-            
-            cell.categoryCellView.backgroundColor = UIColor(rgb: 0xFDEEE5)
+            cell.categoryName.textColor = UIColor(rgb: 0x0000ff)
+            //cell.categoryCellView.backgroundColor = UIColor(rgb: 0xFDEEE5)
         }
         
         return cell

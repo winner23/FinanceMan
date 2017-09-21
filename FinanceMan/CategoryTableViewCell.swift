@@ -10,6 +10,7 @@ import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var icon: UILabel!
     @IBOutlet weak var categoryCellView: UIView!
     @IBOutlet weak var categoryName: UILabel!
     @IBOutlet weak var categoryDescription: UILabel!

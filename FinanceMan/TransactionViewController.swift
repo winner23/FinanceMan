@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TransactionViewController: UIViewController, UITextFieldDelegate {
+class TransactionViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     
     private let model = CoreModel.coreModel
@@ -60,6 +60,8 @@ class TransactionViewController: UIViewController, UITextFieldDelegate {
             dateTransaction.setDate((currentTransaction?.getDate())!, animated: true)
         }
         super.viewDidLoad()
+        valueTransaction.delegate = self
+        descriptionTransaction.delegate = self
         
         valueTransaction.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
 
@@ -75,6 +77,11 @@ class TransactionViewController: UIViewController, UITextFieldDelegate {
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        valueTransaction.resignFirstResponder()
+        descriptionTransaction.resignFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -126,3 +133,4 @@ extension String {
         return formatter.string(from: number)!
     }
 }
+
