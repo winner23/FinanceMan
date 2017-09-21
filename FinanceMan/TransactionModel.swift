@@ -77,6 +77,9 @@ class TransactionModel: NSObject, NSCoding {
     func getDate() -> Date? {
         return date
     }
+    func getVolume() -> NSDecimalNumber? {
+        return volume
+    }
     
     func getVolumeDouble() -> Double? {
         let result = Double(volume!)

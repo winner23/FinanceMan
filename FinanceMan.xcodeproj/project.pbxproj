@@ -18,6 +18,7 @@
 		8DC2B52D1F62FE8200487ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC2B52B1F62FE8200487ECA /* LaunchScreen.storyboard */; };
 		8DC2B5361F62FF7C00487ECA /* RCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2B5351F62FF7C00487ECA /* RCButton.swift */; };
 		8DEA77AE1F7460E30033E542 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEA77AD1F7460E30033E542 /* ReportViewController.swift */; };
+		8DEA77B01F7472470033E542 /* ReportResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEA77AF1F7472470033E542 /* ReportResultsViewController.swift */; };
 		8DEFB32C1F665E1D0060FDD4 /* CoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFB32B1F665E1D0060FDD4 /* CoreModel.swift */; };
 		8DEFE4881F6D33F3005D4027 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFE4871F6D33F3005D4027 /* CategoryTableViewController.swift */; };
 		8DEFE48C1F6D9750005D4027 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFE48B1F6D9750005D4027 /* CategoryViewController.swift */; };
@@ -40,6 +41,7 @@
 		8DC2B52E1F62FE8200487ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2B5351F62FF7C00487ECA /* RCButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCButton.swift; sourceTree = "<group>"; };
 		8DEA77AD1F7460E30033E542 /* ReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		8DEA77AF1F7472470033E542 /* ReportResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportResultsViewController.swift; sourceTree = "<group>"; };
 		8DEFB32B1F665E1D0060FDD4 /* CoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreModel.swift; sourceTree = "<group>"; };
 		8DEFE4871F6D33F3005D4027 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		8DEFE48B1F6D9750005D4027 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				8DEFE48F1F6E6422005D4027 /* TransactionTableViewCell.swift */,
 				8DEFE4911F6E644A005D4027 /* CategoryTableViewCell.swift */,
 				3F2EB2251F73F31F00B79117 /* IconCollectionViewCell.swift */,
+				8DEA77AF1F7472470033E542 /* ReportResultsViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				8D8F90E21F65875D004D81B0 /* CategoryModel.swift in Sources */,
 				8DEFB32C1F665E1D0060FDD4 /* CoreModel.swift in Sources */,
 				3F2EB2261F73F31F00B79117 /* IconCollectionViewCell.swift in Sources */,
+				8DEA77B01F7472470033E542 /* ReportResultsViewController.swift in Sources */,
 				8DEFE4881F6D33F3005D4027 /* CategoryTableViewController.swift in Sources */,
 				8DEA77AE1F7460E30033E542 /* ReportViewController.swift in Sources */,
 				3FF5211C1F6BE11E00658402 /* TransactionTableViewController.swift in Sources */,
