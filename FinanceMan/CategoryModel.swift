@@ -78,7 +78,7 @@ class CategoryModel:NSObject, NSCoding {
         descriptionContext = text
     }
     
-    func isIncome() -> Bool{
+    func getType() -> Bool{
         return type
     }
     func switchType() {

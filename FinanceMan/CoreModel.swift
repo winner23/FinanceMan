@@ -94,7 +94,9 @@ class CoreModel {
         let index = getIndexCategory(byId: id)
         categories[Int(index!)].setName(name: name)
         categories[Int(index!)].setDescription(text: descriptionText)
-        categories[Int(index!)].switchType()
+        if categories[Int(index!)].getType() != type {
+            categories[Int(index!)].switchType()
+        }
         if icon != nil {
             categories[Int(index!)].setIcon(icon: icon!)
         }

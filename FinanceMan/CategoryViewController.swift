@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     let model = CoreModel.coreModel
-    
+    let icons: [String] = ["🍞","🍇","🍟","🍛","🍧","🍺","☕️","🍷","🍽","🏸","🎪","🎬","🎼","🎲","🚗","🚃","✈️","🛳","🏦","🏥","🏠","🏢","📱"]
     var currentCategory: CategoryModel?
     //private let category = CategoryModel()
     
@@ -55,7 +55,16 @@ class CategoryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return icons.count
+    }
 
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as! IconCollectionViewCell
+        cell.icon.text = icons[indexPath.row]
+        return cell
+        
+    }
     /*
     // MARK: - Navigation
 

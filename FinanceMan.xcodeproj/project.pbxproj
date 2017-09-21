@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F2EB2261F73F31F00B79117 /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2EB2251F73F31F00B79117 /* IconCollectionViewCell.swift */; };
 		3FF5211C1F6BE11E00658402 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF5211B1F6BE11E00658402 /* TransactionTableViewController.swift */; };
 		8D8F90E01F658722004D81B0 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8F90DF1F658722004D81B0 /* TransactionModel.swift */; };
 		8D8F90E21F65875D004D81B0 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8F90E11F65875D004D81B0 /* CategoryModel.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F2EB2251F73F31F00B79117 /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
 		3FF5211B1F6BE11E00658402 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		8D8F90DF1F658722004D81B0 /* TransactionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		8D8F90E11F65875D004D81B0 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				8DC2B5351F62FF7C00487ECA /* RCButton.swift */,
 				8DEFE48F1F6E6422005D4027 /* TransactionTableViewCell.swift */,
 				8DEFE4911F6E644A005D4027 /* CategoryTableViewCell.swift */,
+				3F2EB2251F73F31F00B79117 /* IconCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				8DEFE4901F6E6422005D4027 /* TransactionTableViewCell.swift in Sources */,
 				8D8F90E21F65875D004D81B0 /* CategoryModel.swift in Sources */,
 				8DEFB32C1F665E1D0060FDD4 /* CoreModel.swift in Sources */,
+				3F2EB2261F73F31F00B79117 /* IconCollectionViewCell.swift in Sources */,
 				8DEFE4881F6D33F3005D4027 /* CategoryTableViewController.swift in Sources */,
 				3FF5211C1F6BE11E00658402 /* TransactionTableViewController.swift in Sources */,
 				8DEFE48E1F6D9772005D4027 /* TransactionViewController.swift in Sources */,
