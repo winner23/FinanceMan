@@ -27,10 +27,12 @@ class TransactionTableViewController: UITableViewController {
         //let navigationBar = self.navigationController?.navigationBar
         let navigationItem = self.navigationItem
         navigationItem.title = "Transactions"
-        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.openNewView));
+        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.openNewTransactionView))
+        let menuItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.bookmarks, target: self, action: #selector(self.openReportView))
         
     
-        navigationItem.rightBarButtonItem = doneItem;
+        navigationItem.rightBarButtonItem = doneItem
+        navigationItem.leftBarButtonItem = menuItem
         
         //navigationBar?.setItems([navigationItem], animated: true);
         //navigationItem.setRightBarButtonItem(addButtonItem, animated: true)
@@ -43,10 +45,13 @@ class TransactionTableViewController: UITableViewController {
         transactionTable.reloadData()
     }
 
-    func openNewView(){
+    func openNewTransactionView(){
         self.performSegue(withIdentifier: "newTransaction", sender: self)
     }
     
+    func openReportView(){
+        self.performSegue(withIdentifier: "reportView", sender: self)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

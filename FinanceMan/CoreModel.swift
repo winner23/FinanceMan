@@ -10,8 +10,6 @@ import Foundation
 
 class CoreModel {
     
-    
-    
     private var categories: [CategoryModel] = []
     private var transactions: [TransactionModel] = []
     private let fileManager = FileManager()

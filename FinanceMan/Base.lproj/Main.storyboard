@@ -10,6 +10,127 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Report View Controller-->
+        <scene sceneID="Q4G-eU-lbV">
+            <objects>
+                <viewController id="mYE-4m-plN" customClass="ReportViewController" customModule="FinanceMan" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bL9-BQ-Ujt"/>
+                        <viewControllerLayoutGuide type="bottom" id="XTY-6n-leq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RIt-i6-V2Z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Foh-Mo-hl7">
+                                <rect key="frame" x="0.0" y="449" width="320" height="120"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="527720716.78853202">
+                                    <!--2017-09-21 21:05:16 +0000-->
+                                </date>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="h7l-c1-Kvj">
+                                <rect key="frame" x="0.0" y="308" width="320" height="120"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="527720727.85363698">
+                                    <!--2017-09-21 21:05:27 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBv-wq-MjC">
+                                <rect key="frame" x="139" y="279" width="44" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGc-c4-wrP">
+                                <rect key="frame" x="139" y="420" width="24" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRz-Yc-Azj">
+                                <rect key="frame" x="1" y="49" width="320" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xex-t1-Mlr" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
+                                <rect key="frame" x="8" y="279" width="90" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="SZC-7y-0CS"/>
+                                    <constraint firstAttribute="height" constant="30" id="qa2-aN-gPe"/>
+                                </constraints>
+                                <state key="normal" title="on Date"/>
+                                <connections>
+                                    <action selector="reportOnDate:" destination="mYE-4m-plN" eventType="touchUpInside" id="u7p-VN-pbN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTw-tO-WKD" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
+                                <rect key="frame" x="8" y="72" width="90" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Xl3-6Z-7PV"/>
+                                    <constraint firstAttribute="width" constant="90" id="reV-PY-FFW"/>
+                                </constraints>
+                                <state key="normal" title="by Category"/>
+                                <connections>
+                                    <action selector="reportByCategory:" destination="mYE-4m-plN" eventType="touchUpInside" id="tNb-1x-mbl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAx-nN-HlG" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
+                                <rect key="frame" x="8" y="415" width="90" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="87m-Di-DCY"/>
+                                    <constraint firstAttribute="width" constant="90" id="EQS-1Y-PbL"/>
+                                </constraints>
+                                <state key="normal" title="between"/>
+                                <connections>
+                                    <action selector="reportBetween:" destination="mYE-4m-plN" eventType="touchUpInside" id="If2-87-yW9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lTw-tO-WKD" firstAttribute="top" secondItem="bL9-BQ-Ujt" secondAttribute="bottom" constant="8" id="10a-9V-L6b"/>
+                            <constraint firstItem="SRz-Yc-Azj" firstAttribute="centerX" secondItem="IBv-wq-MjC" secondAttribute="centerX" id="BTQ-Ft-RRs"/>
+                            <constraint firstItem="lTw-tO-WKD" firstAttribute="leading" secondItem="RIt-i6-V2Z" secondAttribute="leading" constant="8" id="SrU-6n-P19"/>
+                            <constraint firstItem="ZAx-nN-HlG" firstAttribute="leading" secondItem="RIt-i6-V2Z" secondAttribute="leading" constant="8" id="Vr1-8y-nLt"/>
+                            <constraint firstItem="xex-t1-Mlr" firstAttribute="top" secondItem="IBv-wq-MjC" secondAttribute="top" id="fsM-Ja-dek"/>
+                            <constraint firstItem="xex-t1-Mlr" firstAttribute="leading" secondItem="RIt-i6-V2Z" secondAttribute="leading" constant="8" id="pfs-5N-2GW"/>
+                            <constraint firstItem="ZAx-nN-HlG" firstAttribute="top" secondItem="xex-t1-Mlr" secondAttribute="bottom" constant="106" id="qiG-HN-fML"/>
+                            <constraint firstItem="IBv-wq-MjC" firstAttribute="leading" secondItem="xex-t1-Mlr" secondAttribute="trailing" constant="41" id="rTp-bb-SZ3"/>
+                            <constraint firstItem="xex-t1-Mlr" firstAttribute="top" secondItem="RIt-i6-V2Z" secondAttribute="top" constant="279" id="sOZ-aq-OQP"/>
+                            <constraint firstItem="xex-t1-Mlr" firstAttribute="top" secondItem="SRz-Yc-Azj" secondAttribute="bottom" constant="14" id="whF-PN-0fr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ctegorySelector" destination="SRz-Yc-Azj" id="U8c-5S-1kg"/>
+                        <outlet property="fromDate" destination="h7l-c1-Kvj" id="skc-VL-OXr"/>
+                        <outlet property="toDate" destination="Foh-Mo-hl7" id="qlC-cT-gM0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6GD-BO-J2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="281" y="132"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dh0-R6-Hbv">
+            <objects>
+                <viewController id="8lX-dm-sUt" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n1E-JE-FWQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="P8a-Pi-PfU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Puw-61-5kU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RAp-jz-nAF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1133" y="132"/>
+        </scene>
         <!--Transactions-->
         <scene sceneID="SDq-x5-kRH">
             <objects>
@@ -131,6 +252,7 @@
                         <outlet property="transactionTable" destination="4Ls-rc-iSp" id="XMo-LC-P9s"/>
                         <segue destination="O2Z-LV-tPz" kind="show" identifier="newTransaction" id="OBm-ez-DNd"/>
                         <segue destination="O2Z-LV-tPz" kind="show" identifier="editTransaction" id="X6V-f0-uUO"/>
+                        <segue destination="mYE-4m-plN" kind="show" identifier="reportView" id="Zn6-t6-U6L"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqY-Rm-DME" userLabel="First Responder" sceneMemberID="firstResponder"/>
