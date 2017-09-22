@@ -10,29 +10,26 @@ import UIKit
 
 class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    private let model = CoreModel.coreModel
+    private var categories: [CategoryModel] = []
+    
     @IBOutlet weak var ctegorySelector: UIPickerView!
     @IBOutlet weak var fromDate: UIDatePicker!
     @IBOutlet weak var toDate: UIDatePicker!
     
     @IBAction func reportByCategory(_ sender: UIButton) {
-        
         let selectedCategory = categories[ctegorySelector.selectedRow(inComponent: 0)]
-        performSegue(withIdentifier: "byCategory", sender: selectedCategory)
+        let result = calc(byCategory: selectedCategory)
+        performSegue(withIdentifier: "byCategory", sender: result)
     }
     
     @IBAction func reportOnDate(_ sender: UIButton) {
+
     }
-    
-    
     
     @IBAction func reportBetween(_ sender: UIButton) {
         
     }
-    
-    private let model = CoreModel.coreModel
-    private var categories: [CategoryModel] = []
-    
-
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return categories.count
@@ -46,47 +43,29 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         return categories[row].getName()
     }
     
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        <#code#>
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         categories = model.getListCategories()
-        
-
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: Calculations methods
+    
+    func calc(byCategory selected: CategoryModel) -> Double {
+        var counter: NSDecimalNumber = 0.0
+        for transaction in model.getTransactions() {
+            if selected.getId() == transaction.getCategoryId() {
+                counter = counter.adding(transaction.getVolume()!)
+            }
+        }
+        return counter.doubleValue
     }
     
-
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "byCategory" {
-            var counter: NSDecimalNumber = 0.0
-            
-            let selectedCategory = sender as? CategoryModel
-            
-            for transaction in model.getTransactions() {
-                if selectedCategory?.getId() == transaction.getCategoryId() {
-                    counter = counter.adding(transaction.getVolume()!)
-                }
-            }
-            let reportResultViewController = (segue.destination) as? ReportResultsViewController
-            let result = counter.doubleValue
-            //reportResultViewController?.total.text = String(result)
+        if segue.identifier == "byCategory", let result = sender as? Double, let reportResultViewController = (segue.destination) as? ReportResultsViewController {
+            reportResultViewController.total = "\(result)"
         }
     }
     

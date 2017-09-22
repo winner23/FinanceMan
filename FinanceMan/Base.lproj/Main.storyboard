@@ -196,9 +196,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="earnings" destination="Gep-Vd-2tq" id="vOP-of-Kvs"/>
-                        <outlet property="outgoing" destination="JcP-oq-z6j" id="Vvx-9E-jd4"/>
-                        <outlet property="total" destination="zq4-UX-2aJ" id="MgD-4k-1Xt"/>
+                        <outlet property="earningsLabel" destination="Gep-Vd-2tq" id="Kdh-FA-1Wh"/>
+                        <outlet property="outgoingLabel" destination="JcP-oq-z6j" id="Mie-kY-0Be"/>
+                        <outlet property="totalLabel" destination="zq4-UX-2aJ" id="3hU-Ll-d0X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAp-jz-nAF" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,17 +11,21 @@ import UIKit
 class ReportResultsViewController: UIViewController {
 
     
-    @IBOutlet weak var earnings: UILabel!
-    @IBOutlet weak var outgoing: UILabel!
-    @IBOutlet weak var total: UILabel!
+    @IBOutlet weak var earningsLabel: UILabel?
+    @IBOutlet weak var outgoingLabel: UILabel?
+    @IBOutlet weak var totalLabel: UILabel?
     
-    
+    var earnings: String?
+    var outgoing: String?
+    var total: String?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        earningsLabel?.text = earnings ?? ""
+        outgoingLabel?.text = outgoing ?? ""
+        totalLabel?.text = total ?? ""
         // Do any additional setup after loading the view.
     }
 
