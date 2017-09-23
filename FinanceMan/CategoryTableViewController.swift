@@ -41,70 +41,38 @@ class CategoryTableViewController: UITableViewController{
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 1
     }
     
     //Select category
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let categories = model.getListCategories()
-        let selectedCategory = categories[indexPath.row]
+        let selectedCategory = model.categories[indexPath.row]
         self.saveAction!(selectedCategory)
         _ = navigationController?.popViewController(animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return model.getListCategories().count
+        return model.categories.count
     }
-
-   
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell") as! CategoryTableViewCell
-        
-        let categoryItem = model.getListCategories()[indexPath.row]
-        
-        cell.categoryName.text = categoryItem.getName()
-        cell.categoryDescription.text = categoryItem.getDescription()
-        cell.icon.text = categoryItem.getIcon()
-        
-        if categoryItem.getType() {
-            cell.categoryName.textColor = UIColor(rgb: 0x00ff00)
-            //cell.categoryCellView.backgroundColor = UIColor(rgb: 0xCBEEF1)
+        let categoryItem = model.categories[indexPath.row]
+        cell.categoryName.text = categoryItem.name
+        cell.categoryDescription.text = categoryItem.descriptionContext
+        cell.icon.text = categoryItem.icon
+        if categoryItem.type {
+            cell.categoryName.textColor = UIColor.green
         } else {
-            cell.categoryName.textColor = UIColor(rgb: 0x0000ff)
-            //cell.categoryCellView.backgroundColor = UIColor(rgb: 0xFDEEE5)
+            cell.categoryName.textColor = UIColor.blue
         }
-        
         return cell
     }
-    
 
-    
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    
-
-    // Override to support editing the table view.
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        } else if editingStyle == .insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }    
-//    }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let category = model.getListCategories()[indexPath.row].id
-        
+        let category = model.categories[indexPath.row].id
         let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
-            
             self.performSegue(withIdentifier: "editCategory", sender: category)
         }
         let delete = UITableViewRowAction(style: .destructive, title: "Del") { action, index in
@@ -112,25 +80,9 @@ class CategoryTableViewController: UITableViewController{
             self.categoryTable.beginUpdates()
             self.categoryTable.deleteRows(at: [indexPath], with: .automatic)
             self.categoryTable.endUpdates()
-            
         }
         return [edit, delete]
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
        // MARK: - Navigation
 

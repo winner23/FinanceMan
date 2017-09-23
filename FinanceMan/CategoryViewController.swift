@@ -38,10 +38,10 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
 
     override func viewDidLoad() {
         if currentCategory != nil {
-            nameCategory.text = currentCategory?.getName()
-            descriptionCategory.text = currentCategory?.getDescription()
-            typeCategory.isOn = (currentCategory?.getType())!
-            iconCategory.text = currentCategory?.getIcon()
+            nameCategory.text = currentCategory?.name
+            descriptionCategory.text = currentCategory?.descriptionContext
+            typeCategory.isOn = (currentCategory?.type)!
+            iconCategory.text = currentCategory?.icon
         }
         super.viewDidLoad()
         

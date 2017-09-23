@@ -25,55 +25,42 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
     @IBOutlet weak var dateTransaction: UIDatePicker!
     
     @IBAction func saveTransaction(_ sender: UIButton) {
-        let value = valueTransaction.text?.replacingOccurrences(of: ",", with: "") ?? "0"
-        
-        
+        let value = valueTransaction.text?.replacingOccurrences(of: " ", with: "") ?? "0"
         let descripTran = descriptionTransaction.text ?? ""
         let date = dateTransaction.date
         let category = categoryButton.currentTitle ?? "No category"
         if let categoryId = model.getCategoryId(byName: category){
-            
             if currentTransactionIndex != nil && currentTransaction != nil {
                 currentTransaction = TransactionModel(categoryID: categoryId, volume: value, descriptionText: descripTran, date: date)
                 model.modifyTransaction(byIndex: currentTransactionIndex!, toInstance: currentTransaction!)
-            //
             } else {
                 model.addTransaction(categoryId: categoryId, volume: value, descriptionText: descripTran, date: date)
             }
-            
-            
             model.saveTransactions()
             self.navigationController?.popViewController(animated: true)
         } else {
             showWarningMsg(textMsg: "No such category")
         }
-        
     }
     
     override func viewDidLoad() {
         //When edit transaction case
         if currentTransaction != nil {
-            let categoryName = model.getCategoryName(byId: (currentTransaction?.getCategoryId())!)
+            let categoryName = model.getCategoryName(byId: (currentTransaction?.categoryId)!)
             categoryButton.setTitle(categoryName, for: .normal)
             valueTransaction.text = currentTransaction?.getVolumeString()
-            descriptionTransaction.text = currentTransaction?.getDescription()
-            dateTransaction.setDate((currentTransaction?.getDate())!, animated: true)
+            descriptionTransaction.text = currentTransaction?.descriptionTransaction
+            dateTransaction.setDate((currentTransaction?.date)!, animated: true)
         }
         super.viewDidLoad()
         valueTransaction.delegate = self
         descriptionTransaction.delegate = self
-        
-        valueTransaction.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
-
-        // Do any additional setup after loading the view.
+        //detect of entering in value text field
+        valueTransaction.addTarget(self, action: #selector(valueTextFieldDidChange), for: .editingChanged)
     }
     
-       override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func myTextFieldDidChange(_ textField: UITextField) {
+    //Matching text to the curency format
+    func valueTextFieldDidChange(_ textField: UITextField) {
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
         }
@@ -88,12 +75,11 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
         if segue.identifier == "selectCategory",
         let viewController = segue.destination as? CategoryTableViewController {
             viewController.saveAction = { selectedCategory in
-                self.transaction.setCategory(id: selectedCategory.id)
-                self.categoryButton.setTitle(selectedCategory.getName(), for: .normal)
+                self.transaction.categoryId =  selectedCategory.id
+                self.categoryButton.setTitle(selectedCategory.name, for: .normal)
             }
         }
     }
-
     
     // MARK: - Navigation
 
@@ -103,19 +89,17 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
         self.present(alert, animated: true, completion: nil)
     }
 }
-
-
 extension String {
     
     // formatting text for currency textField
     func currencyInputFormatting() -> String {
         var number: NSNumber!
         let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal//.currencyAccounting
+        formatter.numberStyle = .currencyAccounting
         formatter.currencySymbol = ""
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
-        
+        formatter.currencyGroupingSeparator = " "
         var amountWithPrefix = self
         
         // remove from String: "$", ".", ","

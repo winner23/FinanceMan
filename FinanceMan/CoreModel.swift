@@ -9,14 +9,13 @@
 import Foundation
 
 class CoreModel {
+    static let coreModel = CoreModel()
     
-    private var categories: [CategoryModel] = []
+    var categories: [CategoryModel] = []
     private var transactions: [TransactionModel] = []
     private let fileManager = FileManager()
-
     private let pathCategories: String?
     private let pathTransactions: String?
-    
     
     //Core Model is Singleton
     private init(){
@@ -31,13 +30,9 @@ class CoreModel {
             self.pathCategories = nil
             self.pathTransactions = nil
         }
-        
     }
     
-    static let coreModel = CoreModel()
-    
-    
-    
+
     //MARK: Categories
     // ----========== Categories operations ==========----
     func addCategory(name: String, descrip: String, type: Bool, icon: String?){
@@ -53,11 +48,10 @@ class CoreModel {
         }
         return nil
     }
-
     
     func getCategoryInstance(byName name:String) -> CategoryModel?{
         for category:CategoryModel in categories{
-            if category.getName() == name {
+            if category.name == name {
                 return category
             }
         }
@@ -68,7 +62,7 @@ class CoreModel {
         
         for categoryItem in categories {
             if categoryItem.id == id {
-                return categoryItem.getName()
+                return categoryItem.name
             }
         }
         return nil
@@ -77,26 +71,26 @@ class CoreModel {
     
     func getCategoryId(byName name: String) -> String? {
         for categoryItem in categories{
-            if categoryItem.getName() == name {
+            if categoryItem.name == name {
                 return categoryItem.id
             }
         }
         return nil
     }
     
-    func getListCategories() -> [CategoryModel]{
-        return categories
-    }
+//    func getListCategories() -> [CategoryModel]{
+//        return categories
+//    }
     
     func modifyCategory(byId id: String, name: String, descriptionText: String, type: Bool, icon: String?) {
         let index = getIndexCategory(byId: id)
-        categories[Int(index!)].setName(name: name)
-        categories[Int(index!)].setDescription(text: descriptionText)
-        if categories[Int(index!)].getType() != type {
-            categories[Int(index!)].switchType()
+        categories[Int(index!)].name = name
+        categories[Int(index!)].descriptionContext = descriptionText
+        if categories[Int(index!)].type != type {
+            categories[Int(index!)].type = type
         }
         if icon != nil {
-            categories[Int(index!)].setIcon(icon: icon!)
+            categories[Int(index!)].icon = icon
         }
     }
     func deleteCategory(byId id: String) {
@@ -107,7 +101,7 @@ class CoreModel {
     
     private func getIndexCategory(byName name: String) -> UInt? {
         for (index, category) in categories.enumerated() {
-            if category.getName() == name {
+            if category.name == name {
                 return UInt(index)
             }
         }
@@ -130,23 +124,17 @@ class CoreModel {
             let success = NSKeyedArchiver.archiveRootObject(categories, toFile: pathCategories!)
             if !success {
                 print("Unable to save array to \(pathCategories!)")
-            } else {
-               print("File not found")
             }
         }
         
     }
     
     func retrievCategories(){
-        
         if pathCategories != nil,
             let categoryList = NSKeyedUnarchiver.unarchiveObject(withFile: pathCategories!) as? [CategoryModel]
         {
             categories = categoryList
-        } else {
-            print("File not found")
         }
-        
     }
     
     //MARK:Transaction
@@ -161,7 +149,6 @@ class CoreModel {
         if index <= transactions.count {
             return transactions[index]
         } else {
-            print("out of bounds index:\(index) for table size:\(transactions.count)")
             return nil
         }
     }
@@ -169,10 +156,7 @@ class CoreModel {
     func modifyTransaction(byIndex index: Int, toInstance: TransactionModel) {
         if index <= transactions.count {
             transactions[index] = toInstance
-        } else {
-            print("out of bounds index:\(index) for table size:\(transactions.count)")
         }
-        
     }
     
     func deleteTransactio(byIndex index: Int) {
@@ -188,7 +172,7 @@ class CoreModel {
     func getTransactions(categoryName: String) -> [TransactionModel] {
         var res: [TransactionModel] = []
         for transactionInstance:TransactionModel in transactions {
-            if getCategoryName(byId: transactionInstance.getCategoryId()) == categoryName {
+            if getCategoryName(byId: transactionInstance.categoryId) == categoryName {
                 res.append(transactionInstance)
             }
         }

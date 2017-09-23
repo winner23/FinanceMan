@@ -11,7 +11,7 @@ import UIKit
 class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private let model = CoreModel.coreModel
-    private var categories: [CategoryModel] = []
+    //private var categories: [CategoryModel] = []
     
     @IBOutlet weak var ctegorySelector: UIPickerView!
     @IBOutlet weak var fromDate: UIDatePicker!
@@ -19,7 +19,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBOutlet weak var byCategoryButton: UIButton!
     @IBAction func reportByCategory(_ sender: UIButton) {
-        let selectedCategory = categories[ctegorySelector.selectedRow(inComponent: 0)]
+        let selectedCategory = model.categories[ctegorySelector.selectedRow(inComponent: 0)]
         let result = calcTotal(byCategory: selectedCategory)
         performSegue(withIdentifier: "byCategory", sender: result)
     }
@@ -33,7 +33,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categories.count
+        return model.categories.count
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -41,13 +41,12 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return categories[row].getName()
+        return model.categories[row].name
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        categories = model.getListCategories()
-        if categories.count<1 {
+        if model.categories.count<1 {
            byCategoryButton.isEnabled = false
         }
     }
@@ -57,8 +56,9 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func calcTotal(byCategory selected: CategoryModel) -> Double {
         var counter: NSDecimalNumber = 0.0
         for transaction in model.getTransactions() {
-            if selected.id == transaction.getCategoryId() {
-                counter = counter.adding(transaction.getVolume()!)
+            if selected.id == transaction.categoryId,
+            let checkVolume = transaction.volume {
+                counter = counter.adding(checkVolume)
             }
         }
         return counter.doubleValue
@@ -68,7 +68,9 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "byCategory", let result = sender as? Double, let reportResultViewController = (segue.destination) as? ReportResultsViewController {
+        if segue.identifier == "byCategory",
+            let result = sender as? Double,
+            let reportResultViewController = (segue.destination) as? ReportResultsViewController {
             reportResultViewController.total = "\(result)"
         }
     }

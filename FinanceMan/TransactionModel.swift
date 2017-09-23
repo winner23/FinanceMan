@@ -10,19 +10,16 @@ import Foundation
 
 class TransactionModel: NSObject, NSCoding {
     
-    private var categoryId: String = ""
-    private var volume: NSDecimalNumber?
-    private var descriptionTransaction: String?
-    private var date: Date?
-    private let dateFormatter = DateFormatter()
+    var categoryId: String = ""
+    var volume: NSDecimalNumber?
+    var descriptionTransaction: String?
+    var date: Date?
+    let dateFormatter = DateFormatter()
     
     init(categoryID: String, volume: String, descriptionText: String, date: Date) {
         self.categoryId = categoryID
-        
         self.volume = NSDecimalNumber(string: volume)
-        
         self.date = date
-        //dateFormatter.dateFormat = "yyyy-MM-dd"
         self.descriptionTransaction = descriptionText
     }
     
@@ -32,22 +29,18 @@ class TransactionModel: NSObject, NSCoding {
     
     //NSCoder import
     required init(coder decoder: NSCoder) {
-
-    
         if let categoryDecode = decoder.decodeObject(forKey: "category_id") as? String {
             categoryId = categoryDecode
         }
         if let volumeDecode = decoder.decodeObject(forKey: "bill") as? NSDecimalNumber {
             volume = volumeDecode
         }
-        
         if let dateDecode = decoder.decodeObject(forKey: "date") as? Date {
             date = dateDecode
         }
         if let descriptionDecode = decoder.decodeObject(forKey: "descripTransac") as? String {
             descriptionTransaction = descriptionDecode
         }
-        
     }
     
     //NSCoder export
@@ -58,28 +51,28 @@ class TransactionModel: NSObject, NSCoding {
         aCoder.encode(descriptionTransaction, forKey: "descripTransac")
     }
     
-    func getCategoryId() -> String {
-        return categoryId
-    }
+//    func getCategoryId() -> String {
+//        return categoryId
+//    }
     
-    func setCategory(id: String) {
-        categoryId = id
-    }
+//    func setCategory(id: String) {
+//        categoryId = id
+//    }
     
-    func getDescription() -> String {
-        return descriptionTransaction ?? ""
-    }
-    
-    func setDescription(descriptionText: String) {
-        descriptionTransaction = descriptionText
-    }
-    
-    func getDate() -> Date? {
-        return date
-    }
-    func getVolume() -> NSDecimalNumber? {
-        return volume
-    }
+//    func getDescription() -> String {
+//        return descriptionTransaction ?? ""
+//    }
+//
+//    func setDescription(descriptionText: String) {
+//        descriptionTransaction = descriptionText
+//    }
+//
+//    func getDate() -> Date? {
+//        return date
+//    }
+//    func getVolume() -> NSDecimalNumber? {
+//        return volume
+//    }
     
     func getVolumeDouble() -> Double? {
         let result = Double(volume!)

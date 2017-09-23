@@ -16,29 +16,17 @@ class TransactionTableViewController: UITableViewController {
     @IBOutlet var transactionTable: UITableView!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        
-        
-        //let navigationBar = self.navigationController?.navigationBar
         let navigationItem = self.navigationItem
         navigationItem.title = "Transactions"
         let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.openNewTransactionView))
         let menuItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.bookmarks, target: self, action: #selector(self.openReportView))
-        
-    
         navigationItem.rightBarButtonItem = doneItem
         navigationItem.leftBarButtonItem = menuItem
-        
-        //navigationBar?.setItems([navigationItem], animated: true);
-        //navigationItem.setRightBarButtonItem(addButtonItem, animated: true)
-        
         super.viewWillAppear(animated)
-        
         model.retrievTranactions()
         model.retrievCategories()
         self.transactions = model.getTransactions()
@@ -71,99 +59,55 @@ class TransactionTableViewController: UITableViewController {
 
     //Fill rows of tabel
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! TransactionTableViewCell
-        
         let transactionInstance = model.getTransactionInstance(byIndex: indexPath.row)!
-        
-        if let dateTransaction = transactionInstance.getDate(){
+        if let dateTransaction = transactionInstance.date{
             let formatter = DateFormatter()
             formatter.dateFormat = "dd.MM.yyyy"
             let dateStr = formatter.string(from: dateTransaction)
             cell.date.text = dateStr
         }
-        
         let valueTransaction = transactionInstance.getVolumeString()
-        
-        let transactionCategoryInstance = model.getCategoryInstance(byId: transactionInstance.getCategoryId())
-    
-        
-        cell.icon.text = transactionCategoryInstance?.getIcon()
-        cell.name.text = transactionCategoryInstance?.getName()
-        cell.descript.text = transactionInstance.getDescription()
+        let transactionCategoryInstance = model.getCategoryInstance(byId: transactionInstance.categoryId)
+        cell.icon.text = transactionCategoryInstance?.icon
+        cell.name.text = transactionCategoryInstance?.name
+        cell.descript.text = transactionInstance.descriptionTransaction
         cell.value.text = valueTransaction
-        if (transactionCategoryInstance?.getType())! {
+        if (transactionCategoryInstance?.type)! {
             cell.type.text = "⬇︎"
             cell.type.textColor = UIColor(red: 0, green: 255, blue: 0)
         } else {
             cell.type.text = "⬆︎"
             cell.type.textColor = UIColor(red: 0, green: 0, blue: 255)
         }
-        
-
         return cell
     }
+    
     //Define function(swipe) button
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
         let delete = UITableViewRowAction(style: .destructive, title: "Del") { action, index in
             self.model.deleteTransactio(byIndex: indexPath.row)
             self.transactionTable.beginUpdates()
             self.transactionTable.deleteRows(at: [indexPath], with: .automatic)
             self.transactionTable.endUpdates()
             self.model.saveTransactions()
-            
         }
         return [delete]
     }
+
     //Edit transaction
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         self.performSegue(withIdentifier: "editTransaction", sender: indexPath.row)
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-   
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
         return true
     }
  
-
-   
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "editTransaction" {
             let editTransactionViewController = (segue.destination as? TransactionViewController)!
             let transactionIndex = sender as? Int
@@ -171,6 +115,4 @@ class TransactionTableViewController: UITableViewController {
             editTransactionViewController.currentTransaction = model.getTransactionInstance(byIndex: transactionIndex!)
         }
     }
-  
-
 }

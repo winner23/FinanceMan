@@ -11,11 +11,12 @@ import Foundation
 class CategoryModel:NSObject, NSCoding {
     
     var id: String = ""
-    private var name: String = ""
-    private var descriptionContext: String = ""
-    private var type = false //True - income / False - pay
-    private var icon: String?
+    var name: String = ""
+    var descriptionContext: String = ""
+    var type = false //True - income / False - pay
+    var icon: String?
     
+    //init for temporary instance
     init(categoryName name:String, descriptionCategory descript:String, isIncome type: Bool, icon: String?) {
         self.name = name
         self.id = UUID().uuidString
@@ -23,7 +24,7 @@ class CategoryModel:NSObject, NSCoding {
         self.type = type
         self.icon = icon
     }
-    
+    //Default init
     override init() {
         super.init()
     }
@@ -38,6 +39,7 @@ class CategoryModel:NSObject, NSCoding {
             icon = decoder.decodeObject(forKey: "icon") as? String
         }
     }
+    
     //Save properties to external file
     func encode(with aCoder: NSCoder) {
         aCoder.encode(id, forKey: "id")
@@ -49,41 +51,4 @@ class CategoryModel:NSObject, NSCoding {
         aCoder.encode(type, forKey: "type")//typeStr, forKey: "type")
         aCoder.encode(icon, forKey: "icon")
     }
-    
-    //Public Manage
-    func getName() -> String {
-        return name
-    }
-    
-//    func getId() -> String{
-//        return id
-//    }
-    
-    func getDescription() -> String {
-        return descriptionContext
-    }
-    
-    func setName(name: String){
-        self.name = name
-    }
-    
-    func setDescription(text: String) {
-        descriptionContext = text
-    }
-    
-    func getType() -> Bool{
-        return type
-    }
-    func switchType() {
-        type = !type
-    }
-    
-    func getIcon() -> String? {
-        return icon
-    }
-    
-    func setIcon(icon: String) {
-        self.icon = icon
-    }
-    
 }
