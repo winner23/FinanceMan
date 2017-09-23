@@ -12,7 +12,7 @@ class CoreModel {
     static let coreModel = CoreModel()
     
     var categories: [CategoryModel] = []
-    private var transactions: [TransactionModel] = []
+    var transactions: [TransactionModel] = []
     private let fileManager = FileManager()
     private let pathCategories: String?
     private let pathTransactions: String?
@@ -165,9 +165,9 @@ class CoreModel {
         }
     }
     
-    func getTransactions() -> [TransactionModel] {
-        return transactions
-    }
+//    func getTransactions() -> [TransactionModel] {
+//        return transactions
+//    }
     
     func getTransactions(categoryName: String) -> [TransactionModel] {
         var res: [TransactionModel] = []

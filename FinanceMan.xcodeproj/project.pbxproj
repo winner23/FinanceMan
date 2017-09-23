@@ -25,7 +25,7 @@
 		8DEFE48E1F6D9772005D4027 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFE48D1F6D9772005D4027 /* TransactionViewController.swift */; };
 		8DEFE4901F6E6422005D4027 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFE48F1F6E6422005D4027 /* TransactionTableViewCell.swift */; };
 		8DEFE4921F6E644A005D4027 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFE4911F6E644A005D4027 /* CategoryTableViewCell.swift */; };
-		FF6A85A82A85CC60E29C6223 /* Pods_FinanceMan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E0B36DA1A8B26B33785A22 /* Pods_FinanceMan.framework */; };
+		FF6A85A82A85CC60E29C6223 /* FinanceMan in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E0B36DA1A8B26B33785A22 /* FinanceMan */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,7 @@
 		8DEFE4911F6E644A005D4027 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		90483A7D91C8F1332DB238DB /* Pods-FinanceMan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceMan.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceMan/Pods-FinanceMan.release.xcconfig"; sourceTree = "<group>"; };
 		B41A8E25529CE441D93630E3 /* Pods-FinanceMan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceMan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceMan/Pods-FinanceMan.debug.xcconfig"; sourceTree = "<group>"; };
-		D6E0B36DA1A8B26B33785A22 /* Pods_FinanceMan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceMan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6E0B36DA1A8B26B33785A22 /* FinanceMan */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FinanceMan; path = Pods_FinanceMan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF6A85A82A85CC60E29C6223 /* Pods_FinanceMan.framework in Frameworks */,
+				FF6A85A82A85CC60E29C6223 /* FinanceMan in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +69,9 @@
 		3F387D2A1F696892005FFA13 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				8DC2B51F1F62FE8200487ECA /* AppDelegate.swift */,
+				8DC2B52E1F62FE8200487ECA /* Info.plist */,
+				8DC2B5261F62FE8200487ECA /* FinanceMan.xcdatamodeld */,
 				8DC2B5291F62FE8200487ECA /* Assets.xcassets */,
 			);
 			name = SupportFiles;
@@ -82,6 +85,7 @@
 				8DEFE4871F6D33F3005D4027 /* CategoryTableViewController.swift */,
 				8DEFE48B1F6D9750005D4027 /* CategoryViewController.swift */,
 				8DEA77AD1F7460E30033E542 /* ReportViewController.swift */,
+				8DEA77AF1F7472470033E542 /* ReportResultsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -89,7 +93,7 @@
 		5595BA2FE2087AC74EA15F81 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D6E0B36DA1A8B26B33785A22 /* Pods_FinanceMan.framework */,
+				D6E0B36DA1A8B26B33785A22 /* FinanceMan */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,9 +132,6 @@
 				3FF5211A1F6BAC2200658402 /* Controllers */,
 				8D8F90DE1F654D76004D81B0 /* Models */,
 				8DC2B5341F62FF1700487ECA /* Views */,
-				8DC2B51F1F62FE8200487ECA /* AppDelegate.swift */,
-				8DC2B52E1F62FE8200487ECA /* Info.plist */,
-				8DC2B5261F62FE8200487ECA /* FinanceMan.xcdatamodeld */,
 				3F387D2A1F696892005FFA13 /* SupportFiles */,
 			);
 			path = FinanceMan;
@@ -145,7 +146,6 @@
 				8DEFE48F1F6E6422005D4027 /* TransactionTableViewCell.swift */,
 				8DEFE4911F6E644A005D4027 /* CategoryTableViewCell.swift */,
 				3F2EB2251F73F31F00B79117 /* IconCollectionViewCell.swift */,
-				8DEA77AF1F7472470033E542 /* ReportResultsViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -189,7 +189,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Володимир";
 				TargetAttributes = {
 					8DC2B51B1F62FE8200487ECA = {
@@ -340,7 +340,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -348,7 +350,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -392,7 +398,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -400,7 +408,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

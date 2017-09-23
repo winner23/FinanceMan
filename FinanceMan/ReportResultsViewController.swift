@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class ReportResultsViewController: UIViewController {
 
@@ -14,11 +15,12 @@ class ReportResultsViewController: UIViewController {
     @IBOutlet weak var earningsLabel: UILabel?
     @IBOutlet weak var outgoingLabel: UILabel?
     @IBOutlet weak var totalLabel: UILabel?
+    @IBOutlet weak var chartView: BarChartView!
     
     var earnings: String?
     var outgoing: String?
     var total: String?
-    
+    var reportViewByCategory: [(date: Date, value: NSDecimalNumber)] = []
     
     
     override func viewDidLoad() {
@@ -26,8 +28,23 @@ class ReportResultsViewController: UIViewController {
         earningsLabel?.text = earnings ?? ""
         outgoingLabel?.text = outgoing ?? ""
         totalLabel?.text = total ?? ""
+        drawChart()
+        
         // Do any additional setup after loading the view.
     }
+    
+    func drawChart(){
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<reportViewByCategory.count {
+            let value = reportViewByCategory[i].value.doubleValue
+            let dataEntry = BarChartDataEntry(x: value, y: Double(i))//(value: values[i].value, xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Units")//(yVals: dataEntries, label: "Units Sold")
+        let chartData = BarChartData(dataSet: chartDataSet)//(xVals: months, dataSet: chartDataSet)
+        chartView.data = chartData    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

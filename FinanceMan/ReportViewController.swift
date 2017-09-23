@@ -18,9 +18,11 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBOutlet weak var byCategoryButton: UIButton!
     @IBAction func reportByCategory(_ sender: UIButton) {
+
         let selectedCategory = model.categories[ctegorySelector.selectedRow(inComponent: 0)]
-        let result = calcTotal(byCategory: selectedCategory)
-        performSegue(withIdentifier: "byCategory", sender: result)
+        //let result = calcTotal(byCategory: selectedCategory)
+        let data = prepareArrayForCalculation(byCategory: selectedCategory)
+        performSegue(withIdentifier: "byCategory", sender: data)
     }
     
     @IBAction func reportOnDate(_ sender: UIButton) {
@@ -54,7 +56,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func calcTotal(byCategory selected: CategoryModel) -> Double {
         var counter: NSDecimalNumber = 0.0
-        for transaction in model.getTransactions() {
+        for transaction in model.transactions {
             if selected.id == transaction.categoryId,
             let checkVolume = transaction.volume {
                 counter = counter.adding(checkVolume)
@@ -65,7 +67,12 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func prepareArrayForCalculation(byCategory selected: CategoryModel) -> [(date: Date, value: NSDecimalNumber)] {
         var resultArray: [(date: Date, value: NSDecimalNumber)] = []
-        
+        for transaction in model.transactions {
+            if let date = transaction.date,
+                let volume = transaction.volume {
+                resultArray.append((date, volume))
+            }
+        }
         return resultArray
     }
     
@@ -73,9 +80,10 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "byCategory",
-            let result = sender as? Double,
+            let result = sender as? [(date: Date, value: NSDecimalNumber)],
             let reportResultViewController = (segue.destination) as? ReportResultsViewController {
-            reportResultViewController.total = "\(result)"
+            reportResultViewController.reportViewByCategory = result
+            //reportResultViewController.total = "\(result)"
         }
     }
 }

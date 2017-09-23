@@ -75,7 +75,7 @@ class TransactionModel: NSObject, NSCoding {
 //    }
     
     func getVolumeDouble() -> Double? {
-        let result = Double(volume!)
+        let result = volume?.doubleValue
         return result
         
     }

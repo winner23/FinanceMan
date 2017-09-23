@@ -47,7 +47,7 @@ class TransactionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.getTransactions().count
+        return model.transactions.count
     }
 
     //Fill rows of tabel
