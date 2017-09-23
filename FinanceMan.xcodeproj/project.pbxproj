@@ -25,6 +25,7 @@
 		8DEFE48E1F6D9772005D4027 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFE48D1F6D9772005D4027 /* TransactionViewController.swift */; };
 		8DEFE4901F6E6422005D4027 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFE48F1F6E6422005D4027 /* TransactionTableViewCell.swift */; };
 		8DEFE4921F6E644A005D4027 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEFE4911F6E644A005D4027 /* CategoryTableViewCell.swift */; };
+		FF6A85A82A85CC60E29C6223 /* Pods_FinanceMan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6E0B36DA1A8B26B33785A22 /* Pods_FinanceMan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,9 @@
 		8DEFE48D1F6D9772005D4027 /* TransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		8DEFE48F1F6E6422005D4027 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		8DEFE4911F6E644A005D4027 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		90483A7D91C8F1332DB238DB /* Pods-FinanceMan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceMan.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceMan/Pods-FinanceMan.release.xcconfig"; sourceTree = "<group>"; };
+		B41A8E25529CE441D93630E3 /* Pods-FinanceMan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceMan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceMan/Pods-FinanceMan.debug.xcconfig"; sourceTree = "<group>"; };
+		D6E0B36DA1A8B26B33785A22 /* Pods_FinanceMan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceMan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF6A85A82A85CC60E29C6223 /* Pods_FinanceMan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,14 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		5595BA2FE2087AC74EA15F81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6E0B36DA1A8B26B33785A22 /* Pods_FinanceMan.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8D8F90DE1F654D76004D81B0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +109,8 @@
 			children = (
 				8DC2B51E1F62FE8200487ECA /* FinanceMan */,
 				8DC2B51D1F62FE8200487ECA /* Products */,
+				DA6D8E9EF44DFDB070836279 /* Pods */,
+				5595BA2FE2087AC74EA15F81 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +150,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		DA6D8E9EF44DFDB070836279 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B41A8E25529CE441D93630E3 /* Pods-FinanceMan.debug.xcconfig */,
+				90483A7D91C8F1332DB238DB /* Pods-FinanceMan.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,9 +166,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DC2B5311F62FE8200487ECA /* Build configuration list for PBXNativeTarget "FinanceMan" */;
 			buildPhases = (
+				C889925FEEDCBCF0D348D1C5 /* [CP] Check Pods Manifest.lock */,
 				8DC2B5181F62FE8200487ECA /* Sources */,
 				8DC2B5191F62FE8200487ECA /* Frameworks */,
 				8DC2B51A1F62FE8200487ECA /* Resources */,
+				2C57C24C680E4A78EC532583 /* [CP] Embed Pods Frameworks */,
+				DE1B239F46B034CBD27B080E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,6 +229,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C57C24C680E4A78EC532583 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FinanceMan/Pods-FinanceMan-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinanceMan/Pods-FinanceMan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C889925FEEDCBCF0D348D1C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FinanceMan-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE1B239F46B034CBD27B080E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinanceMan/Pods-FinanceMan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8DC2B5181F62FE8200487ECA /* Sources */ = {
@@ -345,6 +426,7 @@
 		};
 		8DC2B5321F62FE8200487ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B41A8E25529CE441D93630E3 /* Pods-FinanceMan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2YJRRFA38M;
@@ -358,6 +440,7 @@
 		};
 		8DC2B5331F62FE8200487ECA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90483A7D91C8F1332DB238DB /* Pods-FinanceMan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2YJRRFA38M;

@@ -11,7 +11,6 @@ import UIKit
 class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private let model = CoreModel.coreModel
-    //private var categories: [CategoryModel] = []
     
     @IBOutlet weak var ctegorySelector: UIPickerView!
     @IBOutlet weak var fromDate: UIDatePicker!
@@ -62,6 +61,12 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }
         }
         return counter.doubleValue
+    }
+    
+    func prepareArrayForCalculation(byCategory selected: CategoryModel) -> [(date: Date, value: NSDecimalNumber)] {
+        var resultArray: [(date: Date, value: NSDecimalNumber)] = []
+        
+        return resultArray
     }
     
     // MARK: - Navigation
