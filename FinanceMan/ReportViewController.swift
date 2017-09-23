@@ -64,7 +64,6 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         return counter.doubleValue
     }
     
-    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,6 +73,4 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             reportResultViewController.total = "\(result)"
         }
     }
-    
-
 }

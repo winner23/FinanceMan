@@ -11,7 +11,6 @@ import UIKit
 class TransactionTableViewController: UITableViewController {
 
     private let model = CoreModel.coreModel
-    private var transactions:[TransactionModel] = []
     
     @IBOutlet var transactionTable: UITableView!
     
@@ -29,7 +28,6 @@ class TransactionTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         model.retrievTranactions()
         model.retrievCategories()
-        self.transactions = model.getTransactions()
         transactionTable.reloadData()
     }
 
@@ -39,11 +37,6 @@ class TransactionTableViewController: UITableViewController {
     
     func openReportView(){
         self.performSegue(withIdentifier: "reportView", sender: self)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
