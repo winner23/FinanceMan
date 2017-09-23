@@ -10,18 +10,11 @@ import Foundation
 
 class CategoryModel:NSObject, NSCoding {
     
-    private var id: String = ""
+    var id: String = ""
     private var name: String = ""
     private var descriptionContext: String = ""
     private var type = false //True - income / False - pay
     private var icon: String?
-    
-    
-//    init(name: String) {
-//        self.name = name
-//        self.id = UUID().uuidString
-//        
-//    }
     
     init(categoryName name:String, descriptionCategory descript:String, isIncome type: Bool, icon: String?) {
         self.name = name
@@ -34,19 +27,16 @@ class CategoryModel:NSObject, NSCoding {
     override init() {
         super.init()
     }
+    
     //Load properties from external file
     required init(coder decoder: NSCoder) {
-        
         if let idDecode = decoder.decodeObject(forKey: "id") as? String {
             id = idDecode
             name = decoder.decodeObject(forKey: "name") as? String ?? "noname"
             descriptionContext = decoder.decodeObject(forKey: "descriptionContext") as? String ?? ""
-            
-            let typeStr = decoder.decodeObject(forKey: "type") as? String
-            type = typeStr == "T"
+            type = decoder.decodeBool(forKey: "type")
             icon = decoder.decodeObject(forKey: "icon") as? String
         }
-        
     }
     //Save properties to external file
     func encode(with aCoder: NSCoder) {
@@ -55,8 +45,8 @@ class CategoryModel:NSObject, NSCoding {
         if descriptionContext != "" {
                 aCoder.encode(descriptionContext, forKey: "descriptionContext")
         }
-        let typeStr = type ? "T" : "F"
-        aCoder.encode(typeStr, forKey: "type")
+        //let typeStr = type ? "T" : "F"
+        aCoder.encode(type, forKey: "type")//typeStr, forKey: "type")
         aCoder.encode(icon, forKey: "icon")
     }
     
@@ -65,9 +55,9 @@ class CategoryModel:NSObject, NSCoding {
         return name
     }
     
-    func getId() -> String{
-        return id
-    }
+//    func getId() -> String{
+//        return id
+//    }
     
     func getDescription() -> String {
         return descriptionContext

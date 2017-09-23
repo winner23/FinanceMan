@@ -101,7 +101,7 @@ class CategoryTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let category = model.getListCategories()[indexPath.row].getId()
+        let category = model.getListCategories()[indexPath.row].id
         
         let edit = UITableViewRowAction(style: .normal, title: "Edit") { action, index in
             

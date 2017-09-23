@@ -47,7 +47,7 @@ class CoreModel {
     
     func getCategoryInstance(byId id:String) -> CategoryModel?{
         for category:CategoryModel in categories{
-            if category.getId() == id {
+            if category.id == id {
                 return category
             }
         }
@@ -67,7 +67,7 @@ class CoreModel {
     func getCategoryName(byId id: String) -> String? {
         
         for categoryItem in categories {
-            if categoryItem.getId() == id {
+            if categoryItem.id == id {
                 return categoryItem.getName()
             }
         }
@@ -78,7 +78,7 @@ class CoreModel {
     func getCategoryId(byName name: String) -> String? {
         for categoryItem in categories{
             if categoryItem.getName() == name {
-                return categoryItem.getId()
+                return categoryItem.id
             }
         }
         return nil
@@ -116,7 +116,7 @@ class CoreModel {
     
     private func getIndexCategory(byId id: String) -> UInt? {
         for (index, category) in categories.enumerated() {
-            if category.getId() == id {
+            if category.id == id {
                 return UInt(index)
             }
         }

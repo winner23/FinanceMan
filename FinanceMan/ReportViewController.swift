@@ -17,9 +17,10 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var fromDate: UIDatePicker!
     @IBOutlet weak var toDate: UIDatePicker!
     
+    @IBOutlet weak var byCategoryButton: UIButton!
     @IBAction func reportByCategory(_ sender: UIButton) {
         let selectedCategory = categories[ctegorySelector.selectedRow(inComponent: 0)]
-        let result = calc(byCategory: selectedCategory)
+        let result = calcTotal(byCategory: selectedCategory)
         performSegue(withIdentifier: "byCategory", sender: result)
     }
     
@@ -46,14 +47,17 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         categories = model.getListCategories()
+        if categories.count<1 {
+           byCategoryButton.isEnabled = false
+        }
     }
 
     // MARK: Calculations methods
     
-    func calc(byCategory selected: CategoryModel) -> Double {
+    func calcTotal(byCategory selected: CategoryModel) -> Double {
         var counter: NSDecimalNumber = 0.0
         for transaction in model.getTransactions() {
-            if selected.getId() == transaction.getCategoryId() {
+            if selected.id == transaction.getCategoryId() {
                 counter = counter.adding(transaction.getVolume()!)
             }
         }

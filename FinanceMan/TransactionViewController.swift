@@ -88,7 +88,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
         if segue.identifier == "selectCategory",
         let viewController = segue.destination as? CategoryTableViewController {
             viewController.saveAction = { selectedCategory in
-                self.transaction.setCategory(id: selectedCategory.getId())
+                self.transaction.setCategory(id: selectedCategory.id)
                 self.categoryButton.setTitle(selectedCategory.getName(), for: .normal)
             }
         }

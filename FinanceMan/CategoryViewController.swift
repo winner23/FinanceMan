@@ -29,7 +29,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         model.addCategory(name: name, descrip: descr, type: type, icon: icon)
             
         } else {
-            model.modifyCategory(byId: currentCategory!.getId(), name: name, descriptionText: descr, type: type, icon: icon)
+            model.modifyCategory(byId: currentCategory!.id, name: name, descriptionText: descr, type: type, icon: icon)
         }
         model.saveCategories()
         self.navigationController?.popViewController(animated: true)
