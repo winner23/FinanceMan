@@ -60,7 +60,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
     
     //Matching text to the curency format
-    func valueTextFieldDidChange(_ textField: UITextField) {
+    @objc func valueTextFieldDidChange(_ textField: UITextField) {
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
         }

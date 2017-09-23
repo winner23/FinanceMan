@@ -29,7 +29,7 @@ class CategoryTableViewController: UITableViewController{
         super.viewWillAppear(animated)
     }
     
-    func openNewView(){
+    @objc func openNewView(){
         self.performSegue(withIdentifier: "newCategory", sender: self)
     }
 

@@ -31,11 +31,11 @@ class TransactionTableViewController: UITableViewController {
         transactionTable.reloadData()
     }
 
-    func openNewTransactionView(){
+    @objc func openNewTransactionView(){
         self.performSegue(withIdentifier: "newTransaction", sender: self)
     }
     
-    func openReportView(){
+    @objc func openReportView(){
         self.performSegue(withIdentifier: "reportView", sender: self)
     }
 
