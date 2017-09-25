@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LU9-xq-yNE">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,14 +19,14 @@
                         <viewControllerLayoutGuide type="bottom" id="XTY-6n-leq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RIt-i6-V2Z">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tT2-Ed-6EM">
-                                <rect key="frame" x="1" y="64" width="318" height="504"/>
+                                <rect key="frame" x="1" y="64" width="412" height="672"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="RYT-f5-EPK">
-                                        <rect key="frame" x="0.0" y="0.0" width="318" height="168"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="412" height="224"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTw-tO-WKD" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
@@ -41,7 +41,7 @@
                                                 </connections>
                                             </button>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRz-Yc-Azj">
-                                                <rect key="frame" x="0.0" y="30" width="318" height="138"/>
+                                                <rect key="frame" x="0.0" y="30" width="412" height="194"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="mYE-4m-plN" id="ZWY-58-ejf"/>
                                                     <outlet property="delegate" destination="mYE-4m-plN" id="2wt-Sm-K6F"/>
@@ -55,10 +55,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="7QR-BZ-NWI">
-                                        <rect key="frame" x="0.0" y="168" width="318" height="168"/>
+                                        <rect key="frame" x="0.0" y="224" width="412" height="224"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SF7-hF-Wpi">
-                                                <rect key="frame" x="0.0" y="0.0" width="318" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="412" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xex-t1-Mlr" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
@@ -67,13 +67,13 @@
                                                             <constraint firstAttribute="width" constant="120" id="1nB-SX-MSW"/>
                                                             <constraint firstAttribute="height" constant="30" id="3pO-dR-18E"/>
                                                         </constraints>
-                                                        <state key="normal" title="on Date"/>
+                                                        <state key="normal" title="on Month"/>
                                                         <connections>
                                                             <action selector="reportOnDate:" destination="mYE-4m-plN" eventType="touchUpInside" id="u7p-VN-pbN"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBv-wq-MjC">
-                                                        <rect key="frame" x="120" y="0.0" width="198" height="30"/>
+                                                        <rect key="frame" x="120" y="0.0" width="292" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -82,7 +82,7 @@
                                                 <variation key="heightClass=compact-widthClass=compact" axis="vertical"/>
                                             </stackView>
                                             <datePicker contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="h7l-c1-Kvj">
-                                                <rect key="frame" x="0.0" y="30" width="318" height="138"/>
+                                                <rect key="frame" x="0.0" y="30" width="412" height="194"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="527720727.85363698">
                                                     <!--2017-09-21 21:05:27 +0000-->
                                                 </date>
@@ -96,10 +96,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="eyb-Zb-CZv">
-                                        <rect key="frame" x="0.0" y="336" width="318" height="168"/>
+                                        <rect key="frame" x="0.0" y="448" width="412" height="224"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viC-oc-0Sj">
-                                                <rect key="frame" x="0.0" y="0.0" width="318" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="412" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAx-nN-HlG" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
@@ -114,7 +114,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGc-c4-wrP">
-                                                        <rect key="frame" x="120" y="0.0" width="198" height="30"/>
+                                                        <rect key="frame" x="120" y="0.0" width="292" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -123,7 +123,7 @@
                                                 <variation key="heightClass=compact-widthClass=compact" axis="vertical"/>
                                             </stackView>
                                             <datePicker contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Foh-Mo-hl7">
-                                                <rect key="frame" x="0.0" y="30" width="318" height="138"/>
+                                                <rect key="frame" x="0.0" y="30" width="412" height="194"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="527720716.78853202">
                                                     <!--2017-09-21 21:05:16 +0000-->
                                                 </date>
@@ -175,23 +175,23 @@
                         <viewControllerLayoutGuide type="bottom" id="P8a-Pi-PfU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Puw-61-5kU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CyT-9i-hDQ">
-                                <rect key="frame" x="5" y="64" width="315" height="90"/>
+                                <rect key="frame" x="5" y="64" width="409" height="90"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sdz-HB-WN6">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="409" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earnings:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tu5-k0-8Um">
-                                                <rect key="frame" x="0.0" y="0.0" width="155" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="249" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gep-Vd-2tq">
-                                                <rect key="frame" x="155" y="0.0" width="160" height="30"/>
+                                                <rect key="frame" x="249" y="0.0" width="160" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="OY2-qM-bIg"/>
                                                     <constraint firstAttribute="width" constant="160" id="mq7-ep-twh"/>
@@ -203,16 +203,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="tKe-or-iQX">
-                                        <rect key="frame" x="0.0" y="30" width="315" height="30"/>
+                                        <rect key="frame" x="0.0" y="30" width="409" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outgoings:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFK-Pe-0bL">
-                                                <rect key="frame" x="0.0" y="0.0" width="155" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="249" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JcP-oq-z6j">
-                                                <rect key="frame" x="155" y="0.0" width="160" height="30"/>
+                                                <rect key="frame" x="249" y="0.0" width="160" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="MZC-PC-MxJ"/>
                                                     <constraint firstAttribute="width" constant="160" id="Tng-D8-Y5f"/>
@@ -224,16 +224,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ybZ-FN-43D">
-                                        <rect key="frame" x="0.0" y="60" width="315" height="30"/>
+                                        <rect key="frame" x="0.0" y="60" width="409" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSI-jZ-VMq">
-                                                <rect key="frame" x="0.0" y="0.0" width="155" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="249" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zq4-UX-2aJ">
-                                                <rect key="frame" x="155" y="0.0" width="160" height="30"/>
+                                                <rect key="frame" x="249" y="0.0" width="160" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="HbK-8L-fcv"/>
                                                     <constraint firstAttribute="width" constant="160" id="vzr-Or-hfz"/>
@@ -250,7 +250,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbc-H1-drK" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="162" width="320" height="406"/>
+                                <rect key="frame" x="0.0" y="162" width="414" height="574"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -283,11 +283,11 @@
             <objects>
                 <tableViewController id="dhW-Fd-pXX" customClass="TransactionTableViewController" customModule="FinanceMan" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Ls-rc-iSp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="At2-Iz-xf5">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
@@ -295,14 +295,14 @@
                         </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="transactionCell" id="dt2-Kr-h6G" customClass="TransactionTableViewCell" customModule="FinanceMan" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dt2-Kr-h6G" id="ISR-rp-0rX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category for transaction instance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="sRP-r9-ERh" userLabel="name">
-                                            <rect key="frame" x="40" y="3" width="190" height="21"/>
+                                            <rect key="frame" x="40" y="3" width="284" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="ah3-cw-BKK"/>
                                             </constraints>
@@ -311,7 +311,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desciption for transaction instance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Oyd-3p-7Fl" userLabel="descr">
-                                            <rect key="frame" x="49" y="21" width="192" height="21"/>
+                                            <rect key="frame" x="49" y="21" width="286" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="5Zx-ML-uKr"/>
                                             </constraints>
@@ -320,7 +320,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.55" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="hAB-8P-TSX">
-                                            <rect key="frame" x="228" y="3" width="84" height="21"/>
+                                            <rect key="frame" x="322" y="3" width="84" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="84" id="IG7-JG-gHa"/>
                                                 <constraint firstAttribute="height" constant="21" id="yhw-dy-R6J"/>
@@ -330,7 +330,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05.08.2077" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vox-xx-3Ry">
-                                            <rect key="frame" x="243" y="23" width="74" height="21"/>
+                                            <rect key="frame" x="337" y="23" width="74" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="74" id="oTc-IL-MHk"/>
                                                 <constraint firstAttribute="height" constant="21" id="pr0-Gb-B1S"/>
@@ -411,25 +411,25 @@
             <objects>
                 <tableViewController id="Z0T-0Y-dDd" customClass="CategoryTableViewController" customModule="FinanceMan" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="JWl-Jj-sJV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="categoryCell" id="1kA-Mx-r4s" customClass="CategoryTableViewCell" customModule="FinanceMan" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1kA-Mx-r4s" id="Ibm-ls-uw3">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="381" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIb-JY-f7Q">
-                                            <rect key="frame" x="42" y="5" width="243" height="21"/>
+                                            <rect key="frame" x="42" y="5" width="337" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description of category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lL-hT-dn5">
-                                            <rect key="frame" x="46" y="23" width="233" height="21"/>
+                                            <rect key="frame" x="46" y="23" width="327" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -490,11 +490,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Ez5-4w-rST"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QwC-lf-VlL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mEH-h0-XiQ">
-                                <rect key="frame" x="16" y="81" width="288" height="30"/>
+                                <rect key="frame" x="20" y="81" width="374" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="upP-TU-mZ2"/>
                                 </constraints>
@@ -503,7 +503,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gmu-0k-U4H">
-                                <rect key="frame" x="16" y="181" width="288" height="322"/>
+                                <rect key="frame" x="20" y="181" width="374" height="490"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NTZ-hB-Yxu">
                                     <size key="itemSize" width="64" height="64"/>
@@ -545,7 +545,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9f-RX-xRj" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
-                                <rect key="frame" x="16" y="530" width="147" height="30"/>
+                                <rect key="frame" x="20" y="698" width="233" height="30"/>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="MEK-VV-2BU"/>
@@ -556,10 +556,10 @@
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hDR-Jz-rmq">
-                                <rect key="frame" x="255" y="529" width="51" height="31"/>
+                                <rect key="frame" x="349" y="697" width="51" height="31"/>
                             </switch>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Short description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0YI-GJ-ggw">
-                                <rect key="frame" x="16" y="129" width="288" height="30"/>
+                                <rect key="frame" x="20" y="129" width="374" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="lY8-qm-Wfe"/>
                                 </constraints>
@@ -568,7 +568,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ggi-bF-fdn">
-                                <rect key="frame" x="65" y="167" width="190" height="72"/>
+                                <rect key="frame" x="112" y="167" width="190" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="0d4-yu-g6b"/>
                                 </constraints>
@@ -577,7 +577,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Income:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5c1-ZM-Ar8">
-                                <rect key="frame" x="186" y="534" width="61" height="21"/>
+                                <rect key="frame" x="276" y="702" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -627,11 +627,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Eo3-aB-Xmi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Vw7-z8-KZU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="env-9Y-oOM">
-                                <rect key="frame" x="24" y="114" width="272" height="30"/>
+                                <rect key="frame" x="28" y="114" width="358" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Dgi-hU-XOI"/>
                                 </constraints>
@@ -643,13 +643,13 @@
                                 </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="6Ad-RO-jaZ">
-                                <rect key="frame" x="18" y="153" width="284" height="280"/>
+                                <rect key="frame" x="22" y="153" width="370" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gh6-OB-0aq" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
-                                <rect key="frame" x="16" y="72" width="288" height="33"/>
+                                <rect key="frame" x="20" y="72" width="374" height="33"/>
                                 <color key="backgroundColor" white="0.83951822916666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="iTg-df-UhL"/>
@@ -661,7 +661,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzZ-R8-gg2">
-                                <rect key="frame" x="16" y="530" width="288" height="30"/>
+                                <rect key="frame" x="20" y="698" width="374" height="30"/>
                                 <color key="backgroundColor" red="0.87052112817764282" green="0.87062597274780273" blue="0.87048560380935669" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YwE-wl-rgN"/>
@@ -672,7 +672,7 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5XB-eh-YM4">
-                                <rect key="frame" x="19" y="429" width="282" height="95"/>
+                                <rect key="frame" x="23" y="597" width="368" height="95"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="30y-Em-9Lh"/>
                                 </constraints>
@@ -726,7 +726,7 @@
             <objects>
                 <navigationController id="LU9-xq-yNE" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mp5-9y-nSb">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="LU9-xq-yNE" id="qmz-9o-D0z"/>
