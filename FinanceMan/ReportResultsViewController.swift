@@ -35,10 +35,12 @@ class ReportResultsViewController: UIViewController {
     
     func drawChart(){
         var dataEntries: [BarChartDataEntry] = []
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         for i in 0..<reportViewByCategory.count {
             let value = reportViewByCategory[i].value.doubleValue
-            let dataEntry = BarChartDataEntry(x: value, y: Double(i))//(value: values[i].value, xIndex: i)
+            let dataEntry = BarChartDataEntry(x: Double(i), y: value)//(value: values[i].value, xIndex: i)
             dataEntries.append(dataEntry)
         }
         

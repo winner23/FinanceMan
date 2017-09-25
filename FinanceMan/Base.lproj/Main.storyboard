@@ -22,89 +22,134 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Foh-Mo-hl7">
-                                <rect key="frame" x="0.0" y="449" width="320" height="120"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="527720716.78853202">
-                                    <!--2017-09-21 21:05:16 +0000-->
-                                </date>
-                            </datePicker>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="h7l-c1-Kvj">
-                                <rect key="frame" x="0.0" y="308" width="320" height="120"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="527720727.85363698">
-                                    <!--2017-09-21 21:05:27 +0000-->
-                                </date>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBv-wq-MjC">
-                                <rect key="frame" x="139" y="279" width="44" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGc-c4-wrP">
-                                <rect key="frame" x="139" y="420" width="24" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRz-Yc-Azj">
-                                <rect key="frame" x="1" y="49" width="320" height="216"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="mYE-4m-plN" id="ZWY-58-ejf"/>
-                                    <outlet property="delegate" destination="mYE-4m-plN" id="2wt-Sm-K6F"/>
-                                </connections>
-                            </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xex-t1-Mlr" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
-                                <rect key="frame" x="8" y="279" width="90" height="30"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tT2-Ed-6EM">
+                                <rect key="frame" x="1" y="64" width="318" height="504"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="RYT-f5-EPK">
+                                        <rect key="frame" x="0.0" y="0.0" width="318" height="168"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTw-tO-WKD" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="K3b-Zg-qPJ"/>
+                                                    <constraint firstAttribute="height" constant="30" id="d5B-Jl-LnJ"/>
+                                                </constraints>
+                                                <state key="normal" title="by Category"/>
+                                                <connections>
+                                                    <action selector="reportByCategory:" destination="mYE-4m-plN" eventType="touchUpInside" id="tNb-1x-mbl"/>
+                                                </connections>
+                                            </button>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRz-Yc-Azj">
+                                                <rect key="frame" x="0.0" y="30" width="318" height="138"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="mYE-4m-plN" id="ZWY-58-ejf"/>
+                                                    <outlet property="delegate" destination="mYE-4m-plN" id="2wt-Sm-K6F"/>
+                                                </connections>
+                                            </pickerView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="SRz-Yc-Azj" firstAttribute="leading" secondItem="RYT-f5-EPK" secondAttribute="leading" id="4zm-cF-Eav"/>
+                                            <constraint firstItem="lTw-tO-WKD" firstAttribute="leading" secondItem="RYT-f5-EPK" secondAttribute="leading" id="Wgo-gY-D8Y"/>
+                                            <constraint firstAttribute="trailing" secondItem="SRz-Yc-Azj" secondAttribute="trailing" id="bCY-MO-DTC"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="7QR-BZ-NWI">
+                                        <rect key="frame" x="0.0" y="168" width="318" height="168"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SF7-hF-Wpi">
+                                                <rect key="frame" x="0.0" y="0.0" width="318" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xex-t1-Mlr" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="120" id="1nB-SX-MSW"/>
+                                                            <constraint firstAttribute="height" constant="30" id="3pO-dR-18E"/>
+                                                        </constraints>
+                                                        <state key="normal" title="on Date"/>
+                                                        <connections>
+                                                            <action selector="reportOnDate:" destination="mYE-4m-plN" eventType="touchUpInside" id="u7p-VN-pbN"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBv-wq-MjC">
+                                                        <rect key="frame" x="120" y="0.0" width="198" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=compact-widthClass=compact" axis="vertical"/>
+                                            </stackView>
+                                            <datePicker contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="h7l-c1-Kvj">
+                                                <rect key="frame" x="0.0" y="30" width="318" height="138"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="527720727.85363698">
+                                                    <!--2017-09-21 21:05:27 +0000-->
+                                                </date>
+                                            </datePicker>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="SF7-hF-Wpi" secondAttribute="trailing" id="LsF-OZ-Y0F"/>
+                                            <constraint firstItem="h7l-c1-Kvj" firstAttribute="leading" secondItem="7QR-BZ-NWI" secondAttribute="leading" id="dPW-Y9-SoL"/>
+                                            <constraint firstAttribute="trailing" secondItem="h7l-c1-Kvj" secondAttribute="trailing" id="muZ-Ff-ASh"/>
+                                            <constraint firstItem="SF7-hF-Wpi" firstAttribute="leading" secondItem="7QR-BZ-NWI" secondAttribute="leading" id="qAA-Mx-GHP"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="eyb-Zb-CZv">
+                                        <rect key="frame" x="0.0" y="336" width="318" height="168"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viC-oc-0Sj">
+                                                <rect key="frame" x="0.0" y="0.0" width="318" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAx-nN-HlG" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="ACe-Bn-DWT"/>
+                                                            <constraint firstAttribute="width" constant="120" id="Uze-6I-WpF"/>
+                                                        </constraints>
+                                                        <state key="normal" title="between"/>
+                                                        <connections>
+                                                            <action selector="reportBetween:" destination="mYE-4m-plN" eventType="touchUpInside" id="If2-87-yW9"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGc-c4-wrP">
+                                                        <rect key="frame" x="120" y="0.0" width="198" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <variation key="heightClass=compact-widthClass=compact" axis="vertical"/>
+                                            </stackView>
+                                            <datePicker contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Foh-Mo-hl7">
+                                                <rect key="frame" x="0.0" y="30" width="318" height="138"/>
+                                                <date key="date" timeIntervalSinceReferenceDate="527720716.78853202">
+                                                    <!--2017-09-21 21:05:16 +0000-->
+                                                </date>
+                                            </datePicker>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Foh-Mo-hl7" firstAttribute="leading" secondItem="eyb-Zb-CZv" secondAttribute="leading" id="8dM-i2-jsj"/>
+                                            <constraint firstAttribute="trailing" secondItem="Foh-Mo-hl7" secondAttribute="trailing" id="JB6-ft-gBC"/>
+                                            <constraint firstAttribute="trailing" secondItem="viC-oc-0Sj" secondAttribute="trailing" id="diZ-uO-xc9"/>
+                                            <constraint firstItem="viC-oc-0Sj" firstAttribute="leading" secondItem="eyb-Zb-CZv" secondAttribute="leading" id="q1y-pj-1de"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="SZC-7y-0CS"/>
-                                    <constraint firstAttribute="height" constant="30" id="qa2-aN-gPe"/>
+                                    <constraint firstItem="7QR-BZ-NWI" firstAttribute="leading" secondItem="tT2-Ed-6EM" secondAttribute="leading" id="QUJ-e1-jJ8"/>
+                                    <constraint firstAttribute="trailing" secondItem="7QR-BZ-NWI" secondAttribute="trailing" id="dTQ-tD-YRT"/>
                                 </constraints>
-                                <state key="normal" title="on Date"/>
-                                <connections>
-                                    <action selector="reportOnDate:" destination="mYE-4m-plN" eventType="touchUpInside" id="u7p-VN-pbN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTw-tO-WKD" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
-                                <rect key="frame" x="8" y="72" width="90" height="30"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Xl3-6Z-7PV"/>
-                                    <constraint firstAttribute="width" constant="90" id="reV-PY-FFW"/>
-                                </constraints>
-                                <state key="normal" title="by Category"/>
-                                <connections>
-                                    <action selector="reportByCategory:" destination="mYE-4m-plN" eventType="touchUpInside" id="tNb-1x-mbl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAx-nN-HlG" customClass="RCButton" customModule="FinanceMan" customModuleProvider="target">
-                                <rect key="frame" x="8" y="415" width="90" height="30"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="87m-Di-DCY"/>
-                                    <constraint firstAttribute="width" constant="90" id="EQS-1Y-PbL"/>
-                                </constraints>
-                                <state key="normal" title="between"/>
-                                <connections>
-                                    <action selector="reportBetween:" destination="mYE-4m-plN" eventType="touchUpInside" id="If2-87-yW9"/>
-                                </connections>
-                            </button>
+                                <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lTw-tO-WKD" firstAttribute="top" secondItem="bL9-BQ-Ujt" secondAttribute="bottom" constant="8" id="10a-9V-L6b"/>
-                            <constraint firstItem="SRz-Yc-Azj" firstAttribute="centerX" secondItem="IBv-wq-MjC" secondAttribute="centerX" id="BTQ-Ft-RRs"/>
-                            <constraint firstItem="lTw-tO-WKD" firstAttribute="leading" secondItem="RIt-i6-V2Z" secondAttribute="leading" constant="8" id="SrU-6n-P19"/>
-                            <constraint firstItem="ZAx-nN-HlG" firstAttribute="leading" secondItem="RIt-i6-V2Z" secondAttribute="leading" constant="8" id="Vr1-8y-nLt"/>
-                            <constraint firstItem="xex-t1-Mlr" firstAttribute="top" secondItem="IBv-wq-MjC" secondAttribute="top" id="fsM-Ja-dek"/>
-                            <constraint firstItem="xex-t1-Mlr" firstAttribute="leading" secondItem="RIt-i6-V2Z" secondAttribute="leading" constant="8" id="pfs-5N-2GW"/>
-                            <constraint firstItem="ZAx-nN-HlG" firstAttribute="top" secondItem="xex-t1-Mlr" secondAttribute="bottom" constant="106" id="qiG-HN-fML"/>
-                            <constraint firstItem="IBv-wq-MjC" firstAttribute="leading" secondItem="xex-t1-Mlr" secondAttribute="trailing" constant="41" id="rTp-bb-SZ3"/>
-                            <constraint firstItem="xex-t1-Mlr" firstAttribute="top" secondItem="RIt-i6-V2Z" secondAttribute="top" constant="279" id="sOZ-aq-OQP"/>
-                            <constraint firstItem="xex-t1-Mlr" firstAttribute="top" secondItem="SRz-Yc-Azj" secondAttribute="bottom" constant="14" id="whF-PN-0fr"/>
+                            <constraint firstAttribute="trailing" secondItem="tT2-Ed-6EM" secondAttribute="trailing" constant="1" id="Fy1-U6-2xs"/>
+                            <constraint firstItem="tT2-Ed-6EM" firstAttribute="leading" secondItem="RIt-i6-V2Z" secondAttribute="leading" constant="1" id="Ldd-Lu-p1t"/>
+                            <constraint firstItem="tT2-Ed-6EM" firstAttribute="top" secondItem="bL9-BQ-Ujt" secondAttribute="bottom" id="cAA-vr-rfK"/>
+                            <constraint firstAttribute="bottom" secondItem="tT2-Ed-6EM" secondAttribute="bottom" id="k4F-cP-6hu"/>
                         </constraints>
                     </view>
                     <connections>
@@ -119,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6GD-BO-J2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="132"/>
+            <point key="canvasLocation" x="279.71014492753625" y="131.25"/>
         </scene>
         <!--Report Results View Controller-->
         <scene sceneID="dh0-R6-Hbv">
@@ -699,6 +744,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="X6V-f0-uUO"/>
         <segue reference="m2R-QF-hLE"/>
-        <segue reference="vQj-9P-Acr"/>
+        <segue reference="N3y-nN-8wI"/>
     </inferredMetricsTieBreakers>
 </document>

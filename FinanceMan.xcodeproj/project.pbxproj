@@ -129,9 +129,9 @@
 		8DC2B51E1F62FE8200487ECA /* FinanceMan */ = {
 			isa = PBXGroup;
 			children = (
-				3FF5211A1F6BAC2200658402 /* Controllers */,
 				8D8F90DE1F654D76004D81B0 /* Models */,
 				8DC2B5341F62FF1700487ECA /* Views */,
+				3FF5211A1F6BAC2200658402 /* Controllers */,
 				3F387D2A1F696892005FFA13 /* SupportFiles */,
 			);
 			path = FinanceMan;

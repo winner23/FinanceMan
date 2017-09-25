@@ -68,12 +68,21 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func prepareArrayForCalculation(byCategory selected: CategoryModel) -> [(date: Date, value: NSDecimalNumber)] {
         var resultArray: [(date: Date, value: NSDecimalNumber)] = []
         for transaction in model.transactions {
-            if let date = transaction.date,
+            let category = model.getCategoryName(byId: transaction.categoryId)
+            if category == selected.name,
+                let date = transaction.date,
                 let volume = transaction.volume {
                 resultArray.append((date, volume))
             }
         }
         return resultArray
+    }
+    
+    func prepareArrayForCalculation(byDate selected: Date) -> [(categoryName: String, value: NSDecimalNumber)] {
+        var result: [(categoryName: String, value: NSDecimalNumber)] = []
+        
+        
+        return result
     }
     
     // MARK: - Navigation
