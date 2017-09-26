@@ -27,7 +27,13 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
     @IBAction func saveTransaction(_ sender: UIButton) {
         let value = valueTransaction.text?.replacingOccurrences(of: " ", with: "") ?? "0"
         let descripTran = descriptionTransaction.text ?? ""
-        let date = dateTransaction.date
+
+        // Remove time from Date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let selectedDate = dateFormatter.string(from: dateTransaction.date)
+        let date = dateFormatter.date(from: selectedDate)!
+        
         let category = categoryButton.currentTitle ?? "No category"
         if let categoryId = model.getCategoryId(byName: category){
             if currentTransactionIndex != nil && currentTransaction != nil {
