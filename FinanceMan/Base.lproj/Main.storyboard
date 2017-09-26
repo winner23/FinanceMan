@@ -249,7 +249,7 @@
                                     <constraint firstAttribute="height" constant="90" id="PJO-bH-zx7"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbc-H1-drK" customClass="BarChartView" customModule="Charts">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbc-H1-drK">
                                 <rect key="frame" x="0.0" y="162" width="320" height="406"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -269,6 +269,7 @@
                     </view>
                     <connections>
                         <outlet property="chartView" destination="hbc-H1-drK" id="eSX-Yr-Az0"/>
+                        <outlet property="containerView" destination="hbc-H1-drK" id="PRw-W5-QHQ"/>
                         <outlet property="earningsLabel" destination="Gep-Vd-2tq" id="Kdh-FA-1Wh"/>
                         <outlet property="outgoingLabel" destination="JcP-oq-z6j" id="Mie-kY-0Be"/>
                         <outlet property="totalLabel" destination="zq4-UX-2aJ" id="3hU-Ll-d0X"/>
@@ -298,7 +299,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dt2-Kr-h6G" id="ISR-rp-0rX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category for transaction instance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="sRP-r9-ERh" userLabel="name">
@@ -419,7 +420,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1kA-Mx-r4s" id="Ibm-ls-uw3">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIb-JY-f7Q">
