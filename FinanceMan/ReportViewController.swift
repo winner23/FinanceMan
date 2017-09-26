@@ -57,16 +57,16 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "byCategory",
-            let result = sender as? [(date: Date, value: NSDecimalNumber)],
-            let reportResultViewController = (segue.destination) as? ReportResultsViewController {
-                reportResultViewController.reportViewByCategory = result
+        if segue.identifier == "byCategory"{
+            let result = sender as? [(date: Date, value: Double)]
+            let reportResultViewController = (segue.destination) as? ReportResultsViewController
+            reportResultViewController?.reportViewByCategory = result
             
         }
         if segue.identifier == "onDate",
             let result = sender as? [(categoryName: String, value: Double)],
             let reportResultViewController = (segue.destination) as? ReportResultsViewController {
                 reportResultViewController.reportViewByDate = result
-        
+        }
     }
 }

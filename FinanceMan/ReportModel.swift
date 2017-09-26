@@ -13,14 +13,14 @@ class ReportModel {
     let reportData: [(categoryId: String, date: Date, value: Double)]
     
     init(){
-            var result: [(categoryId: String, date: Date, value: Double)] = []
-            for transaction in model.transactions {
-                let category = transaction.categoryId
-                let date = transaction.date!
-                let value = transaction.volume?.doubleValue
-                result.append((categoryId: category, date: date, value: value!))
-            }
-            reportData = result
+        var result: [(categoryId: String, date: Date, value: Double)] = []
+        for transaction in model.transactions {
+            let category = transaction.categoryId
+            let date = transaction.date!
+            let value = transaction.volume?.doubleValue
+            result.append((categoryId: category, date: date, value: value!))
+        }
+        reportData = result
     }
     
     func prepareArrayForCalculation(byCategory selected: CategoryModel) -> [(date: Date, value: Double)] {
@@ -29,7 +29,7 @@ class ReportModel {
         for instance in filteredByCategory {
                 resultArray.append((instance.date, instance.value))
             }
-        return resultArray.filter( { $0.date < Calendar.current.date(byAdding: .month, value: -1, to: $0.date)! } )
+        return resultArray//.filter( { $0.date < Calendar.current.date(byAdding: .month, value: -1, to: $0.date)! } )
     }
     
     func prepareArrayForCalculation(byDate selected: Date) -> [(categoryName: String, value: Double)] {
