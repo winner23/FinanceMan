@@ -40,4 +40,13 @@ class ReportModel {
         }
         return result
     }
+    
+    func prepareArrayForCalculation(between begin: Date, and end: Date) -> [(categoryName: String, value: Double)] {
+        var result: [(categoryName: String, value: Double)] = []
+        let filtredByDate = reportData.filter({ ($0.date > begin) && ($0.date < end) })
+        for instance in filtredByDate {
+            result.append((model.getCategoryName(byId: instance.categoryId)!, instance.value))
+        }
+        return result
+    }
 }

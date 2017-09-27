@@ -69,8 +69,11 @@ class ReportResultsViewController: UIViewController {
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Dates")//(yVals: dataEntries, label: "Units Sold")
-        let chartData = BarChartData(dataSet: chartDataSet)//(xVals: months, dataSet: chartDataSet)
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "Dates")
+        
+        
+        
+        let chartData = BarChartData(dataSet: chartDataSet) //(xVals: months, dataSet: chartDataSet)
         if barChartView != nil {
             barChartView!.data = chartData
         }

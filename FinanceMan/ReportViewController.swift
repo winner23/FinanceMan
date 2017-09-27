@@ -38,6 +38,14 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     @IBAction func reportBetween(_ sender: UIButton) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let selectedDateBegin = dateFormatter.string(from: fromDate.date)
+        let dateBegin = dateFormatter.date(from: selectedDateBegin)!
+        let selectedDateEnd = dateFormatter.string(from: toDate.date)
+        let dateEnd = dateFormatter.date(from: selectedDateEnd)!
+        let data = report.prepareArrayForCalculation(between: dateBegin, and: dateEnd)
+        performSegue(withIdentifier: "onDate", sender: data)
         
     }
     
@@ -75,5 +83,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let reportResultViewController = (segue.destination) as? ReportResultsViewController {
                 reportResultViewController.reportViewByDate = result
         }
+        
+        
     }
 }

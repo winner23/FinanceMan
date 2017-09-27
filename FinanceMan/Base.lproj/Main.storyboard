@@ -159,7 +159,6 @@
                         <outlet property="toDate" destination="Foh-Mo-hl7" id="qlC-cT-gM0"/>
                         <segue destination="8lX-dm-sUt" kind="show" identifier="byCategory" id="vQj-9P-Acr"/>
                         <segue destination="8lX-dm-sUt" kind="show" identifier="onDate" id="N3y-nN-8wI"/>
-                        <segue destination="8lX-dm-sUt" kind="show" identifier="between" id="YOp-xn-UXC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6GD-BO-J2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
