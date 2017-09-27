@@ -8,25 +8,28 @@
 
 import Foundation
 
+enum CategoryType{
+    case income
+    case pay
+}
+
 class CategoryModel:NSObject, NSCoding {
+    
+    
     
     var id: String = ""
     var name: String = ""
     var descriptionContext: String = ""
-    var type = false //True - income / False - pay
+    var type: CategoryType
     var icon: String?
     
     //init for temporary instance
-    init(categoryName name:String, descriptionCategory descript:String, isIncome type: Bool, icon: String?) {
+    init(categoryName name:String, descriptionCategory descript:String, isIncome type: CategoryType, icon: String?) {
         self.name = name
         self.id = UUID().uuidString
         self.descriptionContext = descript
         self.type = type
         self.icon = icon
-    }
-    //Default init
-    override init() {
-        super.init()
     }
     
     //Load properties from external file
@@ -35,9 +38,9 @@ class CategoryModel:NSObject, NSCoding {
             id = idDecode
             name = decoder.decodeObject(forKey: "name") as? String ?? "noname"
             descriptionContext = decoder.decodeObject(forKey: "descriptionContext") as? String ?? ""
-            type = decoder.decodeBool(forKey: "type")
             icon = decoder.decodeObject(forKey: "icon") as? String
         }
+        type = decoder.decodeBool(forKey: "type") ? .income : .pay
     }
     
     //Save properties to external file
@@ -47,8 +50,8 @@ class CategoryModel:NSObject, NSCoding {
         if descriptionContext != "" {
                 aCoder.encode(descriptionContext, forKey: "descriptionContext")
         }
-        //let typeStr = type ? "T" : "F"
-        aCoder.encode(type, forKey: "type")//typeStr, forKey: "type")
+        let typeCover:Bool = (type == .income)
+        aCoder.encode(typeCover, forKey: "type")
         aCoder.encode(icon, forKey: "icon")
     }
 }

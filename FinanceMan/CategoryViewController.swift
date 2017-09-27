@@ -23,7 +23,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let name = nameCategory.text ?? "NoName"
         let descr = descriptionCategory.text ?? "No Description"
-        let type = typeCategory.isOn
+        let type: CategoryType = typeCategory.isOn ? .income : .pay
         let icon = iconCategory.text
         if currentCategory == nil {
         model.addCategory(name: name, descrip: descr, type: type, icon: icon)
@@ -40,7 +40,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         if currentCategory != nil {
             nameCategory.text = currentCategory?.name
             descriptionCategory.text = currentCategory?.descriptionContext
-            typeCategory.isOn = (currentCategory?.type)!
+            typeCategory.isOn = currentCategory?.type == .income
             iconCategory.text = currentCategory?.icon
         }
         super.viewDidLoad()

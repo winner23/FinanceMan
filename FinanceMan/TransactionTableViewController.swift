@@ -66,7 +66,7 @@ class TransactionTableViewController: UITableViewController {
         cell.name.text = transactionCategoryInstance?.name
         cell.descript.text = transactionInstance.descriptionTransaction
         cell.value.text = valueTransaction
-        if (transactionCategoryInstance?.type)! {
+        if transactionCategoryInstance?.type == CategoryType.income {
             cell.type.text = "⬇︎"
             cell.type.textColor = UIColor(red: 0, green: 255, blue: 0)
         } else {

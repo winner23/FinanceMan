@@ -16,15 +16,15 @@ class TransactionModel: NSObject, NSCoding {
     var date: Date?
     let dateFormatter = DateFormatter()
     
+    override init() {
+        super.init()
+    }
+    
     init(categoryID: String, volume: String, descriptionText: String, date: Date) {
         self.categoryId = categoryID
         self.volume = NSDecimalNumber(string: volume)
         self.date = date
         self.descriptionTransaction = descriptionText
-    }
-    
-    override init(){
-        super.init()
     }
     
     //NSCoder import
@@ -51,37 +51,13 @@ class TransactionModel: NSObject, NSCoding {
         aCoder.encode(descriptionTransaction, forKey: "descripTransac")
     }
     
-//    func getCategoryId() -> String {
-//        return categoryId
-//    }
-    
-//    func setCategory(id: String) {
-//        categoryId = id
-//    }
-    
-//    func getDescription() -> String {
-//        return descriptionTransaction ?? ""
-//    }
-//
-//    func setDescription(descriptionText: String) {
-//        descriptionTransaction = descriptionText
-//    }
-//
-//    func getDate() -> Date? {
-//        return date
-//    }
-//    func getVolume() -> NSDecimalNumber? {
-//        return volume
-//    }
-    
     func getVolumeDouble() -> Double? {
         let result = volume?.doubleValue
         return result
-        
     }
+    
     func getVolumeString() -> String {
         let result = String(describing: volume!)
         return result
     }
-    
 }

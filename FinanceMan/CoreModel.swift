@@ -35,7 +35,7 @@ class CoreModel {
 
     //MARK: Categories
     // ----========== Categories operations ==========----
-    func addCategory(name: String, descrip: String, type: Bool, icon: String?){
+    func addCategory(name: String, descrip: String, type: CategoryType, icon: String?){
         let newCategory = CategoryModel(categoryName: name, descriptionCategory: descrip, isIncome: type, icon: icon)
         categories.append(newCategory)
     }
@@ -82,7 +82,7 @@ class CoreModel {
 //        return categories
 //    }
     
-    func modifyCategory(byId id: String, name: String, descriptionText: String, type: Bool, icon: String?) {
+    func modifyCategory(byId id: String, name: String, descriptionText: String, type: CategoryType, icon: String?) {
         let index = getIndexCategory(byId: id)
         categories[Int(index!)].name = name
         categories[Int(index!)].descriptionContext = descriptionText

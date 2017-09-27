@@ -61,7 +61,7 @@ class CategoryTableViewController: UITableViewController{
         cell.categoryName.text = categoryItem.name
         cell.categoryDescription.text = categoryItem.descriptionContext
         cell.icon.text = categoryItem.icon
-        if categoryItem.type {
+        if categoryItem.type == .income {
             cell.categoryName.textColor = UIColor.green
         } else {
             cell.categoryName.textColor = UIColor.blue
