@@ -14,7 +14,6 @@ class TransactionModel: NSObject, NSCoding {
     var volume: NSDecimalNumber?
     var descriptionTransaction: String?
     var date: Date?
-    let dateFormatter = DateFormatter()
     
     override init() {
         super.init()

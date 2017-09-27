@@ -48,18 +48,8 @@ class CoreModel {
         }
         return nil
     }
-    
-    func getCategoryInstance(byName name:String) -> CategoryModel?{
-        for category:CategoryModel in categories{
-            if category.name == name {
-                return category
-            }
-        }
-        return nil
-    }
 
     func getCategoryName(byId id: String) -> String? {
-        
         for categoryItem in categories {
             if categoryItem.id == id {
                 return categoryItem.name
@@ -67,7 +57,6 @@ class CoreModel {
         }
         return nil
     }
-    
     
     func getCategoryId(byName name: String) -> String? {
         for categoryItem in categories{
@@ -119,20 +108,16 @@ class CoreModel {
     
     //NSCoding for Category List
     func saveCategories(){
-        
-        if pathCategories != nil {
-            let success = NSKeyedArchiver.archiveRootObject(categories, toFile: pathCategories!)
-            if !success {
-                print("Unable to save array to \(pathCategories!)")
-            }
+        guard let pathCategories = pathCategories else { return }
+        let success = NSKeyedArchiver.archiveRootObject(categories, toFile: pathCategories)
+        if !success {
+            print("Unable to save array to \(pathCategories)")
         }
-        
     }
     
     func retrievCategories(){
-        if pathCategories != nil,
-            let categoryList = NSKeyedUnarchiver.unarchiveObject(withFile: pathCategories!) as? [CategoryModel]
-        {
+        guard let pathCategories = pathCategories else { return }
+        if let categoryList = NSKeyedUnarchiver.unarchiveObject(withFile: pathCategories) as? [CategoryModel] {
             categories = categoryList
         }
     }
@@ -165,10 +150,6 @@ class CoreModel {
         }
     }
     
-//    func getTransactions() -> [TransactionModel] {
-//        return transactions
-//    }
-    
     func getTransactions(categoryName: String) -> [TransactionModel] {
         var res: [TransactionModel] = []
         for transactionInstance:TransactionModel in transactions {
@@ -181,31 +162,18 @@ class CoreModel {
     
     //NSCoding for Transaction List
     func saveTransactions(){
-        
-        if pathTransactions != nil {
-            let success = NSKeyedArchiver.archiveRootObject(transactions, toFile: pathTransactions!)
-            if !success {
-                print("Unable to save array to \(pathTransactions!)")
-            } else {
-                print("File not found")
-            }
+        guard let pathTransactions = pathTransactions else { return }
+        let success = NSKeyedArchiver.archiveRootObject(transactions, toFile: pathTransactions)
+        if !success {
+            print("Unable to save array to \(pathTransactions)")
         }
     }
     
     func retrievTranactions(){
-        
-        if pathTransactions != nil,
-            let transactionList = NSKeyedUnarchiver.unarchiveObject(withFile: pathTransactions!) as? [TransactionModel]
+        guard let pathTransactions = pathTransactions else { return }
+        if let transactionList = NSKeyedUnarchiver.unarchiveObject(withFile: pathTransactions) as? [TransactionModel]
             {
             transactions = transactionList
-        } else {
-            print("File not found")
         }
-        
     }
-    
- 
-    
-    
-    
 }
