@@ -25,6 +25,10 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         let descr = descriptionCategory.text ?? "No Description"
         let type: CategoryType = typeCategory.isOn ? .income : .pay
         let icon = iconCategory.text
+        if (model.getCategoryId(byName: name) != nil) {
+            showWarningMsg("Category name exists!")
+            return
+        }
         if currentCategory == nil {
         model.addCategory(name: name, descrip: descr, type: type, icon: icon)
             
@@ -34,7 +38,12 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         model.saveCategories()
         self.navigationController?.popViewController(animated: true)
     }
-  
+    
+    private func showWarningMsg(_ textMsg: String) {
+        let alert = UIAlertController(title: "Warning!", message: textMsg, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 
     override func viewDidLoad() {
         if currentCategory != nil {

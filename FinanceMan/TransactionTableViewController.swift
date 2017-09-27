@@ -25,7 +25,7 @@ class TransactionTableViewController: UITableViewController {
         let menuItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.bookmarks, target: self, action: #selector(self.openReportView))
         navigationItem.rightBarButtonItem = doneItem
         navigationItem.leftBarButtonItem = menuItem
-        super.viewWillAppear(animated)
+        
         model.retrievTranactions()
         model.retrievCategories()
         transactionTable.reloadData()

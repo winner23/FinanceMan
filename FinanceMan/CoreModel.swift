@@ -85,6 +85,7 @@ class CoreModel {
     func deleteCategory(byId id: String) {
         if let index = getIndexCategory(byId: id) {
             categories.remove(at: Int(index))
+            saveCategories()
         }
     }
     

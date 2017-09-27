@@ -35,20 +35,40 @@ class ReportModel {
     func prepareArrayForCalculation(byDate selected: Date) -> [(categoryName: String, value: Double)] {
         var result: [(categoryName: String, value: Double)] = []
         let filtredByDate = reportData.filter({ $0.date == selected })//dateFormatter.string(from: $0.date) == dateFormatter.string(from: selected) })
-        
-        
+        var groupedTransactions = [String : Double]()
         for instance in filtredByDate {
-            
-            result.append((model.getCategoryName(byId: instance.categoryId)!, instance.value))
+            if groupedTransactions[instance.categoryId] != nil {
+                guard let operandAdd = groupedTransactions[instance.categoryId] else { continue }
+                groupedTransactions[instance.categoryId] = instance.value + operandAdd
+            } else {
+                groupedTransactions[instance.categoryId] = instance.value
+            }
+        }
+        for (categoryId, value) in groupedTransactions {
+            if let categoryName = model.getCategoryName(byId: categoryId) {
+                result.append((categoryName, value))
+            }
         }
         return result
     }
     
     func prepareArrayForCalculation(between begin: Date, and end: Date) -> [(categoryName: String, value: Double)] {
         var result: [(categoryName: String, value: Double)] = []
+        
         let filtredByDate = reportData.filter({ ($0.date > begin) && ($0.date < end) })
+        var groupedTransactions = [String : Double]()
         for instance in filtredByDate {
-            result.append((model.getCategoryName(byId: instance.categoryId)!, instance.value))
+            if groupedTransactions[instance.categoryId] != nil {
+                guard let operandAdd = groupedTransactions[instance.categoryId] else { continue }
+                groupedTransactions[instance.categoryId] = instance.value + operandAdd
+            } else {
+                groupedTransactions[instance.categoryId] = instance.value
+            }
+        }
+        for (categoryId, value) in groupedTransactions {
+            if let categoryName = model.getCategoryName(byId: categoryId) {
+                result.append((categoryName, value))
+            }
         }
         return result
     }
