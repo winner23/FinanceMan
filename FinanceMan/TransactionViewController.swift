@@ -31,6 +31,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
         // Remove time from Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         let selectedDate = dateFormatter.string(from: dateTransaction.date)
         let date = dateFormatter.date(from: selectedDate)!
         

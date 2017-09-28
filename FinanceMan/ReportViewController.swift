@@ -31,6 +31,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Remove time from Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         let selectedDate = dateFormatter.string(from: fromDate.date)
         let date = dateFormatter.date(from: selectedDate)!
         let data = report.prepareArrayForCalculation(byDate: date)
@@ -40,13 +41,16 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBAction func reportBetween(_ sender: UIButton) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
-        let selectedDateBegin = dateFormatter.string(from: fromDate.date)
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let timeBegingOfDay = " 00:00"
+        let timeEndOfDay = " 23:59"
+        let selectedDateBegin = (dateFormatter.string(from: fromDate.date) + timeBegingOfDay)
+        let selectedDateEnd = (dateFormatter.string(from: toDate.date) + timeEndOfDay)
+        dateFormatter.dateFormat = "dd.MM.yyyy HH:mm"
         let dateBegin = dateFormatter.date(from: selectedDateBegin)!
-        let selectedDateEnd = dateFormatter.string(from: toDate.date)
         let dateEnd = dateFormatter.date(from: selectedDateEnd)!
         let data = report.prepareArrayForCalculation(between: dateBegin, and: dateEnd)
         performSegue(withIdentifier: "onDate", sender: data)
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

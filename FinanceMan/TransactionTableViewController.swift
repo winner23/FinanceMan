@@ -57,15 +57,15 @@ class TransactionTableViewController: UITableViewController {
         if let dateTransaction = transactionInstance.date{
             let formatter = DateFormatter()
             formatter.dateFormat = "dd.MM.yyyy"
+            formatter.timeZone = TimeZone(abbreviation: "UTC")
             let dateStr = formatter.string(from: dateTransaction)
             cell.date.text = dateStr
         }
-        let valueTransaction = transactionInstance.getVolumeString()
         let transactionCategoryInstance = model.getCategoryInstance(byId: transactionInstance.categoryId)
         cell.icon.text = transactionCategoryInstance?.icon
         cell.name.text = transactionCategoryInstance?.name
         cell.descript.text = transactionInstance.descriptionTransaction
-        cell.value.text = valueTransaction
+        cell.value.text = transactionInstance.getVolumeString()
         if transactionCategoryInstance?.type == CategoryType.income {
             cell.type.text = "⬇︎"
             cell.type.textColor = UIColor(red: 0, green: 255, blue: 0)

@@ -44,7 +44,7 @@ class ReportResultsViewController: UIViewController {
             drawChartDate()
         }
     }
-    
+    //Set constraints for view of charts
     func defineChartView(chartView: UIView?){
         guard let viewDef = chartView else {
             return
@@ -62,23 +62,22 @@ class ReportResultsViewController: UIViewController {
         var dataEntries: [BarChartDataEntry] = []
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         for i in 0..<(reportViewByCategory!.count) {
             let value = reportViewByCategory![i].value
-            let dataEntry = BarChartDataEntry(x: Double(i), y: value)//(value: values[i].value, xIndex: i)
+            let dataEntry = BarChartDataEntry(x: Double(i), y: value)
             dataEntries.append(dataEntry)
         }
-        
         let chartDataSet = BarChartDataSet(values: dataEntries, label: "Dates")
-        
-        
-        
-        let chartData = BarChartData(dataSet: chartDataSet) //(xVals: months, dataSet: chartDataSet)
+        let chartData = BarChartData(dataSet: chartDataSet)
+        chartDataSet.colors = ChartColorTemplates.colorful()
         if barChartView != nil {
             barChartView!.data = chartData
         }
+        barChartView?.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 245/255, alpha: 1)
+        
     }
-
+    
     func drawChartDate() {
         var dataEntries: [PieChartDataEntry] = []
         for i in 0..<(reportViewByDate!.count){
@@ -89,24 +88,9 @@ class ReportResultsViewController: UIViewController {
         }
         let dataSet = PieChartDataSet(values: dataEntries, label: "Categories")
         let data = PieChartData(dataSet: dataSet)
+        dataSet.colors = ChartColorTemplates.colorful()
         pieChartView?.data = data
+        pieChartView?.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 245/255, alpha: 1)
         pieChartView?.notifyDataSetChanged()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

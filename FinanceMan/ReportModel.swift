@@ -10,15 +10,16 @@ import Foundation
 
 class ReportModel {
     let model = CoreModel.coreModel
-    let reportData: [(categoryId: String, date: Date, value: Double)]
+    let reportData: [(categoryId: String, date: Date, value: Double, type: CategoryType)]
     
     init(){
-        var result: [(categoryId: String, date: Date, value: Double)] = []
+        var result: [(categoryId: String, date: Date, value: Double, type: CategoryType)] = []
         for transaction in model.transactions {
             let category = transaction.categoryId
-            let date = transaction.date!
-            let value = transaction.volume?.doubleValue
-            result.append((categoryId: category, date: date, value: value!))
+            guard let date = transaction.date else { continue }
+            guard let value = transaction.volume?.doubleValue else {continue }
+            guard let type = model.getCategoryInstance(byId: category)?.type else {continue}
+            result.append((categoryId: category, date: date, value: value, type: type))
         }
         reportData = result
     }
@@ -34,7 +35,7 @@ class ReportModel {
     
     func prepareArrayForCalculation(byDate selected: Date) -> [(categoryName: String, value: Double)] {
         var result: [(categoryName: String, value: Double)] = []
-        let filtredByDate = reportData.filter({ $0.date == selected })//dateFormatter.string(from: $0.date) == dateFormatter.string(from: selected) })
+        let filtredByDate = reportData.filter({ $0.date == selected })
         var groupedTransactions = [String : Double]()
         for instance in filtredByDate {
             if groupedTransactions[instance.categoryId] != nil {

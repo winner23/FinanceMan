@@ -72,14 +72,14 @@ class CoreModel {
 //    }
     
     func modifyCategory(byId id: String, name: String, descriptionText: String, type: CategoryType, icon: String?) {
-        let index = getIndexCategory(byId: id)
-        categories[Int(index!)].name = name
-        categories[Int(index!)].descriptionContext = descriptionText
-        if categories[Int(index!)].type != type {
-            categories[Int(index!)].type = type
+        guard let index = getIndexCategory(byId: id) else {return}
+        categories[Int(index)].name = name
+        categories[Int(index)].descriptionContext = descriptionText
+        if categories[Int(index)].type != type {
+            categories[Int(index)].type = type
         }
         if icon != nil {
-            categories[Int(index!)].icon = icon
+            categories[Int(index)].icon = icon
         }
     }
     func deleteCategory(byId id: String) {
@@ -151,15 +151,6 @@ class CoreModel {
         }
     }
     
-    func getTransactions(categoryName: String) -> [TransactionModel] {
-        var res: [TransactionModel] = []
-        for transactionInstance:TransactionModel in transactions {
-            if getCategoryName(byId: transactionInstance.categoryId) == categoryName {
-                res.append(transactionInstance)
-            }
-        }
-        return res
-    }
     
     //NSCoding for Transaction List
     func saveTransactions(){
