@@ -184,13 +184,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earnings:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tu5-k0-8Um">
-                                                <rect key="frame" x="0.0" y="0.0" width="201" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="110" id="iN8-ft-gqX"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gep-Vd-2tq">
-                                                <rect key="frame" x="201" y="0.0" width="119" height="20.5"/>
+                                                <rect key="frame" x="110" y="0.0" width="210" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -201,13 +204,16 @@
                                         <rect key="frame" x="0.0" y="20.5" width="320" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outgoings:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFK-Pe-0bL">
-                                                <rect key="frame" x="0.0" y="0.0" width="213.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="110" id="a0N-MZ-pI2"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JcP-oq-z6j">
-                                                <rect key="frame" x="213.5" y="0.0" width="106.5" height="20.5"/>
+                                                <rect key="frame" x="110" y="0.0" width="210" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -218,13 +224,16 @@
                                         <rect key="frame" x="0.0" y="41" width="320" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSI-jZ-VMq">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="110" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="110" id="aCt-RA-A3W"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zq4-UX-2aJ">
-                                                <rect key="frame" x="160" y="0.0" width="160" height="20.5"/>
+                                                <rect key="frame" x="110" y="0.0" width="210" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -258,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAp-jz-nAF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="296"/>
+            <point key="canvasLocation" x="1168" y="30"/>
         </scene>
         <!--Transactions-->
         <scene sceneID="SDq-x5-kRH">
@@ -463,7 +472,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sS3-0v-HHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="862" y="-900"/>
+            <point key="canvasLocation" x="1320" y="-832"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="VL8-bO-9oC">
@@ -597,7 +606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rp3-Kc-wFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1478" y="-739"/>
+            <point key="canvasLocation" x="2190" y="-765"/>
         </scene>
         <!--New Transaction-->
         <scene sceneID="Ou1-mS-6mE">
@@ -700,7 +709,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkp-Fy-i3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="279" y="-900"/>
+            <point key="canvasLocation" x="548" y="-832"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6yv-Yl-vkw">

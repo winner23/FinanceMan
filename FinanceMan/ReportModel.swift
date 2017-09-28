@@ -33,8 +33,8 @@ class ReportModel {
         return resultArray//.filter( { $0.date < Calendar.current.date(byAdding: .month, value: -1, to: $0.date)! } )
     }
     
-    func prepareArrayForCalculation(byDate selected: Date) -> [(categoryName: String, value: Double)] {
-        var result: [(categoryName: String, value: Double)] = []
+    func prepareArrayForCalculation(byDate selected: Date) -> [(categoryName: String, value: Double, type: CategoryType)] {
+        var result: [(categoryName: String, value: Double, type: CategoryType)] = []
         let filtredByDate = reportData.filter({ $0.date == selected })
         var groupedTransactions = [String : Double]()
         for instance in filtredByDate {
@@ -47,14 +47,15 @@ class ReportModel {
         }
         for (categoryId, value) in groupedTransactions {
             if let categoryName = model.getCategoryName(byId: categoryId) {
-                result.append((categoryName, value))
+                guard let type = model.getCategoryInstance(byId: categoryId)?.type else {continue}
+                result.append((categoryName, value, type))
             }
         }
         return result
     }
     
-    func prepareArrayForCalculation(between begin: Date, and end: Date) -> [(categoryName: String, value: Double)] {
-        var result: [(categoryName: String, value: Double)] = []
+    func prepareArrayForCalculation(between begin: Date, and end: Date) -> [(categoryName: String, value: Double, type: CategoryType)] {
+        var result: [(categoryName: String, value: Double, type: CategoryType)] = []
         
         let filtredByDate = reportData.filter({ ($0.date > begin) && ($0.date < end) })
         var groupedTransactions = [String : Double]()
@@ -68,7 +69,8 @@ class ReportModel {
         }
         for (categoryId, value) in groupedTransactions {
             if let categoryName = model.getCategoryName(byId: categoryId) {
-                result.append((categoryName, value))
+                guard let type = model.getCategoryInstance(byId: categoryId)?.type else {continue}
+                result.append((categoryName, value, type))
             }
         }
         return result

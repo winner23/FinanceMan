@@ -79,13 +79,28 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         if segue.identifier == "byCategory"{
             let result = sender as? [(date: Date, value: Double)]
             let reportResultViewController = (segue.destination) as? ReportResultsViewController
+            
             reportResultViewController?.reportViewByCategory = result
             
         }
         if segue.identifier == "onDate",
-            let result = sender as? [(categoryName: String, value: Double)],
+            let result = sender as? [(categoryName: String, value: Double, type: CategoryType)],
             let reportResultViewController = (segue.destination) as? ReportResultsViewController {
                 reportResultViewController.reportViewByDate = result
+            var income = 0.0
+            var pays = 0.0
+            for group in result {
+                switch group.type {
+                case .income :
+                    income += group.value
+                case .pay :
+                    pays += group.value
+                }
+            reportResultViewController.earnings = "\(income)"
+            reportResultViewController.outgoing = "\(pays)"
+            reportResultViewController.total = "\(income - pays)"
+            }
+            
         }
         
         

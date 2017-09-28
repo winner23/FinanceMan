@@ -23,7 +23,7 @@ class ReportResultsViewController: UIViewController {
     var outgoing: String?
     var total: String?
     var reportViewByCategory: [(date: Date, value: Double)]?
-    var reportViewByDate: [(categoryName: String, value: Double)]?
+    var reportViewByDate: [(categoryName: String, value: Double, type: CategoryType)]?
     
     var barChartView: BarChartView?
     var pieChartView: PieChartView?
