@@ -23,10 +23,6 @@ class ReportTableViewController: UITableViewController {
             guard let reportViewByDateOver = reportViewByDate else { return }
             let sortedReportViewByDate = reportViewByDateOver.sorted(by: {$0.value > $1.value})
             reportViewByDate = sortedReportViewByDate
-        } else {
-            guard let reportViewByCategoryOver = reportViewByCategory else { return }
-            let sortedReportViewByCategory = reportViewByCategoryOver.sorted(by: {$0.date > $1.date})
-            reportViewByCategory = sortedReportViewByCategory
         }
     }
 

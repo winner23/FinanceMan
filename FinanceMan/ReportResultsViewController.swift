@@ -77,11 +77,12 @@ class ReportResultsViewController: UIViewController {
         dateFormatter.dateFormat = "dd.MMM"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         var xvalues: [String] = []
+        let shiftForDate = 0.5
         for i in 0..<(reportViewByCategory.count) {
             let value = reportViewByCategory[i].value
             let date = reportViewByCategory[i].date
             xvalues.append(dateFormatter.string(from: date))
-            let dataEntry = BarChartDataEntry(x: Double(i), y: value)
+            let dataEntry = BarChartDataEntry(x: Double(i) + shiftForDate, y: value)
             dataEntries.append(dataEntry)
         }
         let chartDataSet = BarChartDataSet(values: dataEntries, label: "Dates")

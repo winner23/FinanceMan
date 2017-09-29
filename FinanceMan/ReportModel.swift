@@ -30,7 +30,7 @@ class ReportModel {
         for instance in filteredByCategory {
                 resultArray.append((instance.date, instance.value))
             }
-        return resultArray//.filter( { $0.date < Calendar.current.date(byAdding: .month, value: -1, to: $0.date)! } )
+        return resultArray.sorted(by:{ $0.date < $1.date})//.filter( { $0.date < Calendar.current.date(byAdding: .month, value: -1, to: $0.date)! } )
     }
     
     func prepareArrayForCalculation(byDate selected: Date) -> [(categoryName: String, value: Double, type: CategoryType)] {
