@@ -61,10 +61,6 @@ class CoreModel {
         return nil
     }
     
-//    func getListCategories() -> [CategoryModel]{
-//        return categories
-//    }
-    
     func modifyCategory(byId id: String, name: String, descriptionText: String, type: CategoryType, icon: String?) {
         guard let index = getIndexCategory(byId: id) else {return}
         categories[Int(index)].name = name
@@ -144,7 +140,6 @@ class CoreModel {
             transactions.remove(at: index)
         }
     }
-    
     
     //NSCoding for Transaction List
     func saveTransactions(){
