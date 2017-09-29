@@ -28,6 +28,17 @@ class ReportResultsViewController: UIViewController {
     var barChartView: BarChartView?
     var pieChartView: PieChartView?
     
+    override func viewWillAppear(_ animated: Bool) {
+        let navigationItem = self.navigationItem
+        navigationItem.title = "Report"
+        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.compose, target: self, action: #selector(self.showTable));
+        navigationItem.rightBarButtonItem = doneItem;
+    }
+    
+    @objc func showTable(){
+        self.performSegue(withIdentifier: "showTable", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         earningsLabel?.text = earnings ?? ""
@@ -59,22 +70,44 @@ class ReportResultsViewController: UIViewController {
     }
     
     func drawChartCategory(){
+        guard let reportViewByCategory = reportViewByCategory else {return}
+        guard let barChartView = barChartView else { return }
         var dataEntries: [BarChartDataEntry] = []
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "dd.MMM"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        for i in 0..<(reportViewByCategory!.count) {
-            let value = reportViewByCategory![i].value
+        var xvalues: [String] = []
+        for i in 0..<(reportViewByCategory.count) {
+            let value = reportViewByCategory[i].value
+            let date = reportViewByCategory[i].date
+            xvalues.append(dateFormatter.string(from: date))
             let dataEntry = BarChartDataEntry(x: Double(i), y: value)
             dataEntries.append(dataEntry)
         }
         let chartDataSet = BarChartDataSet(values: dataEntries, label: "Dates")
         let chartData = BarChartData(dataSet: chartDataSet)
         chartDataSet.colors = ChartColorTemplates.colorful()
-        if barChartView != nil {
-            barChartView!.data = chartData
-        }
-        barChartView?.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 245/255, alpha: 1)
+        //Chart setup
+        let xAxis = barChartView.xAxis
+        xAxis.labelPosition = .top
+        xAxis.labelCount = reportViewByCategory.count
+        xAxis.drawLabelsEnabled = true
+        xAxis.drawLimitLinesBehindDataEnabled = true
+        xAxis.avoidFirstLastClippingEnabled = true
+        xAxis.granularityEnabled = true
+        xAxis.granularity = 1.0
+        xAxis.centerAxisLabelsEnabled = true
+        xAxis.avoidFirstLastClippingEnabled = true
+        xAxis.drawLimitLinesBehindDataEnabled = true
+        let rightAxis = barChartView.rightAxis
+        rightAxis.enabled = false
+        let leftAxis = barChartView.leftAxis
+        leftAxis.drawZeroLineEnabled = true
+        leftAxis.drawGridLinesEnabled = true
+        xAxis.valueFormatter = IndexAxisValueFormatter(values: xvalues)
+//        barChartView.animate(xAxisDuration: 0.7, yAxisDuration: 0.7)
+        barChartView.data = chartData
+        barChartView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 245/255, alpha: 1)
         
     }
     
@@ -92,5 +125,21 @@ class ReportResultsViewController: UIViewController {
         pieChartView?.data = data
         pieChartView?.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 245/255, alpha: 1)
         pieChartView?.notifyDataSetChanged()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showTable" {
+            let reportTableViewController = (segue.destination) as? ReportTableViewController
+            reportTableViewController?.reportViewByCategory = reportViewByCategory
+            reportTableViewController?.reportViewByDate = reportViewByDate
+        }
+    }
+}
+extension ReportResultsViewController: IAxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM"
+        let date = Date(timeIntervalSince1970: value)
+        return dateFormatter.string(from: date)
     }
 }

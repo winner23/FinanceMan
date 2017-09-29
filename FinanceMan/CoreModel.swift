@@ -128,7 +128,7 @@ class CoreModel {
     
     func addTransaction(categoryId: String, volume: String, descriptionText: String, date: Date){
         let newTransaction = TransactionModel(categoryID: categoryId, volume: volume, descriptionText: descriptionText, date: date)
-        transactions.append(newTransaction)
+        transactions.insert(newTransaction, at: 0)//.append(newTransaction)
     }
     
     func getTransactionInstance(byIndex index: Int) -> TransactionModel? {
