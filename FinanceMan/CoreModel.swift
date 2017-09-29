@@ -14,25 +14,19 @@ class CoreModel {
     var categories: [CategoryModel] = []
     var transactions: [TransactionModel] = []
     private let fileManager = FileManager()
-    private let pathCategories: String?
-    private let pathTransactions: String?
+    private var pathCategories: String = ""
+    private var pathTransactions: String = ""
     
     //Core Model is Singleton
     private init(){
         //Prepare for Archiving data to files
         let documentDirectoryUrls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-        
         if let documentDirectoryUrl = documentDirectoryUrls.first {
-
             self.pathCategories = documentDirectoryUrl.appendingPathComponent("categories.archive").path
             self.pathTransactions = documentDirectoryUrl.appendingPathComponent("transactions.archive").path
-        } else {
-            self.pathCategories = nil
-            self.pathTransactions = nil
         }
     }
     
-
     //MARK: Categories
     // ----========== Categories operations ==========----
     func addCategory(name: String, descrip: String, type: CategoryType, icon: String?){
@@ -109,7 +103,7 @@ class CoreModel {
     
     //NSCoding for Category List
     func saveCategories(){
-        guard let pathCategories = pathCategories else { return }
+        let pathCategories = self.pathCategories
         let success = NSKeyedArchiver.archiveRootObject(categories, toFile: pathCategories)
         if !success {
             print("Unable to save array to \(pathCategories)")
@@ -117,7 +111,7 @@ class CoreModel {
     }
     
     func retrievCategories(){
-        guard let pathCategories = pathCategories else { return }
+        let pathCategories = self.pathCategories
         if let categoryList = NSKeyedUnarchiver.unarchiveObject(withFile: pathCategories) as? [CategoryModel] {
             categories = categoryList
         }
@@ -154,7 +148,7 @@ class CoreModel {
     
     //NSCoding for Transaction List
     func saveTransactions(){
-        guard let pathTransactions = pathTransactions else { return }
+        let pathTransactions = self.pathTransactions
         let success = NSKeyedArchiver.archiveRootObject(transactions, toFile: pathTransactions)
         if !success {
             print("Unable to save array to \(pathTransactions)")
@@ -162,7 +156,7 @@ class CoreModel {
     }
     
     func retrievTranactions(){
-        guard let pathTransactions = pathTransactions else { return }
+        let pathTransactions = self.pathTransactions
         if let transactionList = NSKeyedUnarchiver.unarchiveObject(withFile: pathTransactions) as? [TransactionModel]
             {
             transactions = transactionList
