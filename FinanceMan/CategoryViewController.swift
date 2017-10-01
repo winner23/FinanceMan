@@ -21,19 +21,21 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var iconCategory: UILabel!
     @IBAction func saveCategoryChanges(_ sender: RCButton) {
         
-        let name = nameCategory.text ?? "NoName"
+        let nameCategoryText = nameCategory.text ?? "NoName"
+        let trimmedCategoryName = nameCategoryText.trimmingCharacters(in: .whitespacesAndNewlines)
         let descr = descriptionCategory.text ?? "No Description"
         let type: CategoryType = typeCategory.isOn ? .income : .pay
         let icon = iconCategory.text
-        if (model.getCategoryId(byName: name) != nil) {
-            showWarningMsg("Category name exists!")
-            return
-        }
+        
         if currentCategory == nil {
-        model.addCategory(name: name, descrip: descr, type: type, icon: icon)
-            
+            if  model.checkCategoryExists(name: trimmedCategoryName) {
+                showWarningMsg("Category name exists!")
+                return
+            } else {
+                model.addCategory(name: trimmedCategoryName, descrip: descr, type: type, icon: icon)
+            }
         } else {
-            model.modifyCategory(byId: currentCategory!.id, name: name, descriptionText: descr, type: type, icon: icon)
+            model.modifyCategory(byId: currentCategory!.id, name: trimmedCategoryName, descriptionText: descr, type: type, icon: icon)
         }
         model.saveCategories()
         self.navigationController?.popViewController(animated: true)
@@ -46,19 +48,15 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         if currentCategory != nil {
             nameCategory.text = currentCategory?.name
             descriptionCategory.text = currentCategory?.descriptionContext
             typeCategory.isOn = currentCategory?.type == .income
             iconCategory.text = currentCategory?.icon
         }
-        super.viewDidLoad()
-        
         nameCategory.delegate = self
         descriptionCategory.delegate = self
-        
-        
-
         // Do any additional setup after loading the view.
     }
 
@@ -75,7 +73,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "iconCell", for: indexPath) as! IconCollectionViewCell
         cell.icon.text = icons[indexPath.row]
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -84,7 +81,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
             self.iconCollection.alpha = 0
         })
         iconCategory.text = icons[indexPath.row]
-        
         self.iconCategory.alpha = 0
         UIView.animate(withDuration: 1, animations: {
             self.iconCategory.alpha = 1

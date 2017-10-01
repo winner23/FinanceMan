@@ -21,21 +21,20 @@ class TransactionTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         let navigationItem = self.navigationItem
         navigationItem.title = "Transactions"
-        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.openNewTransactionView))
-        let menuItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.bookmarks, target: self, action: #selector(self.openReportView))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(self.openNewTransactionScreen))
+        let menuItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.bookmarks, target: self, action: #selector(self.openReportScreen))
         navigationItem.rightBarButtonItem = doneItem
         navigationItem.leftBarButtonItem = menuItem
-        
         model.retrievTranactions()
         model.retrievCategories()
         transactionTable.reloadData()
     }
 
-    @objc func openNewTransactionView(){
+    @objc func openNewTransactionScreen(){
         self.performSegue(withIdentifier: "newTransaction", sender: self)
     }
     
-    @objc func openReportView(){
+    @objc func openReportScreen(){
         self.performSegue(withIdentifier: "reportView", sender: self)
     }
 
@@ -68,10 +67,10 @@ class TransactionTableViewController: UITableViewController {
         cell.value.text = transactionInstance.getVolumeString()
         if transactionCategoryInstance?.type == CategoryType.income {
             cell.type.text = "⬇︎"
-            cell.type.textColor = UIColor(red: 0, green: 255, blue: 0)
+            cell.type.textColor = UIColor.green
         } else {
             cell.type.text = "⬆︎"
-            cell.type.textColor = UIColor(red: 0, green: 0, blue: 255)
+            cell.type.textColor = UIColor.blue
         }
         return cell
     }

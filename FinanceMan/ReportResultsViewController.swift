@@ -109,7 +109,6 @@ class ReportResultsViewController: UIViewController {
 //        barChartView.animate(xAxisDuration: 0.7, yAxisDuration: 0.7)
         barChartView.data = chartData
         barChartView.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 245/255, alpha: 1)
-        
     }
     
     func drawChartDate() {
@@ -123,6 +122,10 @@ class ReportResultsViewController: UIViewController {
         let dataSet = PieChartDataSet(values: dataEntries, label: "Categories")
         let data = PieChartData(dataSet: dataSet)
         dataSet.colors = ChartColorTemplates.colorful()
+        dataSet.xValuePosition = .outsideSlice
+        dataSet.yValuePosition = .outsideSlice
+        dataSet.entryLabelColor = UIColor.black
+        dataSet.valueTextColor = UIColor.blue
         pieChartView?.data = data
         pieChartView?.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 245/255, alpha: 1)
         pieChartView?.notifyDataSetChanged()

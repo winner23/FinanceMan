@@ -21,9 +21,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var byCategoryButton: UIButton!
     @IBAction func reportByCategory(_ sender: UIButton) {
         let selectedCategory = model.categories[ctegorySelector.selectedRow(inComponent: 0)]
-        
         let data = report.prepareArrayForCalculation(byCategory: selectedCategory)
-        
         performSegue(withIdentifier: "byCategory", sender: data)
     }
     

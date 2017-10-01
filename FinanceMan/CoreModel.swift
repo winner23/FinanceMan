@@ -97,6 +97,16 @@ class CoreModel {
         return nil
     }
     
+    //Check for uniqueness of category name
+    func checkCategoryExists(name categoryName: String) -> Bool {
+        for category in categories {
+            if category.name.lowercased() == categoryName.lowercased() {
+                return true
+            }
+        }
+        return false
+    }
+    
     //NSCoding for Category List
     func saveCategories(){
         let pathCategories = self.pathCategories
