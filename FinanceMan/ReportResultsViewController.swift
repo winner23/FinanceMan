@@ -17,23 +17,17 @@ class ReportResultsViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel?
     @IBOutlet weak var containerView: UIView!
     
-    
-    
     var earnings: String?
     var outgoing: String?
     var total: String?
     var reportViewByCategory: [(date: Date, value: Double)]?
     var reportViewByDate: [(categoryName: String, value: Double, type: CategoryType)]?
-    
     var barChartView: BarChartView?
     var pieChartView: PieChartView?
     
-    override func viewWillAppear(_ animated: Bool) {
-        let navigationItem = self.navigationItem
-        navigationItem.title = "Report"
-        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.compose, target: self, action: #selector(self.showTable));
-        navigationItem.rightBarButtonItem = doneItem;
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//    }
     
     @objc func showTable(){
         self.performSegue(withIdentifier: "showTable", sender: self)
@@ -41,19 +35,42 @@ class ReportResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let navigationItem = self.navigationItem
+        navigationItem.title = "Report"
+        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.compose, target: self, action: #selector(self.showTable));
+        navigationItem.rightBarButtonItem = doneItem;
         earningsLabel?.text = earnings ?? ""
         outgoingLabel?.text = outgoing ?? ""
         totalLabel?.text = total ?? ""
         if reportViewByCategory != nil {
-            self.barChartView = BarChartView()
-            defineChartView(chartView: barChartView)
-            drawChartCategory()
+            if (reportViewByCategory?.count)!<1 {
+                containerView.addSubview(getWarningMsgLable("No Data for Category!"))
+            } else {
+                self.barChartView = BarChartView()
+                defineChartView(chartView: barChartView)
+                drawChartCategory()
+            }
         }
         if reportViewByDate != nil {
-            self.pieChartView = PieChartView()
-            defineChartView(chartView: pieChartView)
-            drawChartDate()
+            if (reportViewByDate?.count)!<1 {
+                containerView.addSubview(getWarningMsgLable("No Data for Period!"))
+            } else {
+                self.pieChartView = PieChartView()
+                defineChartView(chartView: pieChartView)
+                drawChartDate()
+            }
         }
+    }
+    //Get Warning lable
+    func getWarningMsgLable(_ textWarning: String) -> UILabel {
+        let warningMessage = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+        warningMessage.center.x = containerView.center.x
+        warningMessage.center.y = containerView.center.y / 2
+        warningMessage.textColor = UIColor.white
+        warningMessage.backgroundColor = UIColor.red
+        warningMessage.textAlignment = .center
+        warningMessage.text = textWarning
+        return warningMessage
     }
     //Set constraints for view of charts
     func defineChartView(chartView: UIView?){
