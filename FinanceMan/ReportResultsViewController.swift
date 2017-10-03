@@ -25,10 +25,6 @@ class ReportResultsViewController: UIViewController {
     var barChartView: BarChartView?
     var pieChartView: PieChartView?
     
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//    }
-    
     @objc func showTable(){
         self.performSegue(withIdentifier: "showTable", sender: self)
     }
@@ -42,6 +38,9 @@ class ReportResultsViewController: UIViewController {
         earningsLabel?.text = earnings ?? ""
         outgoingLabel?.text = outgoing ?? ""
         totalLabel?.text = total ?? ""
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if reportViewByCategory != nil {
             if (reportViewByCategory?.count)!<1 {
                 containerView.addSubview(getWarningMsgLable("No Data for Category!"))
@@ -61,6 +60,7 @@ class ReportResultsViewController: UIViewController {
             }
         }
     }
+    
     //Get Warning lable
     func getWarningMsgLable(_ textWarning: String) -> UILabel {
         let warningMessage = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
@@ -141,8 +141,10 @@ class ReportResultsViewController: UIViewController {
         dataSet.colors = ChartColorTemplates.colorful()
         dataSet.xValuePosition = .outsideSlice
         dataSet.yValuePosition = .outsideSlice
+        dataSet.valueLinePart1Length = 0.5
         dataSet.entryLabelColor = UIColor.black
         dataSet.valueTextColor = UIColor.blue
+        
         pieChartView?.data = data
         pieChartView?.backgroundColor = UIColor(red: 241/255, green: 243/255, blue: 245/255, alpha: 1)
         pieChartView?.notifyDataSetChanged()
