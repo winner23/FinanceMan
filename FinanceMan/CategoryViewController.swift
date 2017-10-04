@@ -17,16 +17,15 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var nameCategory: UITextField!
     @IBOutlet weak var iconCollection: UICollectionView!
     @IBOutlet weak var descriptionCategory: UITextField!
-    @IBOutlet weak var typeCategory: UISwitch!
+    @IBOutlet weak var typeCategory: UISegmentedControl!
+    
     @IBOutlet weak var iconCategory: UILabel!
-    @IBAction func saveCategoryChanges(_ sender: RCButton) {
-        
+    @IBAction func saveCategory(_ sender: UIBarButtonItem) {
         let nameCategoryText = nameCategory.text ?? "NoName"
         let trimmedCategoryName = nameCategoryText.trimmingCharacters(in: .whitespacesAndNewlines)
         let descr = descriptionCategory.text ?? "No Description"
-        let type: CategoryType = typeCategory.isOn ? .income : .pay
+        let type: CategoryType = typeCategory.selectedSegmentIndex == 0 ? CategoryType.pay : CategoryType.income
         let icon = iconCategory.text
-        
         if currentCategory == nil {
             if  model.checkCategoryExists(name: trimmedCategoryName) {
                 showWarningMsg("Category name exists!")
@@ -52,7 +51,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         if currentCategory != nil {
             nameCategory.text = currentCategory?.name
             descriptionCategory.text = currentCategory?.descriptionContext
-            typeCategory.isOn = currentCategory?.type == .income
+            typeCategory.selectedSegmentIndex =  currentCategory?.type == .income ? 1 : 0
             iconCategory.text = currentCategory?.icon
         }
         nameCategory.delegate = self
