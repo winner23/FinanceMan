@@ -49,7 +49,8 @@ class CategoryTableViewController: UITableViewController{
     //Select category
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCategory = model.categories[indexPath.row]
-        self.saveAction!(selectedCategory)
+        guard let returnCategory = saveAction else {return}
+        returnCategory(selectedCategory)
         _ = navigationController?.popViewController(animated: true)
     }
     

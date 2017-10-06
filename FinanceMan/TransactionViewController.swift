@@ -27,14 +27,13 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
     @IBAction func saveTransaction(_ sender: UIButton) {
         let value = valueTransaction.text?.replacingOccurrences(of: " ", with: "") ?? "0"
         let descripTran = descriptionTransaction.text ?? ""
-
-        // Remove time from Date
+        
+        // Exclude time from Date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         let selectedDate = dateFormatter.string(from: dateTransaction.date)
         let date = dateFormatter.date(from: selectedDate)!
-        
         let category = categoryButton.currentTitle ?? "No category"
         if let categoryId = model.getCategoryId(byName: category){
             if currentTransactionIndex != nil && currentTransaction != nil {
@@ -51,6 +50,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         //When edit transaction case
         if currentTransaction != nil {
             let categoryName = model.getCategoryName(byId: (currentTransaction?.categoryId)!)
@@ -59,7 +59,6 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
             descriptionTransaction.text = currentTransaction?.descriptionTransaction
             dateTransaction.setDate((currentTransaction?.date)!, animated: true)
         }
-        super.viewDidLoad()
         valueTransaction.delegate = self
         descriptionTransaction.delegate = self
         //detect of entering in value text field
@@ -81,7 +80,9 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectCategory",
         let viewController = segue.destination as? CategoryTableViewController {
-            viewController.saveAction = { selectedCategory in
+            viewController.saveAction = {
+                [unowned self]
+                selectedCategory in
                 self.transaction.categoryId =  selectedCategory.id
                 self.categoryButton.setTitle(selectedCategory.name, for: .normal)
             }
@@ -89,7 +90,6 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UITextVi
     }
     
     // MARK: - Navigation
-
     private func showWarningMsg(textMsg: String) {
         let alert = UIAlertController(title: "Warning!", message: textMsg, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))

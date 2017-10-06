@@ -26,6 +26,14 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         let descr = descriptionCategory.text ?? "No Description"
         let type: CategoryType = typeCategory.selectedSegmentIndex == 0 ? CategoryType.pay : CategoryType.income
         let icon = iconCategory.text
+        if trimmedCategoryName.characters.count < 2 {
+            showWarningMsg("Incorrect name!")
+            return
+        }
+        if icon == ""{
+            showWarningMsg("Select picture for category!")
+            return
+        }
         if currentCategory == nil {
             if  model.checkCategoryExists(name: trimmedCategoryName) {
                 showWarningMsg("Category name exists!")
@@ -53,6 +61,8 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
             descriptionCategory.text = currentCategory?.descriptionContext
             typeCategory.selectedSegmentIndex =  currentCategory?.type == .income ? 1 : 0
             iconCategory.text = currentCategory?.icon
+        } else {
+            iconCategory.text = ""
         }
         nameCategory.delegate = self
         descriptionCategory.delegate = self
